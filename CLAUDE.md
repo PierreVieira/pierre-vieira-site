@@ -1,8 +1,9 @@
 # pierrevieira.com
 
 Pierre Vieira's portfolio at pierrevieira.com: one page (`public/index.html`), plain HTML, CSS and JavaScript with no
-build and no dependencies. Each file opens with a comment on what it holds; `docs/` has the deploy
-([`docs/deploy.md`](docs/deploy.md)) and the analytics ([`docs/analytics.md`](docs/analytics.md)).
+build and no dependencies, but for the résumé PDF, which the deploy compiles from `cv/pierre-vieira-cv.tex`. Each file
+opens with a comment on what it holds; `docs/` has the deploy ([`docs/deploy.md`](docs/deploy.md)) and the analytics
+([`docs/analytics.md`](docs/analytics.md)).
 
 ## Conventions
 
@@ -15,10 +16,13 @@ build and no dependencies. Each file opens with a comment on what it holds; `doc
 - `public/boot.js` runs in `<head>` and decides the theme, the language and `.motion` before the first paint. Every
   entrance animation hangs on `:root.motion`, so with reduced motion (or a pinned `?theme=`) the page is still and
   complete.
-- The facts on the page (dates, roles, numbers) come from Pierre's résumé (`public/cv/pierre-vieira-cv.pdf`) and, for
-  the apps, from their repositories: never invent a figure. The hero keeps to "apps" and "software engineer", but for
-  the current job under the portrait, which names Android; the Android and Kotlin Multiplatform detail belongs to the
-  experience and skills sections.
+- The facts on the page (dates, roles, numbers) come from Pierre's résumé, `cv/pierre-vieira-cv.tex` (its only
+  source: the PDF is built on deploy, see [`docs/deploy.md`](docs/deploy.md)), and, for the apps, from their
+  repositories: never invent a figure. The hero keeps to "apps" and "software engineer", but for the current job under
+  the portrait, which names Android; the Android and Kotlin Multiplatform detail belongs to the experience and skills
+  sections.
+- To change the résumé, use the `edit-cv` skill: it edits the .tex, builds and checks the PDF and opens a pull
+  request.
 - `public/llms.txt` repeats the page's facts for AI agents (companies, roles, dates, apps): keep it in step with the
   page.
 - The years of experience are never written by hand: a `[data-years]` element (`data-years="word"` spelled out) is
