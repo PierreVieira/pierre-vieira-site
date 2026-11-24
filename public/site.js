@@ -157,22 +157,35 @@
     if (text) text.textContent = address;
   });
 
-  // Folds: an app's or a job's details sit under a Details toggle. Those marked data-open (the current job) start open;
-  // the others start folded.
-  function setFoldOpen(toggle, open) {
+  // Folds: an app's or a job's details sit under a Details toggle, built here from the markup's template (so a page
+  // without scripts has no toggle and every fold open). The current job, the one with the .now badge, starts open; the
+  // others start folded. Each toggle is described by its card's heading, so a screen reader tells them apart.
+  // Built before the language's words arrive, so translate() reaches the toggles too.
+  function setFoldOpen(toggle, fold, open) {
     toggle.setAttribute("aria-expanded", String(open));
-    const fold = document.getElementById(toggle.getAttribute("aria-controls"));
     fold.classList.toggle("closed", !open);
     fold.inert = !open;
-    return fold;
   }
-  document.querySelectorAll(".fold-toggle").forEach((toggle) => {
-    toggle.hidden = false;
-    setFoldOpen(toggle, toggle.hasAttribute("data-open"));
+  const foldToggle = document.getElementById("fold-toggle");
+  if (foldToggle) document.querySelectorAll(".fold[data-item]").forEach((fold) => {
+    const item = fold.dataset.item;
+    const card = fold.closest(".job, .app");
+    const heading = card && card.querySelector("h3");
+    const toggle = foldToggle.content.firstElementChild.cloneNode(true);
+    fold.id = `fold-${item}`;
+    toggle.setAttribute("aria-controls", fold.id);
+    if (heading) {
+      heading.id = heading.id || `${fold.id}-name`;
+      toggle.setAttribute("aria-describedby", heading.id);
+    }
+    fold.before(toggle);
+    setFoldOpen(toggle, fold, Boolean(card && card.querySelector(".now")));
     toggle.addEventListener("click", () => {
       const open = toggle.getAttribute("aria-expanded") !== "true";
-      setFoldOpen(toggle, open).classList.add("toggled");
-      track("details_toggle", { item: toggle.dataset.item, state: open ? "open" : "close" });
+      // Only a fold the visitor toggled moves (.toggled): the first state, set as the page loads, snaps.
+      fold.classList.add("toggled");
+      setFoldOpen(toggle, fold, open);
+      track("details_toggle", { item, state: open ? "open" : "close" });
     });
   });
 

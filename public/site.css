@@ -328,6 +328,8 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 .shots img:nth-child(2) { margin-top: 32px; }
 @media (min-width: 900px) {
   .app { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 48px; align-items: center; padding: 48px; }
+  /* Top-aligned, so opening Details grows the text downward and leaves the toggle under the pointer. */
+  .app-copy { align-self: start; }
   .app:nth-child(even) .shots { order: -1; }
   .shots { gap: 16px; }
   .shots img { border-radius: 22px; }
@@ -366,21 +368,21 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
   padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface);
   color: var(--fg-soft); font-size: 13px; line-height: 1.5; white-space: nowrap;
 }
-/* Fold: an app's or a job's details sit under a Details toggle, which site.js shows: without scripts they stay open. */
+/* Fold: an app's or a job's details sit under a Details toggle, which site.js adds: without scripts they stay open. */
 .fold-toggle {
   display: inline-flex; align-items: center; gap: 6px; min-height: 36px; margin-top: 10px; margin-inline-start: -10px;
   padding: 0 10px; border-radius: var(--radius); background: none; border: 0; cursor: pointer;
   color: var(--muted-fg); font: 500 12px/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase;
   transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
 }
-.fold-toggle[hidden] { display: none; }
 .fold-toggle:hover { background: var(--muted); color: var(--fg); }
 .fold-toggle .icon { width: 16px; height: 16px; }
 :root.motion .fold-toggle .icon { transition: transform 0.25s var(--ease); }
 .fold-toggle[aria-expanded="true"] .icon { transform: rotate(180deg); }
 @media (pointer: coarse) { .fold-toggle { min-height: 44px; } }
 .fold { display: grid; grid-template-rows: 1fr; }
-.fold > div { min-height: 0; overflow: hidden; }
+/* clip, with room for a link's focus ring (:focus-visible draws it 5px out), where overflow: hidden would cut it. */
+.fold > div { min-height: 0; overflow: clip; overflow-clip-margin: 6px; }
 .fold > div > .bullets { margin-top: 6px; }
 .app .fold-toggle { margin-top: 16px; }
 .app .fold > div > .app-desc { margin-top: 8px; }

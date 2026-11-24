@@ -64,6 +64,8 @@
     <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 3l14 9-14 9V3z"/></symbol>
   </svg>
+  <!-- The Details toggle that site.js puts before each .fold: without scripts there is none and every fold is open. -->
+  <template id="fold-toggle"><button class="fold-toggle" type="button" aria-expanded="false"><span data-i18n="details">Details</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button></template>
 
   <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
@@ -179,8 +181,7 @@
                   <p class="live" data-i18n="appLive">Live</p>
                 </div>
               </div>
-              <button class="fold-toggle" type="button" aria-expanded="true" aria-controls="app-blitz" data-item="blitz_split" hidden><span data-i18n="details">Details</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-              <div class="fold" id="app-blitz"><div>
+              <div class="fold" data-item="blitz_split"><div>
                 <p class="app-desc" data-i18n="blitzDesc">An offline-first app to split bills among friends. Kotlin Multiplatform is shared up to the ViewModel, with a native UI on each platform: Jetpack Compose on Android, SwiftUI with Liquid Glass on Apple platforms and React on the web.</p>
                 <ul class="checks">
                   <li data-i18n="blitzPoint1">Every bill is saved on the device first and synced through Supabase, with an optional account.</li>
@@ -215,8 +216,7 @@
                   <p class="live" data-i18n="appLivePaying">Live, with paying users</p>
                 </div>
               </div>
-              <button class="fold-toggle" type="button" aria-expanded="true" aria-controls="app-bible" data-item="bible_planner" hidden><span data-i18n="details">Details</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-              <div class="fold" id="app-bible"><div>
+              <div class="fold" data-item="bible_planner"><div>
                 <p class="app-desc" data-i18n="bibleDesc">A Kotlin Multiplatform app for Android, iOS and desktop, built with Compose Multiplatform from a single codebase shared across all three.</p>
                 <ul class="checks">
                   <li data-i18n="biblePoint1">Reading plans in chronological or book order, with daily progress tracking.</li>
@@ -261,8 +261,7 @@
             <div>
               <h3><a class="company" href="https://super.xyz/" target="_blank" rel="noopener"><img class="logo" src="img/logo-super.jpg" alt="" width="40" height="40" loading="lazy"><span class="ext">Super<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a><span class="now" data-i18n="now">Now</span></h3>
               <p class="role" data-i18n="roleSenior">Senior Android Software Engineer</p>
-              <button class="fold-toggle" type="button" aria-expanded="true" aria-controls="job-super" data-item="super" data-open hidden><span data-i18n="details">Details</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-              <div class="fold" id="job-super"><div>
+              <div class="fold" data-item="super"><div>
                 <ul class="bullets">
                   <li data-i18n="super1">Primary engineer for the sports app's home screen on Android, built with Jetpack Compose in a server-driven UI (SDUI) architecture.</li>
                   <li data-i18n="super2">Screen structure and content are defined by the backend, with Protocol Buffers as the contract between backend and client.</li>
@@ -281,8 +280,7 @@
             <div>
               <h3><a class="company" href="https://www.toyota.com/" target="_blank" rel="noopener"><img class="logo" src="img/logo-toyota.jpg" alt="" width="40" height="40" loading="lazy"><span class="ext">Toyota<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a><span class="via" data-i18n-html="toyotaVia">contractor through <a class="link" href="https://verygood.ventures/" target="_blank" rel="noopener">Very Good Ventures</a></span></h3>
               <p class="role" data-i18n="roleSenior">Senior Android Software Engineer</p>
-              <button class="fold-toggle" type="button" aria-expanded="true" aria-controls="job-toyota" data-item="toyota" hidden><span data-i18n="details">Details</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-              <div class="fold" id="job-toyota"><div>
+              <div class="fold" data-item="toyota"><div>
                 <ul class="bullets">
                   <li data-i18n="toyota1">Built native Android features for Toyota's connected vehicle app, for electric cars, with Kotlin and Jetpack Compose.</li>
                   <li data-i18n="toyota2">Applied MVI and MVVM across the codebase, following clean architecture principles.</li>
@@ -301,8 +299,7 @@
             <div>
               <h3><a class="company" href="https://www.arlo.com/" target="_blank" rel="noopener"><img class="logo" src="img/logo-arlo.jpg" alt="" width="40" height="40" loading="lazy"><span class="ext">Arlo<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a><span class="via" data-i18n-html="arloVia">contractor through <a class="link" href="https://www.side.inc/" target="_blank" rel="noopener">Side</a></span></h3>
               <p class="role" data-i18n="roleSenior">Senior Android Software Engineer</p>
-              <button class="fold-toggle" type="button" aria-expanded="true" aria-controls="job-arlo" data-item="arlo" hidden><span data-i18n="details">Details</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-              <div class="fold" id="job-arlo"><div>
+              <div class="fold" data-item="arlo"><div>
                 <ul class="bullets">
                   <li data-i18n="arlo1">Integrated home security devices, such as cameras and doorbells, into the native Android app, in Kotlin and Java.</li>
                   <li data-i18n="arlo2">Built AI audio event detection: features that identify sounds captured by the devices, such as glass breaking and alarms.</li>
@@ -321,8 +318,7 @@
             <div>
               <h3><a class="company" href="https://www.mercadolivre.com.br/" target="_blank" rel="noopener"><img class="logo" src="img/logo-mercado.jpg" alt="" width="40" height="40" loading="lazy"><span class="ext"><span data-i18n="mercadoName">Mercado Libre</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a><span class="via">Mercado Pago</span></h3>
               <p class="role"><span data-i18n="roleSenior">Senior Android Software Engineer</span> <span class="dim" data-i18n="mercadoPrevious">· Mid-Level until Feb 2023</span></p>
-              <button class="fold-toggle" type="button" aria-expanded="true" aria-controls="job-mercado" data-item="mercado" hidden><span data-i18n="details">Details</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-              <div class="fold" id="job-mercado"><div>
+              <div class="fold" data-item="mercado"><div>
                 <ul class="bullets">
                   <li data-i18n="mercado1">Cut payment processing time by implementing new services and parallelizing local operations.</li>
                   <li data-i18n="mercado2">Designed and built a server-driven navigation engine for Android: a JSON graph sent by the backend defines the navigation of dynamic payment flows.</li>
@@ -342,8 +338,7 @@
             <div>
               <h3><a class="company" href="https://www.ifood.com.br/" target="_blank" rel="noopener"><img class="logo" src="img/logo-ifood.jpg" alt="" width="40" height="40" loading="lazy"><span class="ext">iFood<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a></h3>
               <p class="role" data-i18n="roleMid">Mid-Level Android Software Engineer</p>
-              <button class="fold-toggle" type="button" aria-expanded="true" aria-controls="job-ifood" data-item="ifood" hidden><span data-i18n="details">Details</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-              <div class="fold" id="job-ifood"><div>
+              <div class="fold" data-item="ifood"><div>
                 <ul class="bullets">
                   <li data-i18n="ifood1">Migrated 3 screens of the grocery feature to Jetpack Compose, modernizing its interface.</li>
                   <li data-i18n-html="ifood2">Gave a talk introducing Jetpack Compose for Android, <a class="link" href="https://youtu.be/W2RfKpykdxs" target="_blank" rel="noopener">available on YouTube</a>.</li>
@@ -361,8 +356,7 @@
             <div>
               <h3><a class="company" href="https://www.studiosol.com.br/" target="_blank" rel="noopener"><img class="logo" src="img/logo-studio-sol.jpg" alt="" width="40" height="40" loading="lazy"><span class="ext">Studio Sol<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a></h3>
               <p class="role"><span data-i18n="roleJunior">Junior Android Software Engineer III</span> <span class="dim" data-i18n="studioPrevious">· Mobile Developer Intern until Sep 2021</span></p>
-              <button class="fold-toggle" type="button" aria-expanded="true" aria-controls="job-studio" data-item="studio" hidden><span data-i18n="details">Details</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-              <div class="fold" id="job-studio"><div>
+              <div class="fold" data-item="studio"><div>
                 <ul class="bullets">
                   <li data-i18n="studio1">Developed and released 3 different applications at the same time.</li>
                   <li data-i18n="studio2">Helped modularize the artist module with MVVM, clean code principles and Jetpack Compose.</li>
