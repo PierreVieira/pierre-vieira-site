@@ -386,12 +386,14 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 .fold > div > .bullets { margin-top: 6px; }
 .app .fold-toggle { margin-top: 16px; }
 .app .fold > div > .app-desc { margin-top: 8px; }
-.fold.closed { grid-template-rows: 0fr; visibility: hidden; }
+/* A closed fold's content is hidden="until-found" (site.js): the browser's find in page still reaches it and opens it. */
+.fold.closed { grid-template-rows: 0fr; }
 /* Only a fold the visitor toggled moves (site.js adds .toggled): the first state, set as the page loads, snaps. */
-:root.motion .fold.toggled { transition: grid-template-rows 0.35s var(--ease), visibility 0.35s; }
+:root.motion .fold.toggled { transition: grid-template-rows 0.35s var(--ease); }
 @media print {
   .fold-toggle { display: none; }
-  .fold.closed { grid-template-rows: 1fr; visibility: visible; }
+  .fold.closed { grid-template-rows: 1fr; }
+  .fold > div[hidden] { display: block; content-visibility: visible; }
 }
 @media (min-width: 820px) {
   .job { grid-template-columns: 240px minmax(0, 1fr); gap: 32px; padding-block: 40px; }

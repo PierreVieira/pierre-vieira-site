@@ -161,10 +161,20 @@
   // without scripts has no toggle and every fold open). The current job, the one with the .now badge, starts open; the
   // others start folded. Each toggle is described by its card's heading, so a screen reader tells them apart.
   // Built before the language's words arrive, so translate() reaches the toggles too.
+  // A closed fold's content is hidden="until-found": out of view, of the tab order and of screen readers, but the
+  // browser's find in page still matches it and fires beforematch, which opens the fold (where the browser supports
+  // it; elsewhere it's plain hidden).
+  const FOLD_MS = 350; // site.css's .fold.toggled transition
   function setFoldOpen(toggle, fold, open) {
+    const content = fold.firstElementChild;
     toggle.setAttribute("aria-expanded", String(open));
     fold.classList.toggle("closed", !open);
-    fold.inert = !open;
+    clearTimeout(fold.hideLater);
+    if (open) content.removeAttribute("hidden");
+    else if (fold.classList.contains("toggled") && root.classList.contains("motion")) {
+      // Hidden once it has slid shut, so the content doesn't vanish before the fold closes.
+      fold.hideLater = setTimeout(() => content.setAttribute("hidden", "until-found"), FOLD_MS);
+    } else content.setAttribute("hidden", "until-found");
   }
   const foldToggle = document.getElementById("fold-toggle");
   if (foldToggle) document.querySelectorAll(".fold[data-item]").forEach((fold) => {
@@ -186,6 +196,12 @@
       fold.classList.add("toggled");
       setFoldOpen(toggle, fold, open);
       track("details_toggle", { item, state: open ? "open" : "close" });
+    });
+    // Find in page matched inside: open at once (no slide), so the browser scrolls to where the match will stay.
+    fold.firstElementChild.addEventListener("beforematch", () => {
+      fold.classList.remove("toggled");
+      setFoldOpen(toggle, fold, true);
+      track("details_toggle", { item, state: "find" });
     });
   });
 
