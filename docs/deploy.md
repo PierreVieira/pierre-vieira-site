@@ -15,6 +15,11 @@ Every commit on `main` deploys through [Workers Builds](https://developers.cloud
 which runs `npx wrangler deploy`; other branches don't build. What is in `public/` is what goes out, plus the one
 built file below.
 
+A commit that only touches `docs/*`, `*.md`, `.github/*` or `.claude/*` doesn't deploy: those are the Exclude paths of
+the Worker's Build watch paths (Settings › Builds in the Cloudflare dashboard), with `*` as the Include path. A commit
+that also touches anything else deploys as usual. Keep `cv/` and `scripts/` out of that list, or a résumé change would
+not reach the site.
+
 ## The résumé
 
 `cv/pierre-vieira-cv.tex` is the résumé's only source; the PDF is not in git. Before every upload, `wrangler deploy`
