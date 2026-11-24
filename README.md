@@ -12,7 +12,7 @@ width and at a phone's, captured by [`scripts/readme-hero/generate.mjs`](scripts
 
 A link to the site unfolds into a card in WhatsApp, LinkedIn, Slack and the like: `public/img/link-card.png`, drawn
 from the hero by [`scripts/link-card/generate.mjs`](scripts/link-card/generate.mjs). `npm run link-card` draws it again
-after a change to the hero.
+after a change to the hero, and writes the image's version in the page's `og:image`.
 
 ## Run
 

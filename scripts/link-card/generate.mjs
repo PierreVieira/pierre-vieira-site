@@ -4,17 +4,22 @@
 //
 //   npm run link-card
 //
-// It opens the page with ?theme=dark&lang=en in a headless Chrome of its own (../readme-hero/chrome.mjs), reads the
-// hero, fills card.html's slots with it and photographs the card. In English only: what unfolds a link runs no
-// script, so it never sees the page's other languages.
+// It opens the page with ?theme=dark&lang=en in a headless Chrome of its own (../lib/chrome.mjs), reads the hero,
+// fills card.html's slots with it and photographs the card. In English only: what unfolds a link runs no script, so
+// it never sees the page's other languages. It then writes the image's version after its address in the page's
+// og:image (?v=, from the image's hash), so the address changes when the card does.
+import { createHash } from 'node:crypto'
 import { mkdtemp, readdir, readFile, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
-import { fill, openPainted, serve } from '../readme-hero/capture.mjs'
-import { launchChrome } from '../readme-hero/chrome.mjs'
+import { fill, openPainted, serve } from '../lib/capture.mjs'
+import { launchChrome } from '../lib/chrome.mjs'
 
 const PUBLIC = resolve(import.meta.dirname, '../../public')
+const PAGE = join(PUBLIC, 'index.html')
 const OUTPUT = join(PUBLIC, 'img/link-card.png')
+// The card's address in the page's og:image, with the version written after it, if any.
+const ADDRESS = /(\/img\/link-card\.png)(\?v=[0-9a-f]+)?/
 // What Open Graph and X ask of a large card, in real pixels: a larger one only weighs more, and WhatsApp drops a
 // heavy image for no image at all.
 const CARD = { width: 1200, height: 630 }
@@ -53,6 +58,12 @@ try {
   await openPainted(chrome, `${site.origin}/${CARD_PAGE}`)
   await chrome.screenshot(OUTPUT)
   console.log(`Wrote ${OUTPUT}`)
+  // Why: some of what unfolds links keeps an image by its address, so a card drawn again would stay the old one
+  // there. The version is the image's hash: it changes only when the image does.
+  const version = createHash('sha256').update(await readFile(OUTPUT)).digest('hex').slice(0, 8)
+  const page = await readFile(PAGE, 'utf8')
+  if (!ADDRESS.test(page)) throw new Error(`${PAGE} names no /img/link-card.png for its og:image`)
+  await writeFile(PAGE, page.replace(ADDRESS, `$1?v=${version}`))
 } finally {
   await chrome?.close()
   site?.stop()

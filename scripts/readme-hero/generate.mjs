@@ -4,16 +4,16 @@
 //
 //   npm run readme-hero
 //
-// It serves public/ itself on a free port (capture.mjs) and opens the page with ?theme=<theme>&lang=en, which pins the
-// theme and stills the entrance animations, in a headless Chrome of its own (chrome.mjs). hero.html then lays the two
-// captures out and is photographed as WebP, transparent around the devices so it sits on GitHub's page in either
-// theme.
+// It serves public/ itself on a free port (../lib/capture.mjs) and opens the page with ?theme=<theme>&lang=en, which
+// pins the theme and stills the entrance animations, in a headless Chrome of its own (../lib/chrome.mjs). hero.html
+// then lays the two captures out and is photographed as WebP, transparent around the devices so it sits on GitHub's
+// page in either theme.
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { fill, openPainted, serve } from './capture.mjs'
-import { launchChrome } from './chrome.mjs'
+import { fill, openPainted, serve } from '../lib/capture.mjs'
+import { launchChrome } from '../lib/chrome.mjs'
 
 const ROOT = resolve(import.meta.dirname, '../..')
 const OUTPUT = join(ROOT, 'docs/images')

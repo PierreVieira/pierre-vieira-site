@@ -1,5 +1,6 @@
-// What the scripts that photograph the page share (generate.mjs here and ../link-card/generate.mjs): a local server
-// for a folder, opening a page once it is painted in full, and the {{…}} slots of their templates.
+// What the scripts that photograph the page share (../readme-hero/generate.mjs and ../link-card/generate.mjs), beside
+// the Chrome they drive (chrome.mjs): a local server for a folder, opening a page once it is painted in full, and the
+// {{…}} slots of their templates.
 import { spawn } from 'node:child_process'
 import { createServer } from 'node:net'
 
