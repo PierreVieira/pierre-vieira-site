@@ -375,7 +375,8 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 }
 .fold-toggle[hidden] { display: none; }
 .fold-toggle:hover { background: var(--muted); color: var(--fg); }
-.fold-toggle .icon { width: 16px; height: 16px; transition: transform 0.25s var(--ease); }
+.fold-toggle .icon { width: 16px; height: 16px; }
+:root.motion .fold-toggle .icon { transition: transform 0.25s var(--ease); }
 .fold-toggle[aria-expanded="true"] .icon { transform: rotate(180deg); }
 @media (pointer: coarse) { .fold-toggle { min-height: 44px; } }
 .fold { display: grid; grid-template-rows: 1fr; }
@@ -384,7 +385,12 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 .app .fold-toggle { margin-top: 16px; }
 .app .fold > div > .app-desc { margin-top: 8px; }
 .fold.closed { grid-template-rows: 0fr; visibility: hidden; }
-:root.motion .fold { transition: grid-template-rows 0.35s var(--ease), visibility 0.35s; }
+/* Only a fold the visitor toggled moves (site.js adds .toggled): the first state, set as the page loads, snaps. */
+:root.motion .fold.toggled { transition: grid-template-rows 0.35s var(--ease), visibility 0.35s; }
+@media print {
+  .fold-toggle { display: none; }
+  .fold.closed { grid-template-rows: 1fr; visibility: visible; }
+}
 @media (min-width: 820px) {
   .job { grid-template-columns: 240px minmax(0, 1fr); gap: 32px; padding-block: 40px; }
   .job-when { display: grid; gap: 4px; align-content: start; padding-top: 6px; }

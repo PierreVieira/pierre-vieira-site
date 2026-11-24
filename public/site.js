@@ -1,4 +1,5 @@
-// The page's behaviors: language, theme, the header's menus, the email link and the sections' entrance.
+// The page's behaviors: language, theme, the header's menus, the email link, the Details folds and the sections'
+// entrance.
 // boot.js, in <head>, already picked the theme and the language; the markup is in English and strings/<language>.js
 // holds the page's words in each other language (window.SITE_STRINGS.pt, .es), keyed as the data-i18n attributes name
 // them. boot.js's window.loadStrings fetches a language's file the first time it's needed.
@@ -163,13 +164,14 @@
     const fold = document.getElementById(toggle.getAttribute("aria-controls"));
     fold.classList.toggle("closed", !open);
     fold.inert = !open;
+    return fold;
   }
   document.querySelectorAll(".fold-toggle").forEach((toggle) => {
     toggle.hidden = false;
     setFoldOpen(toggle, toggle.hasAttribute("data-open"));
     toggle.addEventListener("click", () => {
       const open = toggle.getAttribute("aria-expanded") !== "true";
-      setFoldOpen(toggle, open);
+      setFoldOpen(toggle, open).classList.add("toggled");
       track("details_toggle", { item: toggle.dataset.item, state: open ? "open" : "close" });
     });
   });
