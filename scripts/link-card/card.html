@@ -1,0 +1,54 @@
+<!doctype html>
+<!--
+  The image a link to the site unfolds into (scripts/link-card/generate.mjs), 1200 × 630: the hero's title across the
+  card, with the mark, the portrait, the role and the teams. generate.mjs reads all of it from the page and fills the
+  {{…}} slots, so the card says what the page says. It is served beside public/, so the colors and the fonts are the
+  page's own (site.css), in its dark theme. Its own classes start with card-, so none of them is one of the page's.
+
+  Sized to still read at the 300 to 500 pixels wide a chat shows it at: change a size here with that in mind.
+-->
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/site.css">
+<style>
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body { display: flex; flex-direction: column; justify-content: space-between; padding: 60px 64px; }
+
+  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand { gap: 14px; font-size: 30px; letter-spacing: -0.02em; }
+  .brand-mark { width: 46px; height: 46px; }
+  .card-address { font-family: var(--mono); font-size: 24px; font-weight: 500; color: var(--muted-fg); }
+
+  /* The title: its second half (.dim, as on the page) on a line of its own, closed by the mark's text cursor. */
+  h1 { font-size: 100px; font-weight: 600; line-height: 1; letter-spacing: -0.045em; white-space: nowrap; }
+  h1 .dim { display: block; }
+  h1 .dim::after {
+    content: ""; display: inline-block; width: 15px; height: 82px; margin-left: 16px; border-radius: 4px;
+    background: var(--accent); vertical-align: -8px;
+  }
+
+  .card-who { display: flex; align-items: center; gap: 20px; }
+  .card-who img {
+    flex: none; width: 88px; height: 88px; border: 2px solid var(--border-strong); border-radius: 50%;
+    object-fit: cover;
+  }
+  .card-role { font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; }
+  .card-teams { margin-top: 6px; font-size: 24px; line-height: 1.2; color: var(--muted-fg); }
+</style>
+</head>
+<body>
+  <div class="card-top">
+    <div class="brand">{{brand}}</div>
+    <span class="card-address">pierrevieira.com</span>
+  </div>
+  <h1>{{title}}</h1>
+  <div class="card-who">
+    <img src="{{portrait}}" alt="">
+    <div>
+      <p class="card-role">{{role}}</p>
+      <p class="card-teams">{{teams}}</p>
+    </div>
+  </div>
+</body>
+</html>

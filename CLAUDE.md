@@ -30,6 +30,8 @@ opens with a comment on what it holds; `docs/` has the deploy ([`docs/deploy.md`
 - Analytics goes through `window.track()` (`public/analytics.js`, Firebase project `pierrevieira-site`). A new event
   gets its row in `docs/analytics.md` in the same change.
 - The README's image is the real page: run `npm run readme-hero` after a change to the hero.
+- The card a link to the site unfolds into (`public/img/link-card.png`, the page's `og:image`) is drawn from the hero's
+  own words, mark and portrait: run `npm run link-card` after a change to any of them, or to the teams' names.
 - Don't copy code between files: extract it. `./scripts/cpd.sh` runs the copied-code check CI runs
   ([`docs/checks.md`](docs/checks.md)).
 - Check a visual change at 375, 768, 1024 and 1440 pixels wide, in light and dark, with `npm run dev` running.
