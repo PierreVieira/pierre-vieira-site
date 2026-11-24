@@ -1,13 +1,22 @@
 // What the scripts that photograph the page share (generate.mjs here and ../link-card/generate.mjs): a local server
-// for a folder, the test that a page is painted in full, and the {{…}} slots of their templates.
+// for a folder, opening a page once it is painted in full, and the {{…}} slots of their templates.
 import { spawn } from 'node:child_process'
 import { createServer } from 'node:net'
 
 // Why: a page must be painted in full, with its fonts and its images, before it is photographed. Only the images in
 // view count: the page's lazy ones, further down, never load in a capture.
-export const PAINTED = `document.readyState === 'complete' && document.fonts.status === 'loaded' && [...document.images]
+const PAINTED = `document.readyState === 'complete' && document.fonts.status === 'loaded' && [...document.images]
   .filter((image) => image.loading !== 'lazy')
   .every((image) => image.complete && image.naturalWidth > 0)`
+
+/** Opens `url` in `chrome` (chrome.mjs) and returns once its page is painted in full. */
+export async function openPainted(chrome, url) {
+  // Why: the page it leaves (about:blank at first, or the same address again) is painted too until the new one
+  // replaces it, so it is marked first and waited out: every page has a new document, without the mark.
+  await chrome.evaluate('document.leftForCapture = true')
+  await chrome.open(url)
+  await chrome.waitFor(`!document.leftForCapture && ${PAINTED}`)
+}
 
 /** Serves `directory` on a free local port (Python's http.server, as `npm run dev`), once it answers. */
 export async function serve(directory) {
@@ -15,8 +24,12 @@ export async function serve(directory) {
   const origin = `http://127.0.0.1:${port}`
   const args = ['-m', 'http.server', String(port), '--bind', '127.0.0.1', '--directory', directory]
   const server = spawn('python3', args, { stdio: 'ignore' })
+  // Why: a python3 that isn't there fails the spawn with an 'error' event, which would end Node unhandled.
+  const failed = new Promise((_, fail) =>
+    server.once('error', (error) => fail(new Error(`The page's server didn't start: python3 (${error.message})`))),
+  )
   try {
-    await waitForServer(origin)
+    await Promise.race([waitForServer(origin), failed])
   } catch (error) {
     server.kill()
     throw error

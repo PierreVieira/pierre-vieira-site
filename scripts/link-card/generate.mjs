@@ -10,7 +10,7 @@
 import { mkdtemp, readdir, readFile, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
-import { fill, PAINTED, serve } from '../readme-hero/capture.mjs'
+import { fill, openPainted, serve } from '../readme-hero/capture.mjs'
 import { launchChrome } from '../readme-hero/chrome.mjs'
 
 const PUBLIC = resolve(import.meta.dirname, '../../public')
@@ -38,23 +38,23 @@ const HERO = `(() => {
 
 // Why: a font is only read from the page's own origin, so the card can't be a file that borrows site.css from the
 // server. It is served from a folder that is public/, entry by entry, plus the card.
-const stage = await mkdtemp(join(tmpdir(), 'link-card-'))
-for (const entry of await readdir(PUBLIC)) await symlink(join(PUBLIC, entry), join(stage, entry))
 const template = await readFile(join(import.meta.dirname, 'card.html'), 'utf8')
-const site = await serve(stage)
-const chrome = await launchChrome()
+const stage = await mkdtemp(join(tmpdir(), 'link-card-'))
+// Why: set up inside the try, so a server or a Chrome that fails to start leaves nothing running behind.
+let site
+let chrome
 try {
+  for (const entry of await readdir(PUBLIC)) await symlink(join(PUBLIC, entry), join(stage, entry))
+  site = await serve(stage)
+  chrome = await launchChrome()
   await chrome.setViewport(CARD.width, CARD.height, 1, true)
-  await chrome.open(`${site.origin}/?theme=dark&lang=en`)
-  await chrome.waitFor(PAINTED)
+  await openPainted(chrome, `${site.origin}/?theme=dark&lang=en`)
   await writeFile(join(stage, CARD_PAGE), fill(template, await chrome.evaluate(HERO)))
-  await chrome.open(`${site.origin}/${CARD_PAGE}`)
-  // Why: the page before is painted too, so the card is waited for by its address.
-  await chrome.waitFor(`location.pathname === '/${CARD_PAGE}' && ${PAINTED}`)
+  await openPainted(chrome, `${site.origin}/${CARD_PAGE}`)
   await chrome.screenshot(OUTPUT)
   console.log(`Wrote ${OUTPUT}`)
 } finally {
-  await chrome.close()
-  site.stop()
+  await chrome?.close()
+  site?.stop()
   await rm(stage, { recursive: true, force: true })
 }

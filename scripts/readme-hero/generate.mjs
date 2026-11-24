@@ -12,7 +12,7 @@ import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { fill, PAINTED, serve } from './capture.mjs'
+import { fill, openPainted, serve } from './capture.mjs'
 import { launchChrome } from './chrome.mjs'
 
 const ROOT = resolve(import.meta.dirname, '../..')
@@ -25,17 +25,19 @@ const HERO = { width: 1280, height: 720 }
 const SCALE = 2
 const QUALITY = 90
 
-const site = await serve(join(ROOT, 'public'))
-const captures = await mkdtemp(join(tmpdir(), 'readme-hero-'))
 const template = await readFile(join(import.meta.dirname, 'hero.html'), 'utf8')
-const chrome = await launchChrome()
+const captures = await mkdtemp(join(tmpdir(), 'readme-hero-'))
+// Why: set up inside the try, so a server or a Chrome that fails to start leaves nothing running behind.
+let site
+let chrome
 try {
+  site = await serve(join(ROOT, 'public'))
+  chrome = await launchChrome()
   for (const theme of ['dark', 'light']) {
     const isDark = theme === 'dark'
     for (const [name, size] of [['desktop', DESKTOP], ['phone', PHONE]]) {
       await chrome.setViewport(size.width, size.height, SCALE, isDark)
-      await chrome.open(`${site.origin}/?theme=${theme}&lang=en`)
-      await chrome.waitFor(PAINTED)
+      await openPainted(chrome, `${site.origin}/?theme=${theme}&lang=en`)
       await chrome.screenshot(join(captures, `${name}-${theme}.png`))
     }
     await chrome.setViewport(HERO.width, HERO.height, SCALE, isDark)
@@ -43,14 +45,13 @@ try {
     const slots = { theme, captures: pathToFileURL(captures).href }
     const page = join(captures, `hero-${theme}.html`)
     await writeFile(page, fill(template, slots))
-    await chrome.open(pathToFileURL(page).href)
-    await chrome.waitFor(PAINTED)
+    await openPainted(chrome, pathToFileURL(page).href)
     const file = join(OUTPUT, `readme-hero-${theme}.webp`)
     await chrome.screenshot(file, { format: 'webp', quality: QUALITY })
     console.log(`Wrote ${file}`)
   }
 } finally {
-  await chrome.close()
-  site.stop()
+  await chrome?.close()
+  site?.stop()
   await rm(captures, { recursive: true, force: true })
 }
