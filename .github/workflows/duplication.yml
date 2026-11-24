@@ -1,0 +1,21 @@
+name: duplication
+
+# Fails a pull request that adds copied code: jscpd counts, per file, the lines of code in a copy and
+# compares them with .jscpd-baseline.json, which can only shrink. What it scans is in .jscpd.json, and
+# ./scripts/cpd.sh runs the same check locally (see docs/checks.md).
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  duplication:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: Quartel-Enterprise/copied-code-check@1.0.3
