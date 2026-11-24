@@ -149,6 +149,14 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  // The floating button to the top appears once the page has scrolled a screen or so.
+  const topButton = document.querySelector(".fab-top");
+  if (topButton) {
+    const onScrollTop = () => { topButton.hidden = window.scrollY < 600; };
+    onScrollTop();
+    window.addEventListener("scroll", onScrollTop, { passive: true });
+  }
+
   // The email address is written here, from its parts, so it isn't in the markup for a scraper to read.
   document.querySelectorAll("[data-email]").forEach((link) => {
     const address = `${link.dataset.user}@${link.dataset.host}`;
