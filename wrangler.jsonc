@@ -1,6 +1,8 @@
 {
   "name": "pierre-vieira-site",
   "compatibility_date": "2026-11-01",
+  // Every deploy first compiles the résumé from cv/pierre-vieira-cv.tex into public/cv/ (the PDF is not in git).
+  "build": { "command": "bash scripts/build-cv.sh --force" },
   // Static assets only: every file of public/ is served as it is, with no Worker script.
   "assets": {
     "directory": "./public",

@@ -1,0 +1,202 @@
+\documentclass[a4paper,20pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.530in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.45in}
+\addtolength{\textheight}{1in}
+
+\urlstyle{rm}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-10pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeItemWithoutTitle}[1]{
+  \item\small{
+    {\vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{#3} & \textit{#4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-3pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-----------------------------
+%%%%%%  CV STARTS HERE  %%%%%%
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{{\LARGE Pierre Vieira}} & Email: \href{mailto:}{pierrevieiraggg@gmail.com}\\
+  \href{https://www.linkedin.com/in/pierre-vieira/}{Linkedin: \textcolor{blue}{\textit{\underline{linkedin.com/in/pierre-vieira/}}}} & Mobile:~~~+55 31 99800-5262 \\
+  \href{https://github.com/PierreVieira}{Github: ~~\textcolor{blue}{\textit{\underline{github.com/PierreVieira}}}} \\
+\end{tabular*}
+
+%-----------Skills-----------------
+\vspace{-5pt}
+\section{Skills Summary}
+	\resumeSubHeadingListStart
+	\resumeSubItem{Languages}{~~~~~~Kotlin, Java}
+	\resumeSubItem{Stack}{~~~~~~~~~~~~~Android, KMP, CMP}
+	\resumeSubItem{Architecture}{~~MVVM, MVI, MVP}
+	\resumeSubItem{Tests}{~~~~~~~~~~~~~Unit, Integration, E2E}
+        \resumeSubItem{Integration}{~~~~Firebase, Supabase, Github Actions, Fastlane, CircleCI, Bitrise}
+        \resumeSubItem{Agile}{~~~~~~~~~~~~~Scrum, Kanban}
+        \resumeSubItem{Other tools}{~~~Android SDK, RESTful APIs with Retrofit and Ktor, View Model, Live Data, Flows, Coroutines, Room}
+	
+
+\resumeSubHeadingListEnd
+
+%-----------Experience-----------------
+\vspace{-5pt}
+\section{Experience}
+  \resumeSubHeadingListStart
+  \resumeSubheading{\href{https://super.xyz/}{Super}}{São Paulo, São Paulo, Brazil (remote) - Full-time}
+    {Senior Android Software Engineer}{Mar 2026 - present}
+    \resumeItemListStart
+        \resumeItem{Home screen ownership} {Primary engineer for the sports app's home screen on Android, built with Jetpack Compose within a server driven UI (SDUI) architecture.}
+        \resumeItem{Server driven UI} {Working within an SDUI system design where screen structure and content are defined by the backend, using Protocol Buffers as the contract between backend and client.}
+        \resumeItem{Cross platform context} {Using Kotlin Multiplatform (KMP) to share business logic with iOS, enabling the architecture to scale across platforms.}
+     \resumeItemListEnd
+\vspace{8pt}
+\resumeSubheading{\href{https://www.toyota.com/}{Toyota (contractor through Very Good Ventures)}}{New York, New York, United States (remote) - Full-time}
+    {Senior Android Software Engineer}{May 2025 - Feb 2026}
+    \resumeItemListStart
+        \resumeItem{Native Android development}{Developed native Android applications for Toyota's connected vehicle app in the automotive industry (electric cars) using Kotlin and Jetpack Compose.}
+        \resumeItem{Architecture patterns}{Applied MVI and MVVM architectural patterns across the codebase.}
+        \resumeItem{Performance and scalability}{Focused on performance and scalability to support the app's growing feature set.}
+        \resumeItem{Clean architecture}{Followed clean architecture principles to deliver robust, maintainable user experiences.}
+     \resumeItemListEnd
+\vspace{8pt}
+  \resumeSubheading{\href{https://www.arlo.com/}{Arlo (contractor through Side)}}{Marina del Rey, California, United States (remote) - Full-time}
+    {Senior Android Software Engineer}{Dec 2024 - May 2025}
+    \resumeItemListStart
+        \resumeItem{Device integration}{Integrated home security devices, such as cameras and doorbells, into a native Android application using Kotlin and Java.}
+        \resumeItem{AI audio event detection}{Built features that identify audio events captured by the devices, such as glass breaking and alarms.}
+        \resumeItem{AI generated event subtitles}{Implemented subtitles that automatically describe what is happening in each camera event, powered by AI.}
+     \resumeItemListEnd
+\vspace{8pt}
+    \resumeSubheading{\href{https://www.mercadolivre.com.br/}{Mercado Libre (Mercado Pago)}}{São Paulo, São Paulo, Brazil (remote) - Full-time}
+    {Senior Android Software Engineer}{Mar 2023 - Dec 2024}
+    \resumeItemListStart
+        \resumeItem{Decreased the payment processing time}
+          {by implementing new services and parallelizing local operations;}
+          \resumeItem{System design and implementation for server driven navigation}{an engine built for Android using a graph based navigation principle, where a JSON structure sent by the backend defines the navigation graph for dynamic payment flows;}
+          \resumeItem{Improved scalability and flexibility of the payment system}{by modularizing the core payment flow.}
+      \resumeItemListEnd
+\vspace{8pt}
+    \resumeSubheading
+	{\href{https://www.mercadolivre.com.br/}{Mercado Libre (Mercado Pago)}}{São Paulo, São Paulo, Brazil (remote) - Full-time}
+		{Mid-Level Android Software Engineer}{Jun 2022 -  Feb 2023}
+	\resumeItemListStart
+            \resumeItem{Elevated code quality and team standards}
+              {by meticulously reviewing an average of 30 pull requests weekly and consistently offering constructive feedback for improvement;}
+	\resumeItemListEnd
+\vspace{8pt}
+    \resumeSubheading
+		{\href{https://www.ifood.com.br/}{iFood}}{Campinas, São Paulo, Brazil (remote) - Full-time}
+		{Mid-Level Android Software Engineer}{Jan 2022 -  Jun 2022}
+	\resumeItemListStart
+            \resumeItem{Showcased expertise in cutting-edge UI technologies}
+              {by delivering a presentation on Jetpack Compose for Android, \href{https://youtu.be/W2RfKpykdxs}{\textcolor{blue}{\textit{\underline{accessible on YouTube}}}} for wider audience engagement;}
+        \resumeItem{Advanced UI modernization for the grocery feature}
+          {by successfully readapting 3 screens to utilize Jetpack Compose, enhancing user interface and experience;}
+	\resumeItemListEnd
+\vspace{8pt}
+    \resumeSubheading
+		{\href{https://www.studiosol.com.br//}{Studio Sol}}{Belo Horizonte, Minas Gerais, Brazil (remote) - Full-time}
+		{Junior Android Software Engineer III}{Oct 2021 -  Jan 2022}
+	\resumeItemListStart
+            \resumeItem{Delivered across multiple applications}
+              {by simultaneously developing and releasing 3 different applications;}
+            \resumeItem{Significantly enhanced project architecture}
+              {through my contributions in modularizing the artist module using MVVM, clean code principles, and Jetpack Compose in Kotlin;}
+	\resumeItemListEnd
+ \vspace{8pt}
+     \resumeSubheading
+		{\href{https://www.studiosol.com.br/}{Studio Sol}}{Belo Horizonte, Minas Gerais, Brazil (remote) - Internship}
+		{Mobile Developer Intern}{Sep 2020 -  Sep 2021}
+	\resumeItemListStart
+            \resumeItem{Achieved rapid career progression}
+              {within just one year due to outstanding performance, culminating in a promotion to the position of Junior III.}
+	\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------------
+\vspace{-5pt}
+\section{Projects}
+\resumeSubHeadingListStart
+
+    \resumeSubItem{Blitz Split}{\textcolor{blue}{\textit{\underline{\href{https://blitzsplit.com/}{Blitz Split}}}} is an offline first app to split bills among friends, for Android, iOS, macOS, and the web. Kotlin Multiplatform is shared up to the ViewModel, with a native UI on each platform: Jetpack Compose on Android, SwiftUI with Liquid Glass on Apple platforms, and React on the web. Every bill is saved on the device first and synced through Supabase, with an optional account. It splits bills equally, by amounts, percentages, or item by item, fills a bill in from a photo of the receipt, and is available in 24 languages (26 locales).}
+    \vspace{4pt}
+
+    \resumeSubItem{Bible Planner}{\textcolor{blue}{\textit{\underline{\href{https://www.bibleplanner.app/}{Bible Planner}}}} is a Kotlin Multiplatform application for Android, iOS, and desktop, built with Compose Multiplatform sharing a single codebase across all three. It offers chronological or book order reading plans with daily progress tracking, highlights and notes synced to the user's account, and a daily study, powered by AI, that summarizes the passage, its historical context, and reflection questions, alongside a chat assistant that already has context on that day's reading. The app integrates Supabase for authentication and sync, RevenueCat for subscriptions, and Firebase for analytics and crash reporting.}
+
+\resumeSubHeadingListEnd
+\vspace{-5pt}
+
+%-----------Volunteer work-----------------
+	    
+%-----------Awards-----------------
+\section{Talks}
+\begin{description}[font=$\bullet$]
+    \item {\underline{\textit{\href{https://youtu.be/dqS3nKeauTI}{\textcolor{blue}{Android Development Overview}}}} (English Lecture) - Nov, 2023}
+    \vspace{-5pt}
+    \item {\underline{\textit{\href{https://youtu.be/W2RfKpykdxs}{\textcolor{blue}{Jetpack Compose Introduction}}}} (Portuguese Lecture) - Jun, 2022}
+\end{description}
+
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {\href{https://www.cefetmg.br/}{CEFET-MG}}{Belo Horizonte, Brazil}
+      {Computer Engineering BSc}{Aug 2018 - Aug 2023}
+    \resumeSubHeadingListEnd
+
+\end{document}

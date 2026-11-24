@@ -2,7 +2,8 @@
   "name": "pierre-vieira-site",
   "private": true,
   "scripts": {
-    "dev": "python3 -m http.server 4321 --directory public",
+    "dev": "bash scripts/build-cv.sh && python3 -m http.server 4321 --directory public",
+    "build:cv": "bash scripts/build-cv.sh --force",
     "deploy": "npx wrangler deploy",
     "check:translations": "node scripts/check-translations.mjs",
     "readme-hero": "node scripts/readme-hero/generate.mjs"

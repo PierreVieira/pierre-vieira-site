@@ -2,3 +2,6 @@
 node_modules/
 .wrangler/
 .idea/
+.cache/
+# Built from cv/pierre-vieira-cv.tex by scripts/build-cv.sh on every deploy
+public/cv/pierre-vieira-cv.pdf
