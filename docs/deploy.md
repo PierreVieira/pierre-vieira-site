@@ -11,14 +11,16 @@ Markdown or JSON.
 
 ## From `main`
 
-Every commit on `main` deploys through [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/),
-which runs `npx wrangler deploy`; other branches don't build. What is in `public/` is what goes out, plus the one
-built file below.
+Every push to `main` that changes the site deploys through
+[Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/), which runs `npx wrangler deploy`; other
+branches don't build. What is in `public/` is what goes out, plus the one built file below.
 
-A commit that only touches `docs/*`, `*.md`, `.github/*` or `.claude/*` doesn't deploy: those are the Exclude paths of
-the Worker's Build watch paths (Settings › Builds in the Cloudflare dashboard), with `*` as the Include path. A commit
-that also touches anything else deploys as usual. Keep `cv/` and `scripts/` out of that list, or a résumé change would
-not reach the site.
+A push whose files are all under `docs/*`, `*.md`, `.github/*` or `.claude/*` doesn't deploy: those are the Exclude
+paths of the Worker's Build watch paths (Settings › Builds in the Cloudflare dashboard), with `*` as the Include path.
+Cloudflare checks the files of the whole push, not of each commit, so a push that also touches anything else deploys
+as usual. Keep `public/`, `cv/`, `scripts/` and `wrangler.jsonc` out of that list, or a change to the page or the
+résumé would not reach the site; for the same reason a Markdown file under `public/` (`*.md` matches it) has to ship
+with some other change, or be deployed with `npm run deploy`.
 
 ## The résumé
 
