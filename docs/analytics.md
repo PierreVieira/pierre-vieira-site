@@ -25,6 +25,7 @@ Google Analytics' own events (`page_view`, `scroll`, outbound `click`, `file_dow
 | `app_link_click` | A link of an app's card | `app`: `blitz_split`, `bible_planner`; `target`: `play`, `appstore`, `website`, `source` |
 | `talk_click` | A talk, from its card or from the experience that mentions it | `talk`: `android_overview`, `compose_intro`; `origin`: `talks`, `experience` |
 | `navigation_click` | A link to a section of the page | `target`: `apps`, `experience`, `skills`, `talks`, `contact`, `top`, `main`; `origin`: `header`, `header_menu`, `hero`, `footer`, `page` (the skip link) |
+| `details_toggle` | An app's or a job's details are opened or folded with its Details toggle | `item`: `blitz_split`, `bible_planner`, `super`, `toyota`, `arlo`, `mercado`, `ifood`, `studio`; `state`: `open`, `close` |
 | `language_change` | A language is picked in the header's menu | `language`: `system`, `en`, `pt`, `es` |
 | `theme_change` | A theme is picked in the header's menu | `theme`: `light`, `dark`, `system` |
 

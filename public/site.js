@@ -156,6 +156,24 @@
     if (text) text.textContent = address;
   });
 
+  // Folds: an app's or a job's details sit under a Details toggle. Those marked data-open (the current job) start open;
+  // the others start folded.
+  function setFoldOpen(toggle, open) {
+    toggle.setAttribute("aria-expanded", String(open));
+    const fold = document.getElementById(toggle.getAttribute("aria-controls"));
+    fold.classList.toggle("closed", !open);
+    fold.inert = !open;
+  }
+  document.querySelectorAll(".fold-toggle").forEach((toggle) => {
+    toggle.hidden = false;
+    setFoldOpen(toggle, toggle.hasAttribute("data-open"));
+    toggle.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") !== "true";
+      setFoldOpen(toggle, open);
+      track("details_toggle", { item: toggle.dataset.item, state: open ? "open" : "close" });
+    });
+  });
+
   document.querySelectorAll("[data-year]").forEach((el) => { el.textContent = String(new Date().getFullYear()); });
 
   // Entrance: with :root.motion (boot.js), a .reveal block rises once as it scrolls into view.

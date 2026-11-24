@@ -366,6 +366,25 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
   padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface);
   color: var(--fg-soft); font-size: 13px; line-height: 1.5; white-space: nowrap;
 }
+/* Fold: an app's or a job's details sit under a Details toggle, which site.js shows: without scripts they stay open. */
+.fold-toggle {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 36px; margin-top: 10px; margin-inline-start: -10px;
+  padding: 0 10px; border-radius: var(--radius); background: none; border: 0; cursor: pointer;
+  color: var(--muted-fg); font: 500 12px/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.fold-toggle[hidden] { display: none; }
+.fold-toggle:hover { background: var(--muted); color: var(--fg); }
+.fold-toggle .icon { width: 16px; height: 16px; transition: transform 0.25s var(--ease); }
+.fold-toggle[aria-expanded="true"] .icon { transform: rotate(180deg); }
+@media (pointer: coarse) { .fold-toggle { min-height: 44px; } }
+.fold { display: grid; grid-template-rows: 1fr; }
+.fold > div { min-height: 0; overflow: hidden; }
+.fold > div > .bullets { margin-top: 6px; }
+.app .fold-toggle { margin-top: 16px; }
+.app .fold > div > .app-desc { margin-top: 8px; }
+.fold.closed { grid-template-rows: 0fr; visibility: hidden; }
+:root.motion .fold { transition: grid-template-rows 0.35s var(--ease), visibility 0.35s; }
 @media (min-width: 820px) {
   .job { grid-template-columns: 240px minmax(0, 1fr); gap: 32px; padding-block: 40px; }
   .job-when { display: grid; gap: 4px; align-content: start; padding-top: 6px; }
