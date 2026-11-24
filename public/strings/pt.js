@@ -1,10 +1,11 @@
 // The page's words in Portuguese (Brazil), keyed as the markup's data-i18n attributes name them. The markup itself is
 // in English, so English has no file. Keys read by data-i18n-html may hold markup; every other one is plain text.
-// Add a key here in the same change that adds it to index.html: `npm run check:translations` fails on a missing one.
+// Add a key to every file of strings/ in the same change that adds it to index.html: `npm run check:translations`
+// fails on a missing one.
 window.SITE_STRINGS = window.SITE_STRINGS || {};
 window.SITE_STRINGS.pt = {
-  metaTitle: "Pierre Vieira · Engenheiro Android Sênior",
-  metaDescription: "Engenheiro Android sênior, com Kotlin, Jetpack Compose e Kotlin Multiplatform. Mais de 6 anos entregando apps na Toyota, Arlo, Mercado Livre e iFood, e criador do Bora Rachar e do Bible Planner.",
+  metaTitle: "Pierre Vieira · Engenheiro de Software Sênior",
+  metaDescription: "Engenheiro de software sênior, criando apps que as pessoas usam todos os dias. Entregou produtos na Toyota, Arlo, Mercado Livre e iFood, e criador do Bora Rachar e do Bible Planner.",
   skip: "Pular para o conteúdo",
   brandLabel: "Pierre Vieira, início",
   navLabel: "Seções",
@@ -20,6 +21,7 @@ window.SITE_STRINGS.pt = {
   langSystemDetail: "Idioma do dispositivo",
   langEnDetail: "Inglês",
   langPtDetail: "",
+  langEsDetail: "Espanhol",
   themeLight: "Claro",
   themeDark: "Escuro",
   cvDownload: "Baixar currículo",
@@ -29,19 +31,21 @@ window.SITE_STRINGS.pt = {
   portraitAlt: "Pierre Vieira",
   statusLabel: "Atualmente",
   statusValue: "Engenheiro Android Sênior na Super",
-  heroEyebrow: "Engenheiro Android Sênior · Kotlin Multiplatform",
-  heroTitle: "Crio apps Android e Kotlin Multiplatform <span class=\"dim\">que as pessoas usam todos os dias.</span>",
-  heroLead: "Engenheiro Android sênior, com mais de 6 anos entregando produtos na Toyota, Arlo, Mercado Livre e iFood. Também projeto, desenvolvo e publico meus próprios apps para Android, iOS, macOS e web.",
+  heroEyebrow: "Engenheiro de Software Sênior",
+  heroTitle: "Crio apps <span class=\"dim\">que as pessoas usam todos os dias.</span>",
+  heroLead: "Engenheiro sênior, com mais de <span data-years>6</span> anos entregando produtos na Toyota, Arlo, Mercado Livre e iFood. Também projeto, desenvolvo e publico meus próprios apps, disponíveis na App Store e no Google Play, com usuários pagantes.",
   heroPrimary: "Ver meus apps",
   metaLocation: "Brasil · Remoto (UTC−3)",
-  metaLanguages: "Trabalho em inglês e português",
-  statYears: "anos criando apps Android",
+  metaLanguages: "Trabalho em inglês, português e espanhol",
+  statYears: "anos criando apps",
   statTeams: "times de produto no Brasil e nos EUA",
-  statApps: "apps próprios, feitos de ponta a ponta",
+  statApps: "apps próprios na App Store e no Google Play, com usuários pagantes",
   statLanguages: "idiomas em que o Bora Rachar está disponível",
   teamsLabel: "Times com quem trabalhei",
 
-  appsTitle: "Dois apps próprios, <span class=\"dim\">projetados, desenvolvidos e publicados de ponta a ponta.</span>",
+  appsTitle: "Dois apps próprios, <span class=\"dim\">disponíveis na App Store e no Google Play, com usuários pagantes.</span>",
+  appLive: "Publicado",
+  appLivePaying: "Publicado, com usuários pagantes",
   factPlatforms: "Plataformas",
   factStack: "Stack",
   sourceCode: "Código-fonte",
@@ -51,7 +55,7 @@ window.SITE_STRINGS.pt = {
   blitzPoint1: "Cada conta é salva primeiro no dispositivo e sincronizada pelo Supabase, com conta opcional.",
   blitzPoint2: "Divide igualmente, por valores, por porcentagens ou item por item.",
   blitzPoint3: "Preenche a conta a partir de uma foto do cupom.",
-  blitzPoint4: "Disponível em 24 idiomas (26 localidades).",
+  blitzPoint4: "Disponível em 43 idiomas (45 localidades).",
   blitzPlatforms: "Android, iOS, macOS e web",
   blitzShot1: "Bora Rachar: a tela de um grupo, com o saldo e as despesas",
   blitzShot2: "Bora Rachar: uma conta preenchida a partir da foto do cupom",
@@ -65,7 +69,7 @@ window.SITE_STRINGS.pt = {
   bibleShot1: "Bible Planner: a leitura de hoje e o progresso do plano",
   bibleShot2: "Bible Planner: o estudo diário de uma passagem",
 
-  experienceTitle: "Seis anos de Android, <span class=\"dim\">em esportes, carros conectados, casa inteligente, pagamentos e delivery.</span>",
+  experienceTitle: "<span data-years=\"word\">Seis</span> anos entregando apps, <span class=\"dim\">em esportes, carros conectados, casa inteligente, pagamentos e delivery.</span>",
   now: "Atual",
   roleSenior: "Engenheiro de Software Android Sênior",
   roleMid: "Engenheiro de Software Android Pleno",
@@ -135,7 +139,7 @@ window.SITE_STRINGS.pt = {
   talk2Desc: "Uma introdução ao Jetpack Compose para Android, apresentada em português com o iFood.",
 
   contactTitle: "Vamos construir <span class=\"dim\">algo que as pessoas vão usar.</span>",
-  contactLead: "Estou aberto a vagas sênior de Android e Kotlin Multiplatform, remotas, com times de qualquer lugar do mundo. E-mail e LinkedIn são os caminhos mais rápidos para falar comigo.",
+  contactLead: "Estou aberto a vagas sênior de engenharia, remotas, com times de qualquer lugar do mundo. E-mail e LinkedIn são os caminhos mais rápidos para falar comigo.",
   contactEmail: "E-mail",
   backToTop: "Voltar ao topo",
 };

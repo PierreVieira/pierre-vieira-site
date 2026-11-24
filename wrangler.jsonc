@@ -1,0 +1,16 @@
+{
+  "name": "pierre-vieira-site",
+  "compatibility_date": "2026-11-01",
+  // Static assets only: every file of public/ is served as it is, with no Worker script.
+  "assets": {
+    "directory": "./public",
+    // Any unknown path answers with the page, as it has only one.
+    "not_found_handling": "single-page-application",
+    "html_handling": "auto-trailing-slash"
+  },
+  // Custom Domains: the deploy creates their DNS records in the pierrevieira.com zone.
+  "routes": [
+    { "pattern": "pierrevieira.com", "custom_domain": true },
+    { "pattern": "www.pierrevieira.com", "custom_domain": true }
+  ]
+}

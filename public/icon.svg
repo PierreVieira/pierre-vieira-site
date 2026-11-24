@@ -1,8 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- The mark: a pi, for Pierre, whose right leg is a text cursor in the site's accent. Dark on a light tab bar, light
+       on a dark one. -->
   <style>
-    rect { fill: #09090b; } text { fill: #fafafa; }
-    @media (prefers-color-scheme: dark) { rect { fill: #fafafa; } text { fill: #09090b; } }
+    .tile { fill: #09090b; } .cursor { fill: #7ab4ff; }
+    .pi { fill: none; stroke: #fafafa; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+    @media (prefers-color-scheme: dark) { .tile { fill: #fafafa; } .pi { stroke: #09090b; } .cursor { fill: #2563eb; } }
   </style>
-  <rect width="64" height="64" rx="16"/>
-  <text x="32" y="41" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" font-weight="600">PV</text>
+  <rect class="tile" width="64" height="64" rx="15"/>
+  <g class="pi"><path d="M14 21h36"/><path d="M24.5 21V39q0 7-6.5 7"/></g>
+  <rect class="cursor" x="36.5" y="28.5" width="7" height="21" rx="1.5"/>
 </svg>

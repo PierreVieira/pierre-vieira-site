@@ -7,13 +7,17 @@ build and no dependencies. See [`README.md`](README.md) for what each file holds
 
 - Write code, comments, docs and commit messages in English.
 - The markup is in English. Every string the page shows has a `data-i18n` key (`data-i18n-html` when it holds markup,
-  `-label`, `-alt` and `-content` for attributes) with its Portuguese in `public/strings/pt.js`. Add both in the same
-  change and run `npm run check:translations`.
-- An image that shows words has its Portuguese version in `data-src-pt`.
+  `-label`, `-alt` and `-content` for attributes) with its Portuguese in `public/strings/pt.js` and its Spanish in
+  `public/strings/es.js`. Add all of them in the same change and run `npm run check:translations`.
+- An image that shows words has each other language's version in `data-src-pt` and `data-src-es`.
 - `public/site.css` holds the tokens (light and dark) and every component: use the tokens, never raw colors.
 - `public/boot.js` runs in `<head>` and decides the theme, the language and `.motion` before the first paint. Every
   entrance animation hangs on `:root.motion`, so with reduced motion (or a pinned `?theme=`) the page is still and
   complete.
-- The facts on the page (dates, roles, numbers) come from Pierre's résumé (`public/cv/pierre-vieira-cv.pdf`): change
-  both together, and never invent a figure.
+- The facts on the page (dates, roles, numbers) come from Pierre's résumé (`public/cv/pierre-vieira-cv.pdf`) and, for
+  the apps, from their repositories: never invent a figure. The hero keeps to "apps" and "software engineer", but for
+  the current job under the portrait, which names Android; the Android and Kotlin Multiplatform detail belongs to the
+  experience and skills sections.
+- The years of experience are never written by hand: a `[data-years]` element (`data-years="word"` spelled out) is
+  filled by `site.js` from the first job's date, in every language.
 - Check a visual change at 375, 768, 1024 and 1440 pixels wide, in light and dark, with `npm run dev` running.

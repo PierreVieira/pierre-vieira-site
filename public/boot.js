@@ -5,7 +5,7 @@
 // The language: ?lang=, then the last one picked in the language menu, then the browser's languages in order of
 // preference, English when none of them is one of ours. site.js translates the page and applies a later choice.
 (function () {
-  const SUPPORTED = ["en", "pt"];
+  const SUPPORTED = ["en", "pt", "es"];
   const root = document.documentElement;
   const params = new URLSearchParams(location.search);
   function stored(key) {
@@ -23,7 +23,8 @@
   const chosen = [params.get("lang"), stored("lang")].map((code) => code && normalize(code)).find(known);
   root.dataset.langPref = chosen || "system";
   root.dataset.lang = chosen || window.systemLang();
-  root.lang = root.dataset.lang === "pt" ? "pt-BR" : "en";
+  // Every language's tag is its code, but Brazil's Portuguese, pt-BR. site.js keeps the same table.
+  root.lang = { pt: "pt-BR" }[root.dataset.lang] || root.dataset.lang;
 
   const theme = [params.get("theme"), stored("theme")].find((t) => ["light", "dark", "system"].includes(t)) || "system";
   const systemDark = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;

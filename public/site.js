@@ -1,6 +1,7 @@
 // The page's behaviors: language, theme, the header's menus, the email link and the sections' entrance.
-// boot.js, in <head>, already picked the theme and the language; the markup is in English and strings/pt.js holds the
-// page's words in Portuguese (window.SITE_STRINGS.pt), keyed as the data-i18n attributes name them.
+// boot.js, in <head>, already picked the theme and the language; the markup is in English and strings/<language>.js
+// holds the page's words in each other language (window.SITE_STRINGS.pt, .es), keyed as the data-i18n attributes name
+// them.
 (function () {
   const root = document.documentElement;
   const STRINGS = window.SITE_STRINGS || {};
@@ -12,8 +13,8 @@
   }
 
   // Language. Each translated place says where its words go: data-i18n (text), data-i18n-html (markup of our own, from
-  // strings/pt.js), data-i18n-label (aria-label), data-i18n-alt (alt), data-i18n-content (a <meta>'s content) and
-  // data-src-pt (an image that shows words). The English originals are kept the first time, to switch back to.
+  // strings/), data-i18n-label (aria-label), data-i18n-alt (alt), data-i18n-content (a <meta>'s content) and
+  // data-src-<language> (an image that shows words). The English originals are kept the first time, to switch back to.
   const TARGETS = [
     ["data-i18n", (el) => el.textContent, (el, value) => { el.textContent = value; }],
     ["data-i18n-html", (el) => el.innerHTML, (el, value) => { el.innerHTML = value; }],
@@ -22,8 +23,29 @@
     ["data-i18n-content", (el) => el.getAttribute("content"), (el, value) => el.setAttribute("content", value)],
   ];
   const english = new Map();
-  const LANGUAGE_TAGS = { en: "en", pt: "pt-BR" };
-  const LANGUAGE_CHIPS = { en: "EN", pt: "BR" };
+
+  // Years of experience: the whole years since the first job, in September 2020, so no figure on the page goes stale.
+  // A [data-years] element holds the number; data-years="word" spells it out, capitalized, as it opens its sentence
+  // (digits past the table). The markup's own figure is only what a visitor without scripts reads.
+  const CAREER_START = { year: 2020, month: 8 };
+  const NUMBER_WORDS = {
+    en: ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"],
+    pt: ["zero", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "catorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove", "vinte"],
+    es: ["cero", "un", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve", "veinte"],
+  };
+  function yearsOfExperience(now) {
+    const years = now.getFullYear() - CAREER_START.year - (now.getMonth() < CAREER_START.month ? 1 : 0);
+    return Math.max(years, 0);
+  }
+  function fillYears(lang) {
+    const years = yearsOfExperience(new Date());
+    document.querySelectorAll("[data-years]").forEach((el) => {
+      const word = el.dataset.years === "word" && (NUMBER_WORDS[lang] || [])[years];
+      el.textContent = word ? word[0].toUpperCase() + word.slice(1) : String(years);
+    });
+  }
+  const LANGUAGE_TAGS = { pt: "pt-BR" };
+  const LANGUAGE_CHIPS = { pt: "BR" };
 
   function translate(lang) {
     const words = STRINGS[lang];
@@ -40,9 +62,11 @@
     });
     document.querySelectorAll("img[data-src-pt]").forEach((img) => {
       if (!img.dataset.srcEn) img.dataset.srcEn = img.getAttribute("src");
-      const src = lang === "pt" ? img.dataset.srcPt : img.dataset.srcEn;
+      const src = img.getAttribute(`data-src-${lang}`) || img.dataset.srcEn;
       if (img.getAttribute("src") !== src) img.setAttribute("src", src);
     });
+    // Last: a translated sentence brings its own [data-years] element.
+    fillYears(lang);
   }
 
   // pref is a language or "system", which follows the browser's languages and forgets what was kept.

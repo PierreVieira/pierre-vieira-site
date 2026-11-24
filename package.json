@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "python3 -m http.server 4321 --directory public",
+    "deploy": "npx wrangler deploy",
     "check:translations": "node scripts/check-translations.mjs"
   }
 }

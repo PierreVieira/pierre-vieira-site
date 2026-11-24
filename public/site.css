@@ -22,6 +22,7 @@
   --accent: #2563eb;
   --accent-soft: rgba(37, 99, 235, 0.08);
   --on-accent-soft: #1d4ed8;
+  --logo-accent: #7ab4ff;     /* the mark's cursor, on a --fg tile */
   --ring: rgba(37, 99, 235, 0.45);
   --positive: #15803d;
   --shadow-lg: 0 1px 2px rgba(9, 9, 11, 0.04), 0 24px 48px -12px rgba(9, 9, 11, 0.18);
@@ -50,6 +51,7 @@
   --accent: #7ab4ff;
   --accent-soft: rgba(122, 180, 255, 0.12);
   --on-accent-soft: #a9cdff;
+  --logo-accent: #2563eb;
   --ring: rgba(122, 180, 255, 0.5);
   --positive: #4ade80;
   --shadow-lg: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 24px 48px -12px rgba(0, 0, 0, 0.7);
@@ -132,10 +134,12 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 .site-header.scrolled { border-bottom-color: var(--border); }
 .site-header .wrap { display: flex; align-items: center; gap: 12px; height: 64px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 600; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; }
-.brand-mark {
-  display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px;
-  background: var(--fg); color: var(--bg); font: 500 12px/1 var(--mono); letter-spacing: 0;
-}
+/* The mark, as public/icon.svg draws it: a pi, for Pierre, whose right leg is a text cursor. The tile takes the page's
+   foreground, so it turns with the theme. */
+.brand-mark { width: 30px; height: 30px; flex: none; }
+.brand-mark .tile { fill: var(--fg); }
+.brand-mark .pi { fill: none; stroke: var(--bg); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.brand-mark .cursor { fill: var(--logo-accent); }
 .nav { display: none; }
 .nav a {
   padding: 8px 12px; border-radius: 8px; color: var(--fg-soft); font-size: 14px; text-decoration: none;
@@ -267,12 +271,18 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; margin-top: clamp(48px, 7vw, 88px); }
 .stats li { padding-block: 20px; border-top: 1px solid var(--border); }
 .stats strong { display: block; font-size: clamp(32px, 4.4vw, 48px); font-weight: 600; line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
-.stats span { display: block; margin-top: 10px; color: var(--muted-fg); font-size: 14px; line-height: 1.4; }
+.stats li > span { display: block; margin-top: 10px; color: var(--muted-fg); font-size: 14px; line-height: 1.4; }
 @media (min-width: 768px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 32px; } }
 
 .teams { display: grid; gap: 16px; margin-top: clamp(32px, 5vw, 56px); }
-.teams ul { display: flex; flex-wrap: wrap; gap: 10px 28px; }
-.teams li { color: var(--fg-soft); font-size: clamp(17px, 2vw, 21px); font-weight: 600; letter-spacing: -0.02em; }
+.teams ul { display: flex; flex-wrap: wrap; gap: 0 28px; }
+.teams ul { align-items: center; }
+.teams a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  color: var(--fg-soft); font-size: clamp(17px, 2vw, 21px); font-weight: 600; letter-spacing: -0.02em; text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+.teams a:hover { color: var(--accent); }
 @media (min-width: 900px) { .teams { grid-template-columns: 200px minmax(0, 1fr); align-items: baseline; } }
 
 /* Apps */
@@ -289,6 +299,17 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 .app-icon.full { padding: 0; }
 .app-title h3 { font-size: clamp(24px, 3vw, 32px); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; }
 .app-tag { margin-top: 4px; color: var(--muted-fg); font-size: 15px; }
+/* An app that is out: a green light and its words, under the app's name. */
+.live {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; padding: 4px 10px;
+  border: 1px solid var(--border); border-radius: 999px; background: var(--bg);
+  color: var(--fg-soft); font: 500 11px/1.5 var(--mono); letter-spacing: 0.06em; text-transform: uppercase;
+}
+.live::before {
+  content: ""; width: 7px; height: 7px; flex: none; border-radius: 50%; background: var(--positive);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--positive) 18%, transparent);
+}
+.app-title { align-items: flex-start; }
 .app-desc { margin-top: 20px; color: var(--fg-soft); font-size: 17px; line-height: 1.6; text-wrap: pretty; }
 .checks { display: grid; gap: 10px; margin-top: 20px; }
 .checks li { position: relative; padding-inline-start: 28px; color: var(--fg-soft); font-size: 15px; line-height: 1.5; }
@@ -332,7 +353,7 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 .role .dim { font-size: 14px; }
 .bullets { display: grid; gap: 8px; margin-top: 16px; max-width: 680px; }
 .bullets li { position: relative; padding-inline-start: 20px; color: var(--fg-soft); line-height: 1.55; text-wrap: pretty; }
-.bullets li::before { content: ""; position: absolute; inset-inline-start: 2px; top: 0.72em; width: 8px; height: 1px; background: var(--muted-fg); }
+.bullets li::before { content: ""; position: absolute; inset-inline-start: 4px; top: 0.62em; width: 5px; height: 5px; border-radius: 50%; background: var(--muted-fg); }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
 .tags li {
   padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface);

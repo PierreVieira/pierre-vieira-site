@@ -1,22 +1,31 @@
-// Fails when a data-i18n key of public/index.html has no Portuguese in public/strings/pt.js, or when pt.js holds a key
-// the page no longer uses. Run with `npm run check:translations`.
-import { readFileSync } from "node:fs";
+// Fails when a data-i18n key of public/index.html is missing from a language of public/strings/, or when a language
+// holds a key the page no longer uses, or markup in a key the page writes as text. Run with
+// `npm run check:translations`.
+import { readFileSync, readdirSync } from "node:fs";
 import { runInNewContext } from "node:vm";
 
 const html = readFileSync(new URL("../public/index.html", import.meta.url), "utf8");
+const folder = new URL("../public/strings/", import.meta.url);
 const sandbox = { window: {} };
-runInNewContext(readFileSync(new URL("../public/strings/pt.js", import.meta.url), "utf8"), sandbox);
-const pt = sandbox.window.SITE_STRINGS.pt;
+for (const file of readdirSync(folder).filter((name) => name.endsWith(".js"))) {
+  runInNewContext(readFileSync(new URL(file, folder), "utf8"), sandbox);
+}
+const languages = sandbox.window.SITE_STRINGS;
 
-const used = new Set([...html.matchAll(/data-i18n(?:-html|-label|-alt|-content)?="([^"]+)"/g)].map((match) => match[1]));
-const missing = [...used].filter((key) => !(key in pt));
-const unused = Object.keys(pt).filter((key) => !used.has(key));
-// A key read by data-i18n is written as text: markup in it would show as written.
-const plain = new Set([...html.matchAll(/data-i18n(?:-label|-alt|-content)?="([^"]+)"/g)].map((match) => match[1]));
-const markup = [...plain].filter((key) => /<[a-z]/i.test(pt[key] || ""));
+const keysOf = (pattern) => new Set([...html.matchAll(pattern)].map((match) => match[1]));
+const used = keysOf(/data-i18n(?:-html|-label|-alt|-content)?="([^"]+)"/g);
+// A key read by anything but data-i18n-html is written as text: markup in it would show as written.
+const plain = keysOf(/data-i18n(?:-label|-alt|-content)?="([^"]+)"/g);
+// An image that shows words has one file per language.
+const images = [...html.matchAll(/<img[^>]*data-src-[a-z]+=[^>]*>/g)].map((match) => match[0]);
 
-for (const key of missing) console.error(`Missing in pt.js: ${key}`);
-for (const key of unused) console.error(`Unused in pt.js: ${key}`);
-for (const key of markup) console.error(`Markup in a plain-text key: ${key}`);
-if (missing.length || unused.length || markup.length) process.exit(1);
-console.log(`${used.size} keys, all translated.`);
+let failed = false;
+const fail = (message) => { console.error(message); failed = true; };
+for (const [language, words] of Object.entries(languages)) {
+  for (const key of used) if (!(key in words)) fail(`${language}: missing ${key}`);
+  for (const key of Object.keys(words)) if (!used.has(key)) fail(`${language}: unused ${key}`);
+  for (const key of plain) if (/<[a-z]/i.test(words[key] || "")) fail(`${language}: markup in the plain-text key ${key}`);
+  for (const image of images) if (!image.includes(`data-src-${language}=`)) fail(`${language}: no data-src-${language} on ${image.slice(0, 60)}…`);
+}
+if (failed) process.exit(1);
+console.log(`${used.size} keys in ${Object.keys(languages).join(", ")}: all translated.`);

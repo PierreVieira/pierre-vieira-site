@@ -3,23 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title data-i18n="metaTitle">Pierre Vieira · Senior Android Engineer</title>
-  <meta name="description" data-i18n-content="metaDescription" content="Senior Android engineer working with Kotlin, Jetpack Compose and Kotlin Multiplatform. 6+ years shipping apps at Toyota, Arlo, Mercado Libre and iFood, and the maker of Blitz Split and Bible Planner.">
+  <title data-i18n="metaTitle">Pierre Vieira · Senior Software Engineer</title>
+  <meta name="description" data-i18n-content="metaDescription" content="Senior software engineer building apps people use every day. Shipped products at Toyota, Arlo, Mercado Libre and iFood, and the maker of Blitz Split and Bible Planner.">
   <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://pierrevieira.com/">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://pierrevieira.com/">
-  <meta property="og:title" content="Pierre Vieira · Senior Android Engineer">
-  <meta property="og:description" content="Android and Kotlin Multiplatform apps people use every day. Toyota, Arlo, Mercado Libre, iFood, and two apps of my own.">
+  <meta property="og:title" content="Pierre Vieira · Senior Software Engineer">
+  <meta property="og:description" content="I build apps people use every day. Toyota, Arlo, Mercado Libre, iFood, and two apps of my own.">
   <meta property="og:image" content="https://pierrevieira.com/img/pierre-vieira.jpg">
   <meta name="twitter:card" content="summary">
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <!-- boot.js picks the theme and the language before the first paint. The page's words in Portuguese are
-       strings/pt.js; the markup is in English, and site.js translates every data-i18n key. -->
+  <!-- boot.js picks the theme and the language before the first paint. The page's words in each other language are
+       strings/<language>.js; the markup is in English, and site.js translates every data-i18n key. -->
   <script src="/boot.js"></script>
   <script src="/strings/pt.js"></script>
+  <script src="/strings/es.js"></script>
   <link rel="stylesheet" href="/site.css">
   <script type="application/ld+json">
   {
@@ -28,11 +31,11 @@
     "name": "Pierre Vieira",
     "url": "https://pierrevieira.com/",
     "image": "https://pierrevieira.com/img/pierre-vieira.jpg",
-    "jobTitle": "Senior Android Software Engineer",
+    "jobTitle": "Senior Software Engineer",
     "worksFor": { "@type": "Organization", "name": "Super" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "CEFET-MG" },
     "knowsAbout": ["Android", "Kotlin", "Kotlin Multiplatform", "Jetpack Compose", "Compose Multiplatform"],
-    "knowsLanguage": ["en", "pt-BR"],
+    "knowsLanguage": ["en", "pt-BR", "es"],
     "sameAs": ["https://www.linkedin.com/in/pierre-vieira/", "https://github.com/PierreVieira"]
   }
   </script>
@@ -62,7 +65,7 @@
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="#top" aria-label="Pierre Vieira, home" data-i18n-label="brandLabel"><span class="brand-mark" aria-hidden="true">PV</span>Pierre Vieira</a>
+      <a class="brand" href="#top" aria-label="Pierre Vieira, home" data-i18n-label="brandLabel"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect class="tile" width="64" height="64" rx="15"/><g class="pi"><path d="M14 21h36"/><path d="M24.5 21V39q0 7-6.5 7"/></g><rect class="cursor" x="36.5" y="28.5" width="7" height="21" rx="1.5"/></svg>Pierre Vieira</a>
       <nav class="nav" aria-label="Sections" data-i18n-label="navLabel">
         <a href="#apps" data-i18n="navApps">Apps</a>
         <a href="#experience" data-i18n="navExperience">Experience</a>
@@ -78,6 +81,7 @@
             <button type="button" data-set-lang="system"><span class="lang-chip" aria-hidden="true"><svg class="icon" style="width:13px;height:13px"><use href="#i-monitor"/></svg></span><span class="lang-names"><span data-i18n="system">System</span><span class="lang-detail" data-i18n="langSystemDetail">Device language</span></span></button>
             <button type="button" data-set-lang="en"><span class="lang-chip" aria-hidden="true">EN</span><span class="lang-names"><span lang="en">English</span><span class="lang-detail" data-i18n="langEnDetail"></span></span></button>
             <button type="button" data-set-lang="pt"><span class="lang-chip" aria-hidden="true">BR</span><span class="lang-names"><span lang="pt-BR">Português (Brasil)</span><span class="lang-detail" data-i18n="langPtDetail">Portuguese (Brazil)</span></span></button>
+            <button type="button" data-set-lang="es"><span class="lang-chip" aria-hidden="true">ES</span><span class="lang-names"><span lang="es">Español</span><span class="lang-detail" data-i18n="langEsDetail">Spanish</span></span></button>
           </div>
         </details>
         <details class="menu theme-menu">
@@ -116,9 +120,9 @@
           </figcaption>
         </figure>
         <div class="hero-copy">
-          <p class="eyebrow"><span data-i18n="heroEyebrow">Senior Android Engineer · Kotlin Multiplatform</span></p>
-          <h1 data-i18n-html="heroTitle">I build Android and Kotlin Multiplatform apps <span class="dim">people use every day.</span></h1>
-          <p class="lead" data-i18n="heroLead">Senior Android engineer with 6+ years shipping products at Toyota, Arlo, Mercado Libre and iFood. I also design, build and publish my own apps for Android, iOS, macOS and the web.</p>
+          <p class="eyebrow"><span data-i18n="heroEyebrow">Senior Software Engineer</span></p>
+          <h1 data-i18n-html="heroTitle">I build apps <span class="dim">people use every day.</span></h1>
+          <p class="lead" data-i18n-html="heroLead">Senior engineer with <span data-years>6</span>+ years shipping products at Toyota, Arlo, Mercado Libre and iFood. I also design, build and publish my own apps, live on the App Store and Google Play with paying users.</p>
           <div class="actions">
             <a class="btn btn-primary" href="#apps"><span data-i18n="heroPrimary">See my apps</span><svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></a>
             <a class="btn btn-ghost" href="/cv/pierre-vieira-cv.pdf" download><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span data-i18n="cvDownload">Download résumé</span></a>
@@ -127,27 +131,27 @@
           </div>
           <ul class="hero-meta">
             <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="metaLocation">Brazil · Remote (UTC−3)</span></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg><span data-i18n="metaLanguages">Works in English and Portuguese</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg><span data-i18n="metaLanguages">Works in English, Portuguese and Spanish</span></li>
           </ul>
         </div>
       </div>
 
       <div class="wrap">
         <ul class="stats">
-          <li><strong>6+</strong><span data-i18n="statYears">years building Android apps</span></li>
+          <li><strong><span data-years>6</span>+</strong><span data-i18n="statYears">years building apps</span></li>
           <li><strong>6</strong><span data-i18n="statTeams">product teams in Brazil and the US</span></li>
-          <li><strong>2</strong><span data-i18n="statApps">apps of my own, built end to end</span></li>
-          <li><strong>24</strong><span data-i18n="statLanguages">languages Blitz Split ships in</span></li>
+          <li><strong>2</strong><span data-i18n="statApps">apps of my own on the App Store and Google Play, with paying users</span></li>
+          <li><strong>43</strong><span data-i18n="statLanguages">languages Blitz Split ships in</span></li>
         </ul>
         <div class="teams">
           <p class="eyebrow" data-i18n="teamsLabel">Teams I've worked with</p>
           <ul>
-            <li>Super</li>
-            <li>Toyota</li>
-            <li>Arlo</li>
-            <li data-i18n="mercadoName">Mercado Libre</li>
-            <li>iFood</li>
-            <li>Studio Sol</li>
+            <li><a href="https://super.xyz/" target="_blank" rel="noopener">Super</a></li>
+            <li><a href="https://www.toyota.com/" target="_blank" rel="noopener">Toyota</a></li>
+            <li><a href="https://www.arlo.com/" target="_blank" rel="noopener">Arlo</a></li>
+            <li><a href="https://www.mercadolivre.com.br/" target="_blank" rel="noopener" data-i18n="mercadoName">Mercado Libre</a></li>
+            <li><a href="https://www.ifood.com.br/" target="_blank" rel="noopener">iFood</a></li>
+            <li><a href="https://www.studiosol.com.br/" target="_blank" rel="noopener">Studio Sol</a></li>
           </ul>
         </div>
       </div>
@@ -157,7 +161,7 @@
       <div class="wrap">
         <header class="section-head reveal">
           <p class="eyebrow"><span class="idx">01</span><span class="rule"></span><span data-i18n="navApps">Apps</span></p>
-          <h2 data-i18n-html="appsTitle">Two apps of my own, <span class="dim">designed, built and shipped end to end.</span></h2>
+          <h2 data-i18n-html="appsTitle">Two apps of my own, <span class="dim">live on the App Store and Google Play, with paying users.</span></h2>
         </header>
 
         <div class="apps">
@@ -168,6 +172,7 @@
                 <div>
                   <h3 data-i18n="blitzName">Blitz Split</h3>
                   <p class="app-tag" data-i18n="blitzTag">Split the bill. Keep the friends.</p>
+                  <p class="live" data-i18n="appLive">Live</p>
                 </div>
               </div>
               <p class="app-desc" data-i18n="blitzDesc">An offline-first app to split bills among friends. Kotlin Multiplatform is shared up to the ViewModel, with a native UI on each platform: Jetpack Compose on Android, SwiftUI with Liquid Glass on Apple platforms and React on the web.</p>
@@ -175,20 +180,21 @@
                 <li data-i18n="blitzPoint1">Every bill is saved on the device first and synced through Supabase, with an optional account.</li>
                 <li data-i18n="blitzPoint2">Splits equally, by amounts, by percentages or item by item.</li>
                 <li data-i18n="blitzPoint3">Fills a bill in from a photo of the receipt.</li>
-                <li data-i18n="blitzPoint4">Available in 24 languages (26 locales).</li>
+                <li data-i18n="blitzPoint4">Available in 43 languages (45 locales).</li>
               </ul>
               <dl class="facts">
                 <div><dt data-i18n="factPlatforms">Platforms</dt><dd data-i18n="blitzPlatforms">Android, iOS, macOS and web</dd></div>
                 <div><dt data-i18n="factStack">Stack</dt><dd>Kotlin Multiplatform, Jetpack Compose, SwiftUI, React, Supabase</dd></div>
               </dl>
               <div class="actions">
-                <a class="btn btn-primary" href="https://blitzsplit.com/" target="_blank" rel="noopener">blitzsplit.com<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.quare.blitzsplit" target="_blank" rel="noopener">Google Play<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                <a class="btn btn-ghost" href="https://blitzsplit.com/" target="_blank" rel="noopener">blitzsplit.com<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 <a class="btn btn-ghost" href="https://github.com/Quartel-Enterprise/blitz-split-client" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span data-i18n="sourceCode">Source code</span></a>
               </div>
             </div>
             <div class="shots">
-              <img src="/img/blitz-split-1-en.jpg" data-src-pt="/img/blitz-split-1-pt.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="Blitz Split: a group's screen with its balance and expenses" data-i18n-alt="blitzShot1">
-              <img src="/img/blitz-split-2-en.jpg" data-src-pt="/img/blitz-split-2-pt.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="Blitz Split: a bill filled in from a photo of the receipt" data-i18n-alt="blitzShot2">
+              <img src="/img/blitz-split-1-en.jpg" data-src-pt="/img/blitz-split-1-pt.jpg" data-src-es="/img/blitz-split-1-es.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="Blitz Split: a group's screen with its balance and expenses" data-i18n-alt="blitzShot1">
+              <img src="/img/blitz-split-2-en.jpg" data-src-pt="/img/blitz-split-2-pt.jpg" data-src-es="/img/blitz-split-2-es.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="Blitz Split: a bill filled in from a photo of the receipt" data-i18n-alt="blitzShot2">
             </div>
           </article>
 
@@ -199,6 +205,7 @@
                 <div>
                   <h3>Bible Planner</h3>
                   <p class="app-tag" data-i18n="bibleTag">Your whole Bible, one day at a time.</p>
+                  <p class="live" data-i18n="appLivePaying">Live, with paying users</p>
                 </div>
               </div>
               <p class="app-desc" data-i18n="bibleDesc">A Kotlin Multiplatform app for Android, iOS and desktop, built with Compose Multiplatform from a single codebase shared across all three.</p>
@@ -213,13 +220,15 @@
                 <div><dt data-i18n="factStack">Stack</dt><dd>Kotlin Multiplatform, Compose Multiplatform, Supabase, RevenueCat, Firebase</dd></div>
               </dl>
               <div class="actions">
-                <a class="btn btn-primary" href="https://www.bibleplanner.app/" target="_blank" rel="noopener">bibleplanner.app<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                <a class="btn btn-primary" href="https://apps.apple.com/app/id6756151777" target="_blank" rel="noopener">App Store<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.quare.bibleplanner" target="_blank" rel="noopener">Google Play<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                <a class="btn btn-ghost" href="https://www.bibleplanner.app/" target="_blank" rel="noopener">bibleplanner.app<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 <a class="btn btn-ghost" href="https://github.com/Quartel-Enterprise/bible-planner-mobile-client" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span data-i18n="sourceCode">Source code</span></a>
               </div>
             </div>
             <div class="shots">
-              <img src="/img/bible-planner-1-en.jpg" data-src-pt="/img/bible-planner-1-pt.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="Bible Planner: today's reading and the plan's progress" data-i18n-alt="bibleShot1">
-              <img src="/img/bible-planner-2-en.jpg" data-src-pt="/img/bible-planner-2-pt.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="Bible Planner: the daily study of a passage" data-i18n-alt="bibleShot2">
+              <img src="/img/bible-planner-1-en.jpg" data-src-pt="/img/bible-planner-1-pt.jpg" data-src-es="/img/bible-planner-1-es.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="Bible Planner: today's reading and the plan's progress" data-i18n-alt="bibleShot1">
+              <img src="/img/bible-planner-2-en.jpg" data-src-pt="/img/bible-planner-2-pt.jpg" data-src-es="/img/bible-planner-2-es.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="Bible Planner: the daily study of a passage" data-i18n-alt="bibleShot2">
             </div>
           </article>
         </div>
@@ -230,7 +239,7 @@
       <div class="wrap">
         <header class="section-head reveal">
           <p class="eyebrow"><span class="idx">02</span><span class="rule"></span><span data-i18n="navExperience">Experience</span></p>
-          <h2 data-i18n-html="experienceTitle">Six years of Android, <span class="dim">across sports, connected cars, smart home, payments and food delivery.</span></h2>
+          <h2 data-i18n-html="experienceTitle"><span data-years="word">Six</span> years shipping apps, <span class="dim">across sports, connected cars, smart home, payments and food delivery.</span></h2>
         </header>
 
         <ol class="timeline">
@@ -398,7 +407,7 @@
         <div class="reveal">
           <p class="eyebrow"><span class="idx">05</span><span class="rule"></span><span data-i18n="navContact">Contact</span></p>
           <h2 data-i18n-html="contactTitle">Let's build <span class="dim">something people will use.</span></h2>
-          <p class="lead" data-i18n="contactLead">I'm open to senior Android and Kotlin Multiplatform roles, remote, with teams anywhere in the world. Email and LinkedIn are the fastest ways to reach me.</p>
+          <p class="lead" data-i18n="contactLead">I'm open to senior engineering roles, remote, with teams anywhere in the world. Email and LinkedIn are the fastest ways to reach me.</p>
         </div>
         <div class="contact-list reveal">
           <!-- site.js writes the address from its parts, so it isn't in the markup for a scraper to read. -->
