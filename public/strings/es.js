@@ -8,6 +8,7 @@ window.SITE_STRINGS.es = {
   metaDescription: "Ingeniero de software senior que crea apps que la gente usa todos los días. Lanzó productos en Super, Toyota, Arlo, Mercado Libre, iFood y Studio Sol, y creador de Blitz Split y Bible Planner.",
   skip: "Saltar al contenido",
   brandLabel: "Pierre Vieira, inicio",
+  heroGithubLabel: "El código de este sitio en GitHub",
   navLabel: "Secciones",
   navApps: "Apps",
   navExperience: "Experiencia",
