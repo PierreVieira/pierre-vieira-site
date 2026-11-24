@@ -1,0 +1,8 @@
+{
+  "path": ["public", "scripts"],
+  "format": ["javascript", "css", "markup"],
+  "formatsExts": { "javascript": ["js", "mjs"], "markup": ["html"] },
+  "minTokens": 70,
+  "ignore": ["public/fonts/**", "public/cv/**", "**/node_modules/**"],
+  "gitignore": true
+}

@@ -41,7 +41,7 @@ One page (`public/index.html`), plain HTML, CSS and JavaScript with no build and
 2. Write code, comments, docs and commit messages in **English**. Only the text a person sees on the page is
    translated.
 3. Check a visual change at 375, 768, 1024 and 1440 pixels wide, in light and dark, with `npm run dev` running.
-4. Run `npm run check:translations`.
+4. Run `npm run check:translations` and `./scripts/cpd.sh`, the copied-code check CI runs.
 
 ## Opening the pull request
 
@@ -50,4 +50,5 @@ One page (`public/index.html`), plain HTML, CSS and JavaScript with no build and
 - Fill in the pull request template: the problem, the change, and how you checked it.
 - Add screenshots for any visual change, in light and dark, on a phone and a wide screen.
 
-Every pull request is reviewed before it merges, and every commit on `main` deploys to pierrevieira.com.
+Every pull request gets a review from Claude when it opens ([`docs/checks.md`](docs/checks.md)) and is reviewed
+before it merges, and every commit on `main` deploys to pierrevieira.com.

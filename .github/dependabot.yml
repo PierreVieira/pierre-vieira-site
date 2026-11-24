@@ -1,0 +1,12 @@
+version: 2
+updates:
+  # Bumps the pinned actions together, so every claude-review uses: moves at once (claude-review-refs
+  # fails otherwise) and scripts/cpd.sh, which reads the copied-code-check pin, follows CI.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns:
+          - '*'
