@@ -1,0 +1,31 @@
+# Pierre Vieira
+
+> Senior software engineer building apps people use every day. Shipped products at Super, Toyota, Arlo, Mercado Libre, iFood and Studio Sol, and the maker of Blitz Split and Bible Planner. Based in Brazil, works remotely (UTC−3) in English, Portuguese and Spanish.
+
+The portfolio is one page, available in English, Portuguese (`?lang=pt`) and Spanish (`?lang=es`). Android and Kotlin Multiplatform are the core of the work: Kotlin, Jetpack Compose, Compose Multiplatform and server-driven UI.
+
+## Profile
+
+- [Portfolio](https://pierrevieira.com/): experience, apps, skills, talks and contact
+- [Résumé (PDF)](https://pierrevieira.com/cv/pierre-vieira-cv.pdf): the full résumé, the source of every date and number on the page
+- [LinkedIn](https://www.linkedin.com/in/pierre-vieira/)
+- [GitHub](https://github.com/PierreVieira)
+
+## Experience
+
+- [Super](https://super.xyz/): Senior Android Software Engineer, Mar 2026 – present. Home screen of the sports app in Jetpack Compose with server-driven UI, Protocol Buffers and Kotlin Multiplatform.
+- [Toyota](https://www.toyota.com/): Senior Android Software Engineer, May 2025 – Feb 2026, contractor through Very Good Ventures. The connected vehicle app for electric cars.
+- [Arlo](https://www.arlo.com/): Senior Android Software Engineer, Dec 2024 – May 2025, contractor through Side. Home security devices and AI audio event detection.
+- [Mercado Libre](https://www.mercadolivre.com.br/): Senior Android Software Engineer at Mercado Pago, Jun 2022 – Dec 2024. Payments and a server-driven navigation engine.
+- [iFood](https://www.ifood.com.br/): Mid-Level Android Software Engineer, Jan 2022 – Jun 2022. Grocery screens in Jetpack Compose.
+- [Studio Sol](https://www.studiosol.com.br/): Junior Android Software Engineer III, Sep 2020 – Jan 2022, intern until Sep 2021.
+
+## Apps
+
+- [Blitz Split](https://blitzsplit.com/): an offline-first app to split bills among friends, for Android, iOS, macOS and web. [Google Play](https://play.google.com/store/apps/details?id=com.quare.blitzsplit), [source code](https://github.com/Quartel-Enterprise/blitz-split-client).
+- [Bible Planner](https://www.bibleplanner.app/): Bible reading plans with a daily AI study, for Android, iOS and desktop, live with paying users. [App Store](https://apps.apple.com/app/id6756151777), [Google Play](https://play.google.com/store/apps/details?id=com.quare.bibleplanner), [source code](https://github.com/Quartel-Enterprise/bible-planner-mobile-client).
+
+## Optional
+
+- [Android overview talk](https://youtu.be/dqS3nKeauTI)
+- [Introduction to Jetpack Compose talk, with iFood](https://youtu.be/W2RfKpykdxs)

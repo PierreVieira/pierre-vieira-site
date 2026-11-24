@@ -19,6 +19,8 @@ build and no dependencies. Each file opens with a comment on what it holds; `doc
   the apps, from their repositories: never invent a figure. The hero keeps to "apps" and "software engineer", but for
   the current job under the portrait, which names Android; the Android and Kotlin Multiplatform detail belongs to the
   experience and skills sections.
+- `public/llms.txt` repeats the page's facts for AI agents (companies, roles, dates, apps): keep it in step with the
+  page.
 - The years of experience are never written by hand: a `[data-years]` element (`data-years="word"` spelled out) is
   filled by `site.js` from the first job's date, in every language.
 - Analytics goes through `window.track()` (`public/analytics.js`, Firebase project `pierrevieira-site`). A new event

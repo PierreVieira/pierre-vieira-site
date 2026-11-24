@@ -1,0 +1,29 @@
+{
+  "entries": [
+    {
+      "identifier": "urn:air:pierrevieira.com:site:llms",
+      "displayName": "Pierre Vieira · Senior Software Engineer",
+      "description": "Pierre Vieira's portfolio for language models: experience, apps, skills and contact, in Markdown.",
+      "type": "text/markdown",
+      "url": "https://pierrevieira.com/llms.txt",
+      "tags": ["portfolio", "android", "kotlin-multiplatform"],
+      "representativeQueries": [
+        "Who is Pierre Vieira?",
+        "Where has Pierre Vieira worked as a software engineer?",
+        "Which apps has Pierre Vieira built?"
+      ]
+    },
+    {
+      "identifier": "urn:air:pierrevieira.com:site:cv",
+      "displayName": "Pierre Vieira · Résumé",
+      "description": "Pierre Vieira's résumé as a PDF.",
+      "type": "application/pdf",
+      "url": "https://pierrevieira.com/cv/pierre-vieira-cv.pdf",
+      "tags": ["resume", "cv"],
+      "representativeQueries": [
+        "Download Pierre Vieira's résumé",
+        "Pierre Vieira CV"
+      ]
+    }
+  ]
+}

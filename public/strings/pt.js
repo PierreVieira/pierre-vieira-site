@@ -5,7 +5,7 @@
 window.SITE_STRINGS = window.SITE_STRINGS || {};
 window.SITE_STRINGS.pt = {
   metaTitle: "Pierre Vieira · Engenheiro de Software Sênior",
-  metaDescription: "Engenheiro de software sênior, criando apps que as pessoas usam todos os dias. Entregou produtos na Toyota, Arlo, Mercado Livre e iFood, e criador do Bora Rachar e do Bible Planner.",
+  metaDescription: "Engenheiro de software sênior, criando apps que as pessoas usam todos os dias. Entregou produtos na Super, Toyota, Arlo, Mercado Livre, iFood e Studio Sol, e criador do Bora Rachar e do Bible Planner.",
   skip: "Pular para o conteúdo",
   brandLabel: "Pierre Vieira, início",
   navLabel: "Seções",
@@ -33,7 +33,7 @@ window.SITE_STRINGS.pt = {
   statusValue: "Engenheiro Android Sênior na Super",
   heroEyebrow: "Engenheiro de Software Sênior",
   heroTitle: "Crio apps <span class=\"dim\">que as pessoas usam todos os dias.</span>",
-  heroLead: "Engenheiro sênior, com mais de <span data-years>6</span> anos entregando produtos na Toyota, Arlo, Mercado Livre e iFood. Também projeto, desenvolvo e publico meus próprios apps, disponíveis na App Store e no Google Play, com usuários pagantes.",
+  heroLead: "Engenheiro sênior, com mais de <span data-years>6</span> anos entregando produtos na <a class=\"link\" href=\"https://super.xyz/\" target=\"_blank\" rel=\"noopener\">Super</a>, <a class=\"link\" href=\"https://www.toyota.com/\" target=\"_blank\" rel=\"noopener\">Toyota</a>, <a class=\"link\" href=\"https://www.arlo.com/\" target=\"_blank\" rel=\"noopener\">Arlo</a>, <a class=\"link\" href=\"https://www.mercadolivre.com.br/\" target=\"_blank\" rel=\"noopener\">Mercado Livre</a>, <a class=\"link\" href=\"https://www.ifood.com.br/\" target=\"_blank\" rel=\"noopener\">iFood</a> e <a class=\"link\" href=\"https://www.studiosol.com.br/\" target=\"_blank\" rel=\"noopener\">Studio Sol</a>. Também projeto, desenvolvo e publico meus próprios apps, disponíveis na App Store e no Google Play, com usuários pagantes.",
   heroPrimary: "Ver meus apps",
   metaLocation: "Brasil · Remoto (UTC−3)",
   metaLanguages: "Trabalho em inglês, português e espanhol",

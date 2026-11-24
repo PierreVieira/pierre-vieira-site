@@ -5,7 +5,7 @@
 window.SITE_STRINGS = window.SITE_STRINGS || {};
 window.SITE_STRINGS.es = {
   metaTitle: "Pierre Vieira · Ingeniero de Software Senior",
-  metaDescription: "Ingeniero de software senior que crea apps que la gente usa todos los días. Lanzó productos en Toyota, Arlo, Mercado Libre e iFood, y creador de Blitz Split y Bible Planner.",
+  metaDescription: "Ingeniero de software senior que crea apps que la gente usa todos los días. Lanzó productos en Super, Toyota, Arlo, Mercado Libre, iFood y Studio Sol, y creador de Blitz Split y Bible Planner.",
   skip: "Saltar al contenido",
   brandLabel: "Pierre Vieira, inicio",
   navLabel: "Secciones",
@@ -33,7 +33,7 @@ window.SITE_STRINGS.es = {
   statusValue: "Ingeniero Android Senior en Super",
   heroEyebrow: "Ingeniero de Software Senior",
   heroTitle: "Creo apps <span class=\"dim\">que la gente usa todos los días.</span>",
-  heroLead: "Ingeniero senior con más de <span data-years>6</span> años lanzando productos en Toyota, Arlo, Mercado Libre e iFood. También diseño, desarrollo y publico mis propias apps, disponibles en el App Store y Google Play, con usuarios de pago.",
+  heroLead: "Ingeniero senior con más de <span data-years>6</span> años lanzando productos en <a class=\"link\" href=\"https://super.xyz/\" target=\"_blank\" rel=\"noopener\">Super</a>, <a class=\"link\" href=\"https://www.toyota.com/\" target=\"_blank\" rel=\"noopener\">Toyota</a>, <a class=\"link\" href=\"https://www.arlo.com/\" target=\"_blank\" rel=\"noopener\">Arlo</a>, <a class=\"link\" href=\"https://www.mercadolivre.com.br/\" target=\"_blank\" rel=\"noopener\">Mercado Libre</a>, <a class=\"link\" href=\"https://www.ifood.com.br/\" target=\"_blank\" rel=\"noopener\">iFood</a> y <a class=\"link\" href=\"https://www.studiosol.com.br/\" target=\"_blank\" rel=\"noopener\">Studio Sol</a>. También diseño, desarrollo y publico mis propias apps, disponibles en el App Store y Google Play, con usuarios de pago.",
   heroPrimary: "Ver mis apps",
   metaLocation: "Brasil · Remoto (UTC−3)",
   metaLanguages: "Trabajo en inglés, portugués y español",
