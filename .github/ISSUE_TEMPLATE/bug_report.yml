@@ -1,0 +1,59 @@
+name: Bug report
+description: Something on pierrevieira.com doesn't work or read as it should.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this! Please search the existing issues first.
+        Never report a security problem here: see the [security policy](https://github.com/PierreVieira/pierre-vieira-site/blob/main/SECURITY.md).
+  - type: input
+    id: section
+    attributes:
+      label: Section
+      description: Where on the page, or the file (the résumé, llms.txt).
+      placeholder: Experience, the language menu, the résumé...
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: Safari 26 on an iPhone 17 / Chrome 142 on Windows 11
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: Language and theme
+      placeholder: Portuguese, dark
+  - type: input
+    id: assistive-technology
+    attributes:
+      label: Assistive technology or accessibility settings
+      description: For an accessibility barrier, what you use. Leave it empty otherwise.
+      placeholder: VoiceOver, NVDA, 200% zoom, reduced motion, keyboard only...
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open pierrevieira.com
+        2. Pick Spanish in the language menu
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: For a translation, the text you would write instead.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+      description: Screenshots or a screen recording help a lot.
+    validations:
+      required: true

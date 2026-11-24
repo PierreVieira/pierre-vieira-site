@@ -1,0 +1,35 @@
+Copyright (c) 2026 Pierre Vieira. All rights reserved.
+
+The source code in this repository is published so that it can be read, studied and
+reviewed, and so that people can report problems with pierrevieira.com and suggest
+fixes. It is not open source.
+
+No license is granted to copy, modify, merge, publish, distribute, sublicense, sell or
+otherwise use this software, in source or binary form, in whole or in part, except:
+
+  1. Viewing the source code on GitHub, and forking this repository on GitHub, as
+     GitHub's Terms of Service allow.
+  2. Modifying and running it on your own devices, and pushing those changes to your
+     fork on GitHub, for the sole purpose of preparing and opening a contribution to
+     this repository.
+
+The content of the site (its text in every language, the résumé, the portrait and the
+other photographs, the app screenshots and the pi mark) is Pierre Vieira's and may not
+be reused without written permission. The company logos belong to their owners.
+
+Files that carry their own license notice, and third-party files included in this
+repository (such as the Geist fonts under public/fonts, under the SIL Open Font
+License 1.1, whose text is in public/fonts/OFL.txt, and the Lucide icons, under the ISC
+License), remain under their own licenses.
+
+By submitting a contribution (a pull request, a patch or any other material) to this
+repository, you agree that Pierre Vieira may use, modify, relicense and distribute it as
+part of this site, and you confirm that you have the right to grant this.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR ITS USE.
+
+For any other use, contact Pierre Vieira through https://pierrevieira.com.

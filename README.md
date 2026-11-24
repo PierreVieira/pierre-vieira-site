@@ -6,9 +6,8 @@
 Pierre Vieira's portfolio: one responsive page with his apps (Blitz Split and Bible Planner), experience, skills,
 talks and contact, in English, Portuguese (Brazil) and Spanish, light and dark.
 
-Plain HTML, CSS and JavaScript with no build and no dependencies, in the same model as
-[blitz-split-site](https://github.com/Quartel-Enterprise/blitz-split-site). The image above is the page itself, at a
-desktop's width and at a phone's, captured by [`scripts/readme-hero/generate.mjs`](scripts/readme-hero/generate.mjs):
+Plain HTML, CSS and JavaScript with no build and no dependencies. The image above is the page itself, at a desktop's
+width and at a phone's, captured by [`scripts/readme-hero/generate.mjs`](scripts/readme-hero/generate.mjs):
 `npm run readme-hero` draws it again after a change to the page.
 
 ## Run
