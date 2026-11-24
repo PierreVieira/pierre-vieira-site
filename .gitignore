@@ -4,4 +4,4 @@ node_modules/
 .idea/
 .cache/
 # Built from cv/pierre-vieira-cv.tex by scripts/build-cv.sh on every deploy
-public/cv/pierre-vieira-cv.pdf
+public/cv/cv_pierre_vieira.pdf
