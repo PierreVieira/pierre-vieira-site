@@ -19,7 +19,7 @@ built file below.
 
 `cv/pierre-vieira-cv.tex` is the résumé's only source; the PDF is not in git. Before every upload, `wrangler deploy`
 runs the `build.command` in `wrangler.jsonc`, `scripts/build-cv.sh`, which compiles the .tex with
-[Tectonic](https://tectonic-typesetting.github.io/) into `public/cv/pierre-vieira-cv.pdf`, the path the page links to.
+[Tectonic](https://tectonic-typesetting.github.io/) into `public/cv/cv_pierre_vieira.pdf`, the path the page links to.
 The script uses a `tectonic` on PATH (`brew install tectonic`) or downloads a pinned release into `.cache/` and checks
 its SHA-256; Tectonic itself fetches the LaTeX packages the first time. Tectonic runs XeTeX, so the .tex must not
 force a pdfTeX driver (as `\usepackage[pdftex]{hyperref}` would).

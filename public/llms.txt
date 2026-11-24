@@ -7,7 +7,7 @@ The portfolio is one page, available in English, Portuguese (`?lang=pt`) and Spa
 ## Profile
 
 - [Portfolio](https://pierrevieira.com/): experience, apps, skills, talks and contact
-- [Résumé (PDF)](https://pierrevieira.com/cv/pierre-vieira-cv.pdf): the full résumé, the source of every date and number on the page
+- [Résumé (PDF)](https://pierrevieira.com/cv/cv_pierre_vieira.pdf): the full résumé, the source of every date and number on the page
 - [LinkedIn](https://www.linkedin.com/in/pierre-vieira/)
 - [GitHub](https://github.com/PierreVieira)
 

@@ -6,7 +6,7 @@ argument-hint: <what to change on the résumé>
 
 # Edit the résumé
 
-The résumé's only source is `cv/pierre-vieira-cv.tex`. The PDF (`public/cv/pierre-vieira-cv.pdf`) is not in git: every
+The résumé's only source is `cv/pierre-vieira-cv.tex`. The PDF (`public/cv/cv_pierre_vieira.pdf`) is not in git: every
 deploy compiles it (see `docs/deploy.md`). So a change to the résumé is a change to the .tex, shipped as a pull request.
 
 The request is in `$ARGUMENTS` (or the user's message). Follow these steps in order.
@@ -40,7 +40,7 @@ The request is in `$ARGUMENTS` (or the user's message). Follow these steps in or
 ## 4. Build and look at the PDF
 
 - `npm run build:cv`. If it fails, read the error, fix the .tex and build again.
-- Read `public/cv/pierre-vieira-cv.pdf` and check the change rendered where and how it should: nothing overflows the
+- Read `public/cv/cv_pierre_vieira.pdf` and check the change rendered where and how it should: nothing overflows the
   right margin, columns still line up, links are blue and underlined like the others, and the page count did not grow
   unless the change calls for it. Say in the PR if it now spills onto another page.
 - The PDF is ignored by git; never commit it.

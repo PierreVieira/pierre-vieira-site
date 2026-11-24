@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Builds the résumé: compiles cv/pierre-vieira-cv.tex into public/cv/pierre-vieira-cv.pdf with Tectonic.
+# Builds the résumé: compiles cv/pierre-vieira-cv.tex into public/cv/cv_pierre_vieira.pdf with Tectonic.
 # The .tex is the only source; the PDF is not in git and is made on every deploy (wrangler.jsonc's build.command).
 # Uses a `tectonic` on PATH when there is one, or else downloads a pinned release into .cache/ and checks its SHA-256.
 # Skips the work when the PDF is already newer than the .tex; pass --force to build anyway.
@@ -9,7 +9,8 @@ cd "$(dirname "$0")/.."
 
 SRC="cv/pierre-vieira-cv.tex"
 OUT_DIR="public/cv"
-OUT="$OUT_DIR/pierre-vieira-cv.pdf"
+# The PDF is always named cv_pierre_vieira.pdf, whatever the .tex is called: the page links to that name.
+OUT="$OUT_DIR/cv_pierre_vieira.pdf"
 VERSION="0.17.0"
 CACHE=".cache/tectonic-$VERSION"
 
@@ -57,5 +58,8 @@ tectonic_bin() {
 
 TECTONIC="$(tectonic_bin)"
 mkdir -p "$OUT_DIR"
-"$TECTONIC" -X compile --outdir "$OUT_DIR" "$SRC"
+BUILD_DIR="$(mktemp -d)"
+trap 'rm -rf "$BUILD_DIR"' EXIT
+"$TECTONIC" -X compile --outdir "$BUILD_DIR" "$SRC"
+mv "$BUILD_DIR/$(basename "$SRC" .tex).pdf" "$OUT"
 echo "build-cv: wrote $OUT"
