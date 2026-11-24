@@ -43,6 +43,7 @@
 
   // Where on the page a link is: the header's bar or its menu, the hero, a section (by its id) or the footer.
   function originOf(el) {
+    if (el.closest(".fab-top")) return "floating";
     if (el.closest(".menu-pop")) return "header_menu";
     if (el.closest(".site-header")) return "header";
     if (el.closest(".site-footer")) return "footer";
