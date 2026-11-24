@@ -20,14 +20,12 @@
   <meta property="og:image" content="https://pierrevieira.com/img/pierre-vieira.jpg">
   <meta name="twitter:card" content="summary">
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <!-- boot.js picks the theme and the language before the first paint. The page's words in each other language are
-       strings/<language>.js; the markup is in English, and site.js translates every data-i18n key. -->
+  <!-- boot.js picks the theme and the language before the first paint, and fetches only that language's words,
+       strings/<language>.js (none for English: the markup is in English). site.js translates every data-i18n key. -->
   <script src="/boot.js"></script>
   <!-- Google Analytics of the site's own Firebase project (pierrevieira-site): analytics.js, which loads gtag.js once
        the page has settled (docs/analytics.md). -->
   <script defer src="/analytics.js"></script>
-  <script src="/strings/pt.js"></script>
-  <script src="/strings/es.js"></script>
   <link rel="stylesheet" href="/site.css">
   <script type="application/ld+json">
   {

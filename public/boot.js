@@ -4,6 +4,9 @@
 // tokens once: System takes the system's theme here, and follows it when it changes.
 // The language: ?lang=, then the last one picked in the language menu, then the browser's languages in order of
 // preference, English when none of them is one of ours. site.js translates the page and applies a later choice.
+// The words: only the chosen language's strings/<language>.js is fetched, without blocking the first paint, and none
+// for English, the markup's own. Until it arrives :root.i18n-wait keeps the page hidden (site.css), so a Portuguese
+// or Spanish visitor never sees the English first; after 3 s the page shows anyway.
 (function () {
   const SUPPORTED = ["en", "pt", "es"];
   const root = document.documentElement;
@@ -25,6 +28,28 @@
   root.dataset.lang = chosen || window.systemLang();
   // Every language's tag is its code, but Brazil's Portuguese, pt-BR. site.js keeps the same table.
   root.lang = { pt: "pt-BR" }[root.dataset.lang] || root.dataset.lang;
+
+  // window.loadStrings(lang): a promise that settles once strings/<lang>.js has run, or failed (the page then stays in
+  // English). Each file loads once; site.js uses this for a language picked later too.
+  window.SITE_STRINGS = window.SITE_STRINGS || {};
+  const loading = {};
+  window.loadStrings = function (lang) {
+    if (lang === "en" || window.SITE_STRINGS[lang]) return Promise.resolve();
+    if (!loading[lang]) {
+      loading[lang] = new Promise((resolve) => {
+        const script = document.createElement("script");
+        script.src = `/strings/${lang}.js`;
+        script.onload = script.onerror = () => resolve();
+        document.head.appendChild(script);
+      });
+    }
+    return loading[lang];
+  };
+  if (root.dataset.lang !== "en") {
+    root.classList.add("i18n-wait");
+    window.loadStrings(root.dataset.lang);
+    setTimeout(() => root.classList.remove("i18n-wait"), 3000);
+  }
 
   const theme = [params.get("theme"), stored("theme")].find((t) => ["light", "dark", "system"].includes(t)) || "system";
   const systemDark = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;

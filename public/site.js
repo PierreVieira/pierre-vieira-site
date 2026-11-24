@@ -1,12 +1,11 @@
 // The page's behaviors: language, theme, the header's menus, the email link and the sections' entrance.
 // boot.js, in <head>, already picked the theme and the language; the markup is in English and strings/<language>.js
 // holds the page's words in each other language (window.SITE_STRINGS.pt, .es), keyed as the data-i18n attributes name
-// them.
+// them. boot.js's window.loadStrings fetches a language's file the first time it's needed.
 (function () {
   const root = document.documentElement;
   // analytics.js's window.track (docs/analytics.md); a blocked or missing analytics.js leaves every event out.
   const track = (name, params) => { if (window.track) window.track(name, params); };
-  const STRINGS = window.SITE_STRINGS || {};
   function store(key, value) {
     try {
       if (value === null) localStorage.removeItem(key);
@@ -50,7 +49,7 @@
   const LANGUAGE_CHIPS = { pt: "BR" };
 
   function translate(lang) {
-    const words = STRINGS[lang];
+    const words = (window.SITE_STRINGS || {})[lang];
     TARGETS.forEach(([attribute, read, write]) => {
       document.querySelectorAll(`[${attribute}]`).forEach((el) => {
         const key = el.getAttribute(attribute);
@@ -77,10 +76,15 @@
     root.dataset.langPref = pref;
     root.dataset.lang = lang;
     root.lang = LANGUAGE_TAGS[lang] || lang;
-    translate(lang);
     document.querySelectorAll(".lang-code").forEach((el) => { el.textContent = LANGUAGE_CHIPS[lang] || lang.toUpperCase(); });
     document.querySelectorAll("[data-set-lang]").forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.setLang === pref));
+    });
+    // The words wait for their file; a language picked again meanwhile wins.
+    window.loadStrings(lang).then(() => {
+      if (root.dataset.lang !== lang) return;
+      translate(lang);
+      root.classList.remove("i18n-wait");
     });
   }
   applyLanguage(root.dataset.langPref || "system");

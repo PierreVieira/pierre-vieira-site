@@ -424,6 +424,9 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 .site-footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
 .site-footer a { display: inline-flex; align-items: center; min-height: 44px; }
 
+/* Language: boot.js hides the page while the chosen language's words load, so the English never flashes first. */
+:root.i18n-wait body { visibility: hidden; }
+
 /* Motion: with :root.motion (boot.js), a block rises as it scrolls into view. Without it the page is still and
    complete, so reduced motion and no-script visitors miss nothing. */
 :root.motion .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
