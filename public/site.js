@@ -1,4 +1,5 @@
-// The page's behaviors: language, theme, the header's menus, the email link and the sections' entrance.
+// The page's behaviors: language, theme, the header's menus, the email link, the Details folds and the sections'
+// entrance.
 // boot.js, in <head>, already picked the theme and the language; the markup is in English and strings/<language>.js
 // holds the page's words in each other language (window.SITE_STRINGS.pt, .es), keyed as the data-i18n attributes name
 // them. boot.js's window.loadStrings fetches a language's file the first time it's needed.
@@ -154,6 +155,54 @@
     link.href = `mailto:${address}`;
     const text = link.querySelector("[data-email-text]");
     if (text) text.textContent = address;
+  });
+
+  // Folds: an app's or a job's details sit under a Details toggle, built here from the markup's template (so a page
+  // without scripts has no toggle and every fold open). The current job, the one with the .now badge, starts open; the
+  // others start folded. Each toggle is described by its card's heading, so a screen reader tells them apart.
+  // Built before the language's words arrive, so translate() reaches the toggles too.
+  // A closed fold's content is hidden="until-found": out of view, of the tab order and of screen readers, but the
+  // browser's find in page still matches it and fires beforematch, which opens the fold (where the browser supports
+  // it; elsewhere it's plain hidden).
+  const FOLD_MS = 350; // site.css's .fold.toggled transition
+  function setFoldOpen(toggle, fold, open) {
+    const content = fold.firstElementChild;
+    toggle.setAttribute("aria-expanded", String(open));
+    fold.classList.toggle("closed", !open);
+    clearTimeout(fold.hideLater);
+    if (open) content.removeAttribute("hidden");
+    else if (fold.classList.contains("toggled") && root.classList.contains("motion")) {
+      // Hidden once it has slid shut, so the content doesn't vanish before the fold closes.
+      fold.hideLater = setTimeout(() => content.setAttribute("hidden", "until-found"), FOLD_MS);
+    } else content.setAttribute("hidden", "until-found");
+  }
+  const foldToggle = document.getElementById("fold-toggle");
+  if (foldToggle) document.querySelectorAll(".fold[data-item]").forEach((fold) => {
+    const item = fold.dataset.item;
+    const card = fold.closest(".job, .app");
+    const heading = card && card.querySelector("h3");
+    const toggle = foldToggle.content.firstElementChild.cloneNode(true);
+    fold.id = `fold-${item}`;
+    toggle.setAttribute("aria-controls", fold.id);
+    if (heading) {
+      heading.id = heading.id || `${fold.id}-name`;
+      toggle.setAttribute("aria-describedby", heading.id);
+    }
+    fold.before(toggle);
+    setFoldOpen(toggle, fold, Boolean(card && card.querySelector(".now")));
+    toggle.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") !== "true";
+      // Only a fold the visitor toggled moves (.toggled): the first state, set as the page loads, snaps.
+      fold.classList.add("toggled");
+      setFoldOpen(toggle, fold, open);
+      track("details_toggle", { item, state: open ? "open" : "close" });
+    });
+    // Find in page matched inside: open at once (no slide), so the browser scrolls to where the match will stay.
+    fold.firstElementChild.addEventListener("beforematch", () => {
+      fold.classList.remove("toggled");
+      setFoldOpen(toggle, fold, true);
+      track("details_toggle", { item, state: "find" });
+    });
   });
 
   document.querySelectorAll("[data-year]").forEach((el) => { el.textContent = String(new Date().getFullYear()); });

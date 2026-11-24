@@ -117,6 +117,7 @@ window.SITE_STRINGS.es = {
   studio1: "Desarrollé y publiqué 3 aplicaciones diferentes al mismo tiempo.",
   studio2: "Contribuí a modularizar el módulo de artistas con MVVM, principios de clean code y Jetpack Compose.",
   studio3: "Ascendido de pasante a Junior III en un año.",
+  details: "Detalles",
 
   skillsTitle: "El stack con el que trabajo, <span class=\"dim\">desde la primera pantalla hasta el pipeline de release.</span>",
   skillLanguages: "Lenguajes",
