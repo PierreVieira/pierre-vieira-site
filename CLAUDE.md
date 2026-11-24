@@ -1,7 +1,8 @@
 # pierrevieira.com
 
 Pierre Vieira's portfolio at pierrevieira.com: one page (`public/index.html`), plain HTML, CSS and JavaScript with no
-build and no dependencies. See [`README.md`](README.md) for what each file holds.
+build and no dependencies. Each file opens with a comment on what it holds; `docs/` has the deploy
+([`docs/deploy.md`](docs/deploy.md)) and the analytics ([`docs/analytics.md`](docs/analytics.md)).
 
 ## Conventions
 
@@ -20,4 +21,7 @@ build and no dependencies. See [`README.md`](README.md) for what each file holds
   experience and skills sections.
 - The years of experience are never written by hand: a `[data-years]` element (`data-years="word"` spelled out) is
   filled by `site.js` from the first job's date, in every language.
+- Analytics goes through `window.track()` (`public/analytics.js`, Firebase project `pierrevieira-site`). A new event
+  gets its row in `docs/analytics.md` in the same change.
+- The README's image is the real page: run `npm run readme-hero` after a change to the hero.
 - Check a visual change at 375, 768, 1024 and 1440 pixels wide, in light and dark, with `npm run dev` running.

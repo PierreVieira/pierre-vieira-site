@@ -21,6 +21,9 @@
   <!-- boot.js picks the theme and the language before the first paint. The page's words in each other language are
        strings/<language>.js; the markup is in English, and site.js translates every data-i18n key. -->
   <script src="/boot.js"></script>
+  <!-- Google Analytics of the site's own Firebase project (pierrevieira-site): analytics.js, which loads gtag.js once
+       the page has settled (docs/analytics.md). -->
+  <script defer src="/analytics.js"></script>
   <script src="/strings/pt.js"></script>
   <script src="/strings/es.js"></script>
   <link rel="stylesheet" href="/site.css">
@@ -165,7 +168,7 @@
         </header>
 
         <div class="apps">
-          <article class="app reveal">
+          <article class="app reveal" data-app="blitz_split">
             <div class="app-copy">
               <div class="app-title">
                 <img class="app-icon" src="/img/blitz-split.svg" width="56" height="56" alt="">
@@ -198,7 +201,7 @@
             </div>
           </article>
 
-          <article class="app reveal">
+          <article class="app reveal" data-app="bible_planner">
             <div class="app-copy">
               <div class="app-title">
                 <img class="app-icon full" src="/img/bible-planner.png" width="56" height="56" alt="">
@@ -376,7 +379,7 @@
         </header>
 
         <div class="talks">
-          <a class="talk reveal" href="https://youtu.be/dqS3nKeauTI" target="_blank" rel="noopener">
+          <a class="talk reveal" data-talk="android_overview" href="https://youtu.be/dqS3nKeauTI" target="_blank" rel="noopener">
             <div class="talk-media">
               <img src="/img/talk-android-overview.jpg" width="800" height="450" loading="lazy" decoding="async" alt="">
               <span class="play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
@@ -387,7 +390,7 @@
               <p data-i18n="talk1Desc">A lecture in English giving an overview of Android development.</p>
             </div>
           </a>
-          <a class="talk reveal" href="https://youtu.be/W2RfKpykdxs" target="_blank" rel="noopener">
+          <a class="talk reveal" data-talk="compose_intro" href="https://youtu.be/W2RfKpykdxs" target="_blank" rel="noopener">
             <div class="talk-media">
               <img src="/img/talk-compose-intro.jpg" width="800" height="600" loading="lazy" decoding="async" alt="">
               <span class="play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>

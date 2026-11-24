@@ -1,0 +1,68 @@
+<!doctype html>
+<!--
+  The README's opening image (scripts/readme-hero/generate.mjs): the page at a desktop's width in a browser window and
+  at a phone's width in a phone. generate.mjs fills the {{…}} slots (the theme and the captures' folder), writes the
+  page next to the captures and photographs it. Transparent around the devices, so it sits on GitHub's page in either
+  theme.
+-->
+<html data-theme="{{theme}}">
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    --browser-bar: #e8eaed;
+    --browser-field: #ffffff;
+    --browser-text: #3c4043;
+    --browser-edge: rgba(0, 0, 0, 0.12);
+    --phone-frame: #d4d4d8;
+  }
+  :root[data-theme="dark"] {
+    --browser-bar: #1f1f1f;
+    --browser-field: #2b2b2b;
+    --browser-text: #e3e3e3;
+    --browser-edge: rgba(255, 255, 255, 0.10);
+    --phone-frame: #3f3f46;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1280px; height: 720px; background: transparent; overflow: hidden; }
+  body { position: relative; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; }
+
+  /* The browser: a plain window bar drawn around the desktop capture (1440 × 900, shown at 1040 × 650). */
+  .browser {
+    position: absolute; left: 24px; top: 18px; width: 1040px; border-radius: 12px; overflow: hidden;
+    background: var(--browser-bar);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.30), 0 0 0 1px var(--browser-edge);
+  }
+  .browser-bar { height: 40px; padding: 0 14px; display: flex; align-items: center; gap: 16px; }
+  .lights { display: flex; gap: 7px; }
+  .lights i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+  .lights i:nth-child(1) { background: #ff5f57; }
+  .lights i:nth-child(2) { background: #febc2e; }
+  .lights i:nth-child(3) { background: #28c840; }
+  .field {
+    flex: 1; max-width: 420px; margin: 0 auto; height: 26px; border-radius: 13px; background: var(--browser-field);
+    color: var(--browser-text); font-size: 13px; display: flex; align-items: center; justify-content: center;
+  }
+  .browser img { display: block; width: 1040px; height: 650px; }
+
+  /* The phone: a rounded frame around the phone capture (390 × 844, shown at 270 × 584). */
+  .phone {
+    position: absolute; right: 24px; bottom: 18px; padding: 9px; border-radius: 46px; background: var(--phone-frame);
+    box-shadow: 0 26px 56px rgba(0, 0, 0, 0.40), 0 0 0 1px var(--browser-edge);
+  }
+  .phone img { display: block; width: 270px; height: 584px; border-radius: 37px; }
+</style>
+</head>
+<body>
+  <div class="browser">
+    <div class="browser-bar">
+      <div class="lights"><i></i><i></i><i></i></div>
+      <div class="field">pierrevieira.com</div>
+    </div>
+    <img src="{{captures}}/desktop-{{theme}}.png" alt="">
+  </div>
+  <div class="phone">
+    <img src="{{captures}}/phone-{{theme}}.png" alt="">
+  </div>
+</body>
+</html>

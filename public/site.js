@@ -4,6 +4,8 @@
 // them.
 (function () {
   const root = document.documentElement;
+  // analytics.js's window.track (docs/analytics.md); a blocked or missing analytics.js leaves every event out.
+  const track = (name, params) => { if (window.track) window.track(name, params); };
   const STRINGS = window.SITE_STRINGS || {};
   function store(key, value) {
     try {
@@ -92,6 +94,7 @@
       history.replaceState(null, "", url);
     }
     applyLanguage(pref);
+    track("language_change", { language: pref });
     closeMenus();
   }));
 
@@ -108,6 +111,7 @@
     store("theme", pref === "system" ? null : pref);
     if (window.applyTheme) window.applyTheme(pref);
     markTheme();
+    track("theme_change", { theme: pref });
     closeMenus();
   }));
 
