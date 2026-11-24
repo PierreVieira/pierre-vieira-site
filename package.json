@@ -1,0 +1,8 @@
+{
+  "name": "pierre-vieira-site",
+  "private": true,
+  "scripts": {
+    "dev": "python3 -m http.server 4321 --directory public",
+    "check:translations": "node scripts/check-translations.mjs"
+  }
+}

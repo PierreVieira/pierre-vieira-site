@@ -1,0 +1,140 @@
+// The page's behaviors: language, theme, the header's menus, the email link and the sections' entrance.
+// boot.js, in <head>, already picked the theme and the language; the markup is in English and strings/pt.js holds the
+// page's words in Portuguese (window.SITE_STRINGS.pt), keyed as the data-i18n attributes name them.
+(function () {
+  const root = document.documentElement;
+  const STRINGS = window.SITE_STRINGS || {};
+  function store(key, value) {
+    try {
+      if (value === null) localStorage.removeItem(key);
+      else localStorage.setItem(key, value);
+    } catch (e) { /* storage blocked: the choice lasts for this visit */ }
+  }
+
+  // Language. Each translated place says where its words go: data-i18n (text), data-i18n-html (markup of our own, from
+  // strings/pt.js), data-i18n-label (aria-label), data-i18n-alt (alt), data-i18n-content (a <meta>'s content) and
+  // data-src-pt (an image that shows words). The English originals are kept the first time, to switch back to.
+  const TARGETS = [
+    ["data-i18n", (el) => el.textContent, (el, value) => { el.textContent = value; }],
+    ["data-i18n-html", (el) => el.innerHTML, (el, value) => { el.innerHTML = value; }],
+    ["data-i18n-label", (el) => el.getAttribute("aria-label"), (el, value) => el.setAttribute("aria-label", value)],
+    ["data-i18n-alt", (el) => el.getAttribute("alt"), (el, value) => el.setAttribute("alt", value)],
+    ["data-i18n-content", (el) => el.getAttribute("content"), (el, value) => el.setAttribute("content", value)],
+  ];
+  const english = new Map();
+  const LANGUAGE_TAGS = { en: "en", pt: "pt-BR" };
+  const LANGUAGE_CHIPS = { en: "EN", pt: "BR" };
+
+  function translate(lang) {
+    const words = STRINGS[lang];
+    TARGETS.forEach(([attribute, read, write]) => {
+      document.querySelectorAll(`[${attribute}]`).forEach((el) => {
+        const key = el.getAttribute(attribute);
+        const id = `${attribute}:${key}`;
+        if (!english.has(el)) english.set(el, {});
+        const kept = english.get(el);
+        if (!(id in kept)) kept[id] = read(el);
+        const value = words && key in words ? words[key] : kept[id];
+        if (read(el) !== value) write(el, value);
+      });
+    });
+    document.querySelectorAll("img[data-src-pt]").forEach((img) => {
+      if (!img.dataset.srcEn) img.dataset.srcEn = img.getAttribute("src");
+      const src = lang === "pt" ? img.dataset.srcPt : img.dataset.srcEn;
+      if (img.getAttribute("src") !== src) img.setAttribute("src", src);
+    });
+  }
+
+  // pref is a language or "system", which follows the browser's languages and forgets what was kept.
+  function applyLanguage(pref) {
+    const lang = pref === "system" ? window.systemLang() : pref;
+    root.dataset.langPref = pref;
+    root.dataset.lang = lang;
+    root.lang = LANGUAGE_TAGS[lang] || lang;
+    translate(lang);
+    document.querySelectorAll(".lang-code").forEach((el) => { el.textContent = LANGUAGE_CHIPS[lang] || lang.toUpperCase(); });
+    document.querySelectorAll("[data-set-lang]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.setLang === pref));
+    });
+  }
+  applyLanguage(root.dataset.langPref || "system");
+  document.querySelectorAll("[data-set-lang]").forEach((button) => button.addEventListener("click", () => {
+    const pref = button.dataset.setLang;
+    store("lang", pref === "system" ? null : pref);
+    // A pinned ?lang= would win over the choice on the next load.
+    const url = new URL(location.href);
+    if (url.searchParams.has("lang")) {
+      url.searchParams.delete("lang");
+      history.replaceState(null, "", url);
+    }
+    applyLanguage(pref);
+    closeMenus();
+  }));
+
+  // Theme: Light, Dark or System, kept for the next visit. boot.js owns the rule (window.applyTheme).
+  function markTheme() {
+    const pref = root.dataset.themePref || "system";
+    document.querySelectorAll("[data-set-theme]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.setTheme === pref));
+    });
+  }
+  markTheme();
+  document.querySelectorAll("[data-set-theme]").forEach((button) => button.addEventListener("click", () => {
+    const pref = button.dataset.setTheme;
+    store("theme", pref === "system" ? null : pref);
+    if (window.applyTheme) window.applyTheme(pref);
+    markTheme();
+    closeMenus();
+  }));
+
+  // The header's menus are <details>: one open at a time, closed by a pick, a click outside and Escape (which gives
+  // the focus back to the menu's button).
+  const menus = [...document.querySelectorAll("details.menu")];
+  function closeMenus(except) {
+    menus.forEach((menu) => { if (menu !== except) menu.open = false; });
+  }
+  menus.forEach((menu) => {
+    menu.addEventListener("toggle", () => { if (menu.open) closeMenus(menu); });
+    menu.querySelectorAll(".menu-pop a").forEach((link) => link.addEventListener("click", () => closeMenus()));
+  });
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("details.menu")) closeMenus();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    const open = menus.find((menu) => menu.open);
+    if (!open) return;
+    open.open = false;
+    open.querySelector("summary").focus();
+  });
+
+  // The header draws its line once the page has scrolled under it.
+  const header = document.querySelector(".site-header");
+  if (header) {
+    const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  // The email address is written here, from its parts, so it isn't in the markup for a scraper to read.
+  document.querySelectorAll("[data-email]").forEach((link) => {
+    const address = `${link.dataset.user}@${link.dataset.host}`;
+    link.href = `mailto:${address}`;
+    const text = link.querySelector("[data-email-text]");
+    if (text) text.textContent = address;
+  });
+
+  document.querySelectorAll("[data-year]").forEach((el) => { el.textContent = String(new Date().getFullYear()); });
+
+  // Entrance: with :root.motion (boot.js), a .reveal block rises once as it scrolls into view.
+  if (root.classList.contains("motion")) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("in");
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  }
+})();

@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title data-i18n="metaTitle">Pierre Vieira · Senior Android Engineer</title>
+  <meta name="description" data-i18n-content="metaDescription" content="Senior Android engineer working with Kotlin, Jetpack Compose and Kotlin Multiplatform. 6+ years shipping apps at Toyota, Arlo, Mercado Libre and iFood, and the maker of Blitz Split and Bible Planner.">
+  <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://pierrevieira.com/">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://pierrevieira.com/">
+  <meta property="og:title" content="Pierre Vieira · Senior Android Engineer">
+  <meta property="og:description" content="Android and Kotlin Multiplatform apps people use every day. Toyota, Arlo, Mercado Libre, iFood, and two apps of my own.">
+  <meta property="og:image" content="https://pierrevieira.com/img/pierre-vieira.jpg">
+  <meta name="twitter:card" content="summary">
+  <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- boot.js picks the theme and the language before the first paint. The page's words in Portuguese are
+       strings/pt.js; the markup is in English, and site.js translates every data-i18n key. -->
+  <script src="/boot.js"></script>
+  <script src="/strings/pt.js"></script>
+  <link rel="stylesheet" href="/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pierre Vieira",
+    "url": "https://pierrevieira.com/",
+    "image": "https://pierrevieira.com/img/pierre-vieira.jpg",
+    "jobTitle": "Senior Android Software Engineer",
+    "worksFor": { "@type": "Organization", "name": "Super" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "CEFET-MG" },
+    "knowsAbout": ["Android", "Kotlin", "Kotlin Multiplatform", "Jetpack Compose", "Compose Multiplatform"],
+    "knowsLanguage": ["en", "pt-BR"],
+    "sameAs": ["https://www.linkedin.com/in/pierre-vieira/", "https://github.com/PierreVieira"]
+  }
+  </script>
+</head>
+<body>
+  <!-- Icons: Lucide (ISC), inlined once and referenced with <use>. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-languages" viewBox="0 0 24 24"><path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 7h10v10M7 17 17 7"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 3l14 9-14 9V3z"/></symbol>
+  </svg>
+
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Pierre Vieira, home" data-i18n-label="brandLabel"><span class="brand-mark" aria-hidden="true">PV</span>Pierre Vieira</a>
+      <nav class="nav" aria-label="Sections" data-i18n-label="navLabel">
+        <a href="#apps" data-i18n="navApps">Apps</a>
+        <a href="#experience" data-i18n="navExperience">Experience</a>
+        <a href="#skills" data-i18n="navSkills">Skills</a>
+        <a href="#talks" data-i18n="navTalks">Talks</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="header-end">
+        <!-- The language menu: "System" (the browser's languages) and each language in its own name. -->
+        <details class="menu lang-menu">
+          <summary aria-label="Language" data-i18n-label="language"><svg class="icon" aria-hidden="true"><use href="#i-languages"/></svg><span class="lang-code" aria-hidden="true">EN</span></summary>
+          <div class="menu-pop">
+            <button type="button" data-set-lang="system"><span class="lang-chip" aria-hidden="true"><svg class="icon" style="width:13px;height:13px"><use href="#i-monitor"/></svg></span><span class="lang-names"><span data-i18n="system">System</span><span class="lang-detail" data-i18n="langSystemDetail">Device language</span></span></button>
+            <button type="button" data-set-lang="en"><span class="lang-chip" aria-hidden="true">EN</span><span class="lang-names"><span lang="en">English</span><span class="lang-detail" data-i18n="langEnDetail"></span></span></button>
+            <button type="button" data-set-lang="pt"><span class="lang-chip" aria-hidden="true">BR</span><span class="lang-names"><span lang="pt-BR">Português (Brasil)</span><span class="lang-detail" data-i18n="langPtDetail">Portuguese (Brazil)</span></span></button>
+          </div>
+        </details>
+        <details class="menu theme-menu">
+          <summary aria-label="Theme" data-i18n-label="theme"><svg class="icon ic-light" aria-hidden="true"><use href="#i-sun"/></svg><svg class="icon ic-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="icon ic-system" aria-hidden="true"><use href="#i-monitor"/></svg></summary>
+          <div class="menu-pop">
+            <button type="button" data-set-theme="light"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg><span data-i18n="themeLight">Light</span></button>
+            <button type="button" data-set-theme="dark"><svg class="icon" aria-hidden="true"><use href="#i-moon"/></svg><span data-i18n="themeDark">Dark</span></button>
+            <button type="button" data-set-theme="system"><svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg><span data-i18n="system">System</span></button>
+          </div>
+        </details>
+        <details class="menu nav-menu">
+          <summary aria-label="Menu" data-i18n-label="menu"><svg class="icon ic-open" aria-hidden="true"><use href="#i-menu"/></svg><svg class="icon ic-close" aria-hidden="true"><use href="#i-x"/></svg></summary>
+          <nav class="menu-pop" aria-label="Sections" data-i18n-label="navLabel">
+            <a href="#apps" data-i18n="navApps">Apps</a>
+            <a href="#experience" data-i18n="navExperience">Experience</a>
+            <a href="#skills" data-i18n="navSkills">Skills</a>
+            <a href="#talks" data-i18n="navTalks">Talks</a>
+            <a href="#contact" data-i18n="navContact">Contact</a>
+            <hr>
+            <a href="/cv/pierre-vieira-cv.pdf" download data-i18n="cvDownload">Download résumé</a>
+          </nav>
+        </details>
+        <a class="btn btn-ghost btn-sm header-cv" href="/cv/pierre-vieira-cv.pdf" download><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span data-i18n="cvShort">Résumé</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <figure class="portrait">
+          <img src="/img/pierre-vieira.jpg" width="460" height="460" alt="Pierre Vieira" data-i18n-alt="portraitAlt" fetchpriority="high">
+          <figcaption>
+            <span class="status" data-i18n="statusLabel">Currently</span>
+            <strong data-i18n="statusValue">Senior Android Engineer at Super</strong>
+          </figcaption>
+        </figure>
+        <div class="hero-copy">
+          <p class="eyebrow"><span data-i18n="heroEyebrow">Senior Android Engineer · Kotlin Multiplatform</span></p>
+          <h1 data-i18n-html="heroTitle">I build Android and Kotlin Multiplatform apps <span class="dim">people use every day.</span></h1>
+          <p class="lead" data-i18n="heroLead">Senior Android engineer with 6+ years shipping products at Toyota, Arlo, Mercado Libre and iFood. I also design, build and publish my own apps for Android, iOS, macOS and the web.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#apps"><span data-i18n="heroPrimary">See my apps</span><svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></a>
+            <a class="btn btn-ghost" href="/cv/pierre-vieira-cv.pdf" download><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span data-i18n="cvDownload">Download résumé</span></a>
+            <a class="btn btn-ghost btn-icon" href="https://www.linkedin.com/in/pierre-vieira/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+            <a class="btn btn-ghost btn-icon" href="https://github.com/PierreVieira" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a>
+          </div>
+          <ul class="hero-meta">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="metaLocation">Brazil · Remote (UTC−3)</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg><span data-i18n="metaLanguages">Works in English and Portuguese</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <ul class="stats">
+          <li><strong>6+</strong><span data-i18n="statYears">years building Android apps</span></li>
+          <li><strong>6</strong><span data-i18n="statTeams">product teams in Brazil and the US</span></li>
+          <li><strong>2</strong><span data-i18n="statApps">apps of my own, built end to end</span></li>
+          <li><strong>24</strong><span data-i18n="statLanguages">languages Blitz Split ships in</span></li>
+        </ul>
+        <div class="teams">
+          <p class="eyebrow" data-i18n="teamsLabel">Teams I've worked with</p>
+          <ul>
+            <li>Super</li>
+            <li>Toyota</li>
+            <li>Arlo</li>
+            <li data-i18n="mercadoName">Mercado Libre</li>
+            <li>iFood</li>
+            <li>Studio Sol</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="apps">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span class="idx">01</span><span class="rule"></span><span data-i18n="navApps">Apps</span></p>
+          <h2 data-i18n-html="appsTitle">Two apps of my own, <span class="dim">designed, built and shipped end to end.</span></h2>
+        </header>
+
+        <div class="apps">
+          <article class="app reveal">
+            <div class="app-copy">
+              <div class="app-title">
+                <img class="app-icon" src="/img/blitz-split.svg" width="56" height="56" alt="">
+                <div>
+                  <h3 data-i18n="blitzName">Blitz Split</h3>
+                  <p class="app-tag" data-i18n="blitzTag">Split the bill. Keep the friends.</p>
+                </div>
+              </div>
+              <p class="app-desc" data-i18n="blitzDesc">An offline-first app to split bills among friends. Kotlin Multiplatform is shared up to the ViewModel, with a native UI on each platform: Jetpack Compose on Android, SwiftUI with Liquid Glass on Apple platforms and React on the web.</p>
+              <ul class="checks">
+                <li data-i18n="blitzPoint1">Every bill is saved on the device first and synced through Supabase, with an optional account.</li>
+                <li data-i18n="blitzPoint2">Splits equally, by amounts, by percentages or item by item.</li>
+                <li data-i18n="blitzPoint3">Fills a bill in from a photo of the receipt.</li>
+                <li data-i18n="blitzPoint4">Available in 24 languages (26 locales).</li>
+              </ul>
+              <dl class="facts">
+                <div><dt data-i18n="factPlatforms">Platforms</dt><dd data-i18n="blitzPlatforms">Android, iOS, macOS and web</dd></div>
+                <div><dt data-i18n="factStack">Stack</dt><dd>Kotlin Multiplatform, Jetpack Compose, SwiftUI, React, Supabase</dd></div>
+              </dl>
+              <div class="actions">
+                <a class="btn btn-primary" href="https://blitzsplit.com/" target="_blank" rel="noopener">blitzsplit.com<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                <a class="btn btn-ghost" href="https://github.com/Quartel-Enterprise/blitz-split-client" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span data-i18n="sourceCode">Source code</span></a>
+              </div>
+            </div>
+            <div class="shots">
+              <img src="/img/blitz-split-1-en.jpg" data-src-pt="/img/blitz-split-1-pt.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="Blitz Split: a group's screen with its balance and expenses" data-i18n-alt="blitzShot1">
+              <img src="/img/blitz-split-2-en.jpg" data-src-pt="/img/blitz-split-2-pt.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="Blitz Split: a bill filled in from a photo of the receipt" data-i18n-alt="blitzShot2">
+            </div>
+          </article>
+
+          <article class="app reveal">
+            <div class="app-copy">
+              <div class="app-title">
+                <img class="app-icon full" src="/img/bible-planner.png" width="56" height="56" alt="">
+                <div>
+                  <h3>Bible Planner</h3>
+                  <p class="app-tag" data-i18n="bibleTag">Your whole Bible, one day at a time.</p>
+                </div>
+              </div>
+              <p class="app-desc" data-i18n="bibleDesc">A Kotlin Multiplatform app for Android, iOS and desktop, built with Compose Multiplatform from a single codebase shared across all three.</p>
+              <ul class="checks">
+                <li data-i18n="biblePoint1">Reading plans in chronological or book order, with daily progress tracking.</li>
+                <li data-i18n="biblePoint2">Highlights and notes synced to your account.</li>
+                <li data-i18n="biblePoint3">A daily study, powered by AI: a summary of the passage, its historical context and reflection questions.</li>
+                <li data-i18n="biblePoint4">A chat assistant that already knows the day's reading.</li>
+              </ul>
+              <dl class="facts">
+                <div><dt data-i18n="factPlatforms">Platforms</dt><dd data-i18n="biblePlatforms">Android, iOS and desktop</dd></div>
+                <div><dt data-i18n="factStack">Stack</dt><dd>Kotlin Multiplatform, Compose Multiplatform, Supabase, RevenueCat, Firebase</dd></div>
+              </dl>
+              <div class="actions">
+                <a class="btn btn-primary" href="https://www.bibleplanner.app/" target="_blank" rel="noopener">bibleplanner.app<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                <a class="btn btn-ghost" href="https://github.com/Quartel-Enterprise/bible-planner-mobile-client" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span data-i18n="sourceCode">Source code</span></a>
+              </div>
+            </div>
+            <div class="shots">
+              <img src="/img/bible-planner-1-en.jpg" data-src-pt="/img/bible-planner-1-pt.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="Bible Planner: today's reading and the plan's progress" data-i18n-alt="bibleShot1">
+              <img src="/img/bible-planner-2-en.jpg" data-src-pt="/img/bible-planner-2-pt.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="Bible Planner: the daily study of a passage" data-i18n-alt="bibleShot2">
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span class="idx">02</span><span class="rule"></span><span data-i18n="navExperience">Experience</span></p>
+          <h2 data-i18n-html="experienceTitle">Six years of Android, <span class="dim">across sports, connected cars, smart home, payments and food delivery.</span></h2>
+        </header>
+
+        <ol class="timeline">
+          <li class="job reveal">
+            <div class="job-when">
+              <p class="period" data-i18n="superPeriod">Mar 2026 – Present</p>
+              <p class="place" data-i18n="placeSaoPaulo">São Paulo, Brazil · Remote</p>
+            </div>
+            <div>
+              <h3><a href="https://super.xyz/" target="_blank" rel="noopener"><span class="ext">Super<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a><span class="now" data-i18n="now">Now</span></h3>
+              <p class="role" data-i18n="roleSenior">Senior Android Software Engineer</p>
+              <ul class="bullets">
+                <li data-i18n="super1">Primary engineer for the sports app's home screen on Android, built with Jetpack Compose in a server-driven UI (SDUI) architecture.</li>
+                <li data-i18n="super2">Screen structure and content are defined by the backend, with Protocol Buffers as the contract between backend and client.</li>
+                <li data-i18n="super3">Kotlin Multiplatform shares business logic with iOS, so the architecture scales across platforms.</li>
+              </ul>
+              <ul class="tags"><li>Jetpack Compose</li><li>Server-Driven UI</li><li>Protocol Buffers</li><li>Kotlin Multiplatform</li></ul>
+            </div>
+          </li>
+
+          <li class="job reveal">
+            <div class="job-when">
+              <p class="period" data-i18n="toyotaPeriod">May 2025 – Feb 2026</p>
+              <p class="place" data-i18n="placeNewYork">New York, United States · Remote</p>
+            </div>
+            <div>
+              <h3><a href="https://www.toyota.com/" target="_blank" rel="noopener"><span class="ext">Toyota<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a><span class="via" data-i18n="toyotaVia">contractor through Very Good Ventures</span></h3>
+              <p class="role" data-i18n="roleSenior">Senior Android Software Engineer</p>
+              <ul class="bullets">
+                <li data-i18n="toyota1">Built native Android features for Toyota's connected vehicle app, for electric cars, with Kotlin and Jetpack Compose.</li>
+                <li data-i18n="toyota2">Applied MVI and MVVM across the codebase, following clean architecture principles.</li>
+                <li data-i18n="toyota3">Focused on performance and scalability to support the app's growing feature set.</li>
+              </ul>
+              <ul class="tags"><li>Kotlin</li><li>Jetpack Compose</li><li>MVI</li><li>MVVM</li><li>Clean Architecture</li></ul>
+            </div>
+          </li>
+
+          <li class="job reveal">
+            <div class="job-when">
+              <p class="period" data-i18n="arloPeriod">Dec 2024 – May 2025</p>
+              <p class="place" data-i18n="placeCalifornia">Marina del Rey, California · Remote</p>
+            </div>
+            <div>
+              <h3><a href="https://www.arlo.com/" target="_blank" rel="noopener"><span class="ext">Arlo<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a><span class="via" data-i18n="arloVia">contractor through Side</span></h3>
+              <p class="role" data-i18n="roleSenior">Senior Android Software Engineer</p>
+              <ul class="bullets">
+                <li data-i18n="arlo1">Integrated home security devices, such as cameras and doorbells, into the native Android app, in Kotlin and Java.</li>
+                <li data-i18n="arlo2">Built AI audio event detection: features that identify sounds captured by the devices, such as glass breaking and alarms.</li>
+                <li data-i18n="arlo3">Implemented AI-generated subtitles that describe what is happening in each camera event.</li>
+              </ul>
+              <ul class="tags"><li>Kotlin</li><li>Java</li><li data-i18n="tagIot">Connected devices</li><li data-i18n="tagAi">AI features</li></ul>
+            </div>
+          </li>
+
+          <li class="job reveal">
+            <div class="job-when">
+              <p class="period" data-i18n="mercadoPeriod">Jun 2022 – Dec 2024</p>
+              <p class="place" data-i18n="placeSaoPaulo">São Paulo, Brazil · Remote</p>
+            </div>
+            <div>
+              <h3><a href="https://www.mercadolivre.com.br/" target="_blank" rel="noopener"><span class="ext"><span data-i18n="mercadoName">Mercado Libre</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a><span class="via">Mercado Pago</span></h3>
+              <p class="role"><span data-i18n="roleSenior">Senior Android Software Engineer</span> <span class="dim" data-i18n="mercadoPrevious">· Mid-Level until Feb 2023</span></p>
+              <ul class="bullets">
+                <li data-i18n="mercado1">Cut payment processing time by implementing new services and parallelizing local operations.</li>
+                <li data-i18n="mercado2">Designed and built a server-driven navigation engine for Android: a JSON graph sent by the backend defines the navigation of dynamic payment flows.</li>
+                <li data-i18n="mercado3">Modularized the core payment flow, making the payment system more scalable and flexible.</li>
+                <li data-i18n="mercado4">Reviewed around 30 pull requests a week, raising code quality and team standards.</li>
+              </ul>
+              <ul class="tags"><li data-i18n="tagPayments">Payments</li><li data-i18n="tagSdn">Server-driven navigation</li><li data-i18n="tagModularization">Modularization</li><li data-i18n="tagReview">Code review</li></ul>
+            </div>
+          </li>
+
+          <li class="job reveal">
+            <div class="job-when">
+              <p class="period" data-i18n="ifoodPeriod">Jan 2022 – Jun 2022</p>
+              <p class="place" data-i18n="placeCampinas">Campinas, Brazil · Remote</p>
+            </div>
+            <div>
+              <h3><a href="https://www.ifood.com.br/" target="_blank" rel="noopener"><span class="ext">iFood<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a></h3>
+              <p class="role" data-i18n="roleMid">Mid-Level Android Software Engineer</p>
+              <ul class="bullets">
+                <li data-i18n="ifood1">Migrated 3 screens of the grocery feature to Jetpack Compose, modernizing its interface.</li>
+                <li data-i18n-html="ifood2">Gave a talk introducing Jetpack Compose for Android, <a class="link" href="https://youtu.be/W2RfKpykdxs" target="_blank" rel="noopener">available on YouTube</a>.</li>
+              </ul>
+              <ul class="tags"><li>Jetpack Compose</li><li data-i18n="tagGrocery">Grocery</li><li data-i18n="tagSpeaking">Public speaking</li></ul>
+            </div>
+          </li>
+
+          <li class="job reveal">
+            <div class="job-when">
+              <p class="period" data-i18n="studioPeriod">Sep 2020 – Jan 2022</p>
+              <p class="place" data-i18n="placeBeloHorizonte">Belo Horizonte, Brazil · Remote</p>
+            </div>
+            <div>
+              <h3><a href="https://www.studiosol.com.br/" target="_blank" rel="noopener"><span class="ext">Studio Sol<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a></h3>
+              <p class="role"><span data-i18n="roleJunior">Junior Android Software Engineer III</span> <span class="dim" data-i18n="studioPrevious">· Mobile Developer Intern until Sep 2021</span></p>
+              <ul class="bullets">
+                <li data-i18n="studio1">Developed and released 3 different applications at the same time.</li>
+                <li data-i18n="studio2">Helped modularize the artist module with MVVM, clean code principles and Jetpack Compose.</li>
+                <li data-i18n="studio3">Promoted from intern to Junior III within one year.</li>
+              </ul>
+              <ul class="tags"><li>Kotlin</li><li>MVVM</li><li>Jetpack Compose</li><li data-i18n="tagModularization">Modularization</li></ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span class="idx">03</span><span class="rule"></span><span data-i18n="navSkills">Skills</span></p>
+          <h2 data-i18n-html="skillsTitle">The stack I work with, <span class="dim">from the first screen to the release pipeline.</span></h2>
+        </header>
+
+        <dl class="skills reveal">
+          <div><dt data-i18n="skillLanguages">Languages</dt><dd><ul class="tags"><li>Kotlin</li><li>Java</li></ul></dd></div>
+          <div><dt data-i18n="skillPlatforms">Platforms and UI</dt><dd><ul class="tags"><li>Android</li><li>Kotlin Multiplatform</li><li>Compose Multiplatform</li><li>Jetpack Compose</li><li>Android SDK</li></ul></dd></div>
+          <div><dt data-i18n="skillArchitecture">Architecture</dt><dd><ul class="tags"><li>MVVM</li><li>MVI</li><li>MVP</li><li>Clean Architecture</li><li>Server-Driven UI</li><li data-i18n="tagModularization">Modularization</li></ul></dd></div>
+          <div><dt data-i18n="skillLibraries">Libraries</dt><dd><ul class="tags"><li>Coroutines</li><li>Flow</li><li>Ktor</li><li>Retrofit</li><li>Room</li><li>ViewModel</li><li>LiveData</li><li>Protocol Buffers</li></ul></dd></div>
+          <div><dt data-i18n="skillTesting">Testing</dt><dd><ul class="tags"><li data-i18n="testUnit">Unit</li><li data-i18n="testIntegration">Integration</li><li data-i18n="testE2e">End to end</li></ul></dd></div>
+          <div><dt data-i18n="skillDelivery">CI/CD</dt><dd><ul class="tags"><li>GitHub Actions</li><li>Fastlane</li><li>CircleCI</li><li>Bitrise</li></ul></dd></div>
+          <div><dt data-i18n="skillBackend">Backend services</dt><dd><ul class="tags"><li>Firebase</li><li>Supabase</li><li data-i18n="tagRest">RESTful APIs</li></ul></dd></div>
+          <div><dt data-i18n="skillProcess">Ways of working</dt><dd><ul class="tags"><li>Scrum</li><li>Kanban</li></ul></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="talks">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span class="idx">04</span><span class="rule"></span><span data-i18n="navTalks">Talks</span></p>
+          <h2 data-i18n-html="talksTitle">Sharing what I learn, <span class="dim">in English and in Portuguese.</span></h2>
+        </header>
+
+        <div class="talks">
+          <a class="talk reveal" href="https://youtu.be/dqS3nKeauTI" target="_blank" rel="noopener">
+            <div class="talk-media">
+              <img src="/img/talk-android-overview.jpg" width="800" height="450" loading="lazy" decoding="async" alt="">
+              <span class="play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
+            </div>
+            <div class="talk-body">
+              <p class="talk-meta" data-i18n="talk1Meta">Nov 2023 · English · YouTube</p>
+              <h3>Android Development Overview</h3>
+              <p data-i18n="talk1Desc">A lecture in English giving an overview of Android development.</p>
+            </div>
+          </a>
+          <a class="talk reveal" href="https://youtu.be/W2RfKpykdxs" target="_blank" rel="noopener">
+            <div class="talk-media">
+              <img src="/img/talk-compose-intro.jpg" width="800" height="600" loading="lazy" decoding="async" alt="">
+              <span class="play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
+            </div>
+            <div class="talk-body">
+              <p class="talk-meta" data-i18n="talk2Meta">Jun 2022 · Portuguese · YouTube</p>
+              <h3 data-i18n="talk2Title">Jetpack Compose Introduction</h3>
+              <p data-i18n="talk2Desc">An introduction to Jetpack Compose for Android, presented in Portuguese with iFood.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="wrap contact-grid">
+        <div class="reveal">
+          <p class="eyebrow"><span class="idx">05</span><span class="rule"></span><span data-i18n="navContact">Contact</span></p>
+          <h2 data-i18n-html="contactTitle">Let's build <span class="dim">something people will use.</span></h2>
+          <p class="lead" data-i18n="contactLead">I'm open to senior Android and Kotlin Multiplatform roles, remote, with teams anywhere in the world. Email and LinkedIn are the fastest ways to reach me.</p>
+        </div>
+        <div class="contact-list reveal">
+          <!-- site.js writes the address from its parts, so it isn't in the markup for a scraper to read. -->
+          <a href="#contact" data-email data-user="pierrevieiraggg" data-host="gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span class="label" data-i18n="contactEmail">Email</span><span class="value" data-email-text></span><svg class="icon arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a href="https://www.linkedin.com/in/pierre-vieira/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg><span class="label">LinkedIn</span><span class="value">in/pierre-vieira</span><svg class="icon arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a href="https://github.com/PierreVieira" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span class="label">GitHub</span><span class="value">PierreVieira</span><svg class="icon arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a href="/cv/pierre-vieira-cv.pdf" download><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><span class="label" data-i18n="cvShort">Résumé</span><span class="value" data-i18n="cvDetail">PDF, in English</span><svg class="icon arrow" aria-hidden="true"><use href="#i-download"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© <span data-year>2026</span> Pierre Vieira</p>
+      <a class="link" href="#top" data-i18n="backToTop">Back to top</a>
+    </div>
+  </footer>
+
+  <script src="/site.js"></script>
+</body>
+</html>

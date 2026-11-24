@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    rect { fill: #09090b; } text { fill: #fafafa; }
+    @media (prefers-color-scheme: dark) { rect { fill: #fafafa; } text { fill: #09090b; } }
+  </style>
+  <rect width="64" height="64" rx="16"/>
+  <text x="32" y="41" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" font-weight="600">PV</text>
+</svg>
