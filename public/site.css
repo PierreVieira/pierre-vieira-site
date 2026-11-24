@@ -468,7 +468,7 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
   background: var(--surface); border: 1px solid var(--border-strong); color: var(--fg); box-shadow: var(--shadow-lg);
   text-decoration: none; transition: transform 0.2s var(--ease), color 0.2s var(--ease);
 }
-.fab-top:hover { color: var(--accent); transform: translateY(-2px); }
+@media (hover: hover) { .fab-top:hover { color: var(--accent); transform: translateY(-2px); } }
 .fab-top[hidden] { display: none; }
 @media print { .fab-top { display: none; } }
 @media (prefers-reduced-motion: reduce) { .fab-top { transition: none; } .fab-top:hover { transform: none; } }
