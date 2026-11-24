@@ -149,12 +149,19 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  // The floating button to the top appears once the page has scrolled a screen or so.
+  // The floating button to the top appears once the hero has scrolled out of view, and steps aside when the footer,
+  // with its own link to the top, comes in (where the button would sit on that link).
   const topButton = document.querySelector(".fab-top");
-  if (topButton) {
-    const onScrollTop = () => { topButton.hidden = window.scrollY < 600; };
-    onScrollTop();
-    window.addEventListener("scroll", onScrollTop, { passive: true });
+  const hero = document.getElementById("top");
+  const footer = document.querySelector(".site-footer");
+  if (topButton && hero && footer) {
+    const inView = new Map();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => inView.set(entry.target, entry.isIntersecting));
+      topButton.hidden = inView.get(hero) !== false || inView.get(footer) === true;
+    });
+    observer.observe(hero);
+    observer.observe(footer);
   }
 
   // The email address is written here, from its parts, so it isn't in the markup for a scraper to read.
