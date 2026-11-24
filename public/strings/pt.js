@@ -8,6 +8,7 @@ window.SITE_STRINGS.pt = {
   metaDescription: "Engenheiro de software sênior, criando apps que as pessoas usam todos os dias. Entregou produtos na Super, Toyota, Arlo, Mercado Livre, iFood e Studio Sol, e criador do Bora Rachar e do Bible Planner.",
   skip: "Pular para o conteúdo",
   brandLabel: "Pierre Vieira, início",
+  heroGithubLabel: "O código deste site no GitHub",
   navLabel: "Seções",
   navApps: "Apps",
   navExperience: "Experiência",
