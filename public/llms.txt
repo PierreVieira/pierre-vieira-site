@@ -18,7 +18,7 @@ The portfolio is one page, available in English, Portuguese (`?lang=pt`) and Spa
 - [Arlo](https://www.arlo.com/): Senior Android Software Engineer, Dec 2024 – May 2025, contractor through Side. Home security devices and AI audio event detection.
 - [Mercado Libre](https://www.mercadolivre.com.br/): Senior Android Software Engineer at Mercado Pago, Jun 2022 – Dec 2024. Payments and a server-driven navigation engine.
 - [iFood](https://www.ifood.com.br/): Mid-Level Android Software Engineer, Jan 2022 – Jun 2022. Grocery screens in Jetpack Compose.
-- [Studio Sol](https://www.studiosol.com.br/): Junior Android Software Engineer III, Sep 2020 – Jan 2022, intern until Sep 2021.
+- [Studio Sol](https://www.studiosol.com.br/): Junior Android Software Engineer III, Sep 2020 – Jan 2022, intern until Sep 2021. Music apps: Cifra Club, Palco MP3, Afinador (tuner) and Metrônomo (metronome).
 
 ## Apps
 
