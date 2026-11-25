@@ -156,6 +156,31 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  // The section in view marks its link in the header's sections (aria-current), which the rail shows as its indicator:
+  // the one crossing a line 40% down the screen (none, up in the hero), or the last one once the page is at its foot,
+  // where a short last section never reaches that line.
+  const navLinks = [...document.querySelectorAll(".nav a[href^='#']")];
+  const navSections = navLinks.map((link) => document.getElementById(link.getAttribute("href").slice(1))).filter(Boolean);
+  if (navSections.length && "IntersectionObserver" in window) {
+    let onLine = null;
+    const markCurrent = () => {
+      const root = document.documentElement;
+      const atFoot = window.innerHeight + window.scrollY >= root.scrollHeight - 1;
+      const current = atFoot ? navSections[navSections.length - 1].id : onLine;
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === `#${current}`) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
+      });
+    };
+    const spy = new IntersectionObserver((entries) => {
+      entries.filter((entry) => !entry.isIntersecting && entry.target.id === onLine).forEach(() => { onLine = null; });
+      entries.filter((entry) => entry.isIntersecting).forEach((entry) => { onLine = entry.target.id; });
+      markCurrent();
+    }, { rootMargin: "-40% 0px -59% 0px" });
+    navSections.forEach((section) => spy.observe(section));
+    window.addEventListener("scroll", markCurrent, { passive: true });
+  }
+
   // The floating button to the top appears once the hero has scrolled out of view, and steps aside when the footer,
   // with its own link to the top, comes in (where the button would sit on that link).
   const topButton = document.querySelector(".fab-top");
