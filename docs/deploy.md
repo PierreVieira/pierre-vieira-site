@@ -12,8 +12,12 @@ Markdown or JSON.
 ## From `main`
 
 Every commit on `main` deploys through [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/),
-which runs `npx wrangler deploy`; other branches don't build. What is in `public/` is what goes out, plus the one
-built file below.
+which runs `bash scripts/deploy.sh` (the Deploy command in Settings › Builds in the Cloudflare dashboard); other
+branches don't build. What is in `public/` is what goes out, plus the one built file below.
+
+`scripts/deploy.sh` runs `npx wrangler deploy` and, when the Cloudflare API rate limits it (code 971), waits 30 and
+then 60 seconds and tries again: Wrangler alone gives up on the first rate-limited request. Any other failure ends
+the deploy at once.
 
 A commit that only touches `docs/*`, `*.md`, `.github/*` or `.claude/*` doesn't deploy: those are the Exclude paths of
 the Worker's Build watch paths (Settings › Builds in the Cloudflare dashboard), with `*` as the Include path. A commit
@@ -40,5 +44,5 @@ The same PDF goes to Pierre's OneDrive on every push to `main` that changes it (
 npm run deploy
 ```
 
-Runs `npx wrangler deploy`, and needs `npx wrangler login` first, on the Cloudflare account that has the
+Runs the same `scripts/deploy.sh`, and needs `npx wrangler login` first, on the Cloudflare account that has the
 pierrevieira.com zone.
