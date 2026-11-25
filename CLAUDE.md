@@ -11,8 +11,7 @@ opens with a comment on what it holds; `docs/` has the deploy ([`docs/deploy.md`
 - The markup is in English. Every string the page shows has a `data-i18n` key (`data-i18n-html` when it holds markup,
   `-label`, `-alt` and `-content` for attributes) with its Portuguese in `public/strings/pt.js` and its Spanish in
   `public/strings/es.js`. Add all of them in the same change and run `npm run check:translations`.
-- An image that shows words has each other language's version in `data-src-pt` and `data-src-es` (`data-href-pt` and
-  `data-href-es` on the `<use>` of a logo that does, from `public/img/team-logos.svg`).
+- An image that shows words has each other language's version in `data-src-pt` and `data-src-es`.
 - `public/site.css` holds the tokens (light and dark) and every component: use the tokens, never raw colors.
 - `public/boot.js` runs in `<head>` and decides the theme, the language and `.motion` before the first paint. Every
   entrance animation hangs on `:root.motion`, so with reduced motion (or a pinned `?theme=`) the page is still and

@@ -17,7 +17,9 @@ const used = keysOf(/data-i18n(?:-html|-label|-alt|-content)?="([^"]+)"/g);
 // A key read by anything but data-i18n-html is written as text: markup in it would show as written.
 const plain = keysOf(/data-i18n(?:-label|-alt|-content)?="([^"]+)"/g);
 // An image that shows words has one file per language, and so has a logo that does (the <use> of its symbol).
-const images = [...html.matchAll(/<(?:img|use)[^>]*data-(src|href)-[a-z]+=[^>]*>/g)].map((match) => ({ tag: match[0], attribute: match[1] }));
+// Each tag with the attribute site.js swaps on it: an <img>'s src, a <use>'s href.
+const images = [...html.matchAll(/<(?:img[^>]*data-(src)|use[^>]*data-(href))-[a-z]+=[^>]*>/g)]
+  .map((match) => ({ tag: match[0], attribute: match[1] || match[2] }));
 
 let failed = false;
 const fail = (message) => { console.error(message); failed = true; };
