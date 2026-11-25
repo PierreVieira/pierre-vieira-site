@@ -21,7 +21,7 @@
   <!-- The card a link to the site unfolds into: drawn from the hero by `npm run link-card`, in English only, as what
        unfolds a link runs no script. The same command writes the ?v= after its address, the image's version. Its alt
        says what the card holds without repeating its words, so it stays true when they change. -->
-  <meta property="og:image" content="https://pierrevieira.com/img/link-card.png?v=40c6092c">
+  <meta property="og:image" content="https://pierrevieira.com/img/link-card.png?v=e574c0f6">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -160,13 +160,17 @@
         </ul>
         <div class="teams">
           <p class="eyebrow" data-i18n="teamsLabel">Teams I've worked with</p>
+          <!-- Each team's logo in one colour, from img/team-logos.svg: the <svg> repeats its symbol's viewBox, and the
+               name stays in the link for a screen reader and for the link card (scripts/link-card). -->
           <ul>
-            <li><a href="https://super.xyz/" target="_blank" rel="noopener">Super</a></li>
-            <li><a href="https://www.toyota.com/" target="_blank" rel="noopener">Toyota</a></li>
-            <li><a href="https://www.arlo.com/" target="_blank" rel="noopener">Arlo</a></li>
-            <li><a href="https://www.mercadolivre.com.br/" target="_blank" rel="noopener" data-i18n="mercadoName">Mercado Libre</a></li>
-            <li><a href="https://www.ifood.com.br/" target="_blank" rel="noopener">iFood</a></li>
-            <li><a href="https://www.studiosol.com.br/" target="_blank" rel="noopener">Studio Sol</a></li>
+            <li><a href="https://super.xyz/" target="_blank" rel="noopener"><svg class="team-logo" viewBox="0 0 87.03 32" aria-hidden="true"><use href="img/team-logos.svg#super"/></svg><span class="sr-only">Super</span></a></li>
+            <li><a href="https://www.toyota.com/" target="_blank" rel="noopener"><svg class="team-logo" viewBox="0 0 133.08 32" aria-hidden="true"><use href="img/team-logos.svg#toyota"/></svg><span class="sr-only">Toyota</span></a></li>
+            <li><a href="https://verygood.ventures/" target="_blank" rel="noopener"><svg class="team-logo" viewBox="0 0 64.24 32" aria-hidden="true"><use href="img/team-logos.svg#very-good-ventures"/></svg><span class="sr-only">Very Good Ventures</span></a></li>
+            <li><a href="https://www.arlo.com/" target="_blank" rel="noopener"><svg class="team-logo" viewBox="0 0 64.12 32" aria-hidden="true"><use href="img/team-logos.svg#arlo"/></svg><span class="sr-only">Arlo</span></a></li>
+            <li><a href="https://www.side.inc/" target="_blank" rel="noopener"><svg class="team-logo" viewBox="0 0 51.79 32" aria-hidden="true"><use href="img/team-logos.svg#side"/></svg><span class="sr-only">Side</span></a></li>
+            <li><a href="https://www.mercadolivre.com.br/" target="_blank" rel="noopener"><svg class="team-logo" viewBox="0 0 106.56 32" aria-hidden="true"><use href="img/team-logos.svg#mercado-libre" data-href-pt="img/team-logos.svg#mercado-livre" data-href-es="img/team-logos.svg#mercado-libre"/></svg><span class="sr-only" data-i18n="mercadoName">Mercado Libre</span></a></li>
+            <li><a href="https://www.ifood.com.br/" target="_blank" rel="noopener"><svg class="team-logo" viewBox="0 0 52.98 32" aria-hidden="true"><use href="img/team-logos.svg#ifood"/></svg><span class="sr-only">iFood</span></a></li>
+            <li><a href="https://www.studiosol.com.br/" target="_blank" rel="noopener"><svg class="team-logo" viewBox="0 0 119.10 32" aria-hidden="true"><use href="img/team-logos.svg#studio-sol"/></svg><span class="sr-only">Studio Sol</span></a></li>
           </ul>
         </div>
       </div>

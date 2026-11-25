@@ -16,8 +16,8 @@ const keysOf = (pattern) => new Set([...html.matchAll(pattern)].map((match) => m
 const used = keysOf(/data-i18n(?:-html|-label|-alt|-content)?="([^"]+)"/g);
 // A key read by anything but data-i18n-html is written as text: markup in it would show as written.
 const plain = keysOf(/data-i18n(?:-label|-alt|-content)?="([^"]+)"/g);
-// An image that shows words has one file per language.
-const images = [...html.matchAll(/<img[^>]*data-src-[a-z]+=[^>]*>/g)].map((match) => match[0]);
+// An image that shows words has one file per language, and so has a logo that does (the <use> of its symbol).
+const images = [...html.matchAll(/<(?:img|use)[^>]*data-(src|href)-[a-z]+=[^>]*>/g)].map((match) => ({ tag: match[0], attribute: match[1] }));
 
 let failed = false;
 const fail = (message) => { console.error(message); failed = true; };
@@ -25,7 +25,7 @@ for (const [language, words] of Object.entries(languages)) {
   for (const key of used) if (!(key in words)) fail(`${language}: missing ${key}`);
   for (const key of Object.keys(words)) if (!used.has(key)) fail(`${language}: unused ${key}`);
   for (const key of plain) if (/<[a-z]/i.test(words[key] || "")) fail(`${language}: markup in the plain-text key ${key}`);
-  for (const image of images) if (!image.includes(`data-src-${language}=`)) fail(`${language}: no data-src-${language} on ${image.slice(0, 60)}…`);
+  for (const { tag, attribute } of images) if (!tag.includes(`data-${attribute}-${language}=`)) fail(`${language}: no data-${attribute}-${language} on ${tag.slice(0, 60)}…`);
 }
 if (failed) process.exit(1);
 console.log(`${used.size} keys in ${Object.keys(languages).join(", ")}: all translated.`);

@@ -36,7 +36,8 @@ const HERO = `(() => {
     brand: one('.site-header .brand').innerHTML,
     title: one('.hero h1').innerHTML,
     role: one('.hero-copy .eyebrow').innerHTML,
-    teams: [...one('.teams ul').querySelectorAll('a')].map((team) => team.innerHTML).join(' · '),
+    // A team's link holds its logo and, for a screen reader, its name: the card writes the name.
+    teams: [...one('.teams ul').querySelectorAll('a')].map((team) => team.textContent.trim()).join(' · '),
     portrait: one('.portrait img').getAttribute('src'),
   }
 })()`
