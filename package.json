@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "bash scripts/build-cv.sh && python3 -m http.server 4321 --directory public",
     "build:cv": "bash scripts/build-cv.sh --force",
-    "deploy": "npx wrangler deploy",
+    "deploy": "bash scripts/deploy.sh",
     "check:translations": "node scripts/check-translations.mjs",
     "readme-hero": "node scripts/readme-hero/generate.mjs",
     "link-card": "node scripts/link-card/generate.mjs"
