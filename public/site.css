@@ -273,7 +273,7 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
   .hero-grid { grid-template-columns: minmax(0, 1fr) 300px; gap: 64px; align-items: center; }
 }
 /* The portrait as a card beside the words: on a desktop, and on a phone in landscape (narrower, below). */
-@media (min-width: 900px), (orientation: landscape) and (max-height: 500px) and (min-width: 740px) {
+@media (min-width: 900px), (max-height: 500px) and (min-width: 740px) and (pointer: coarse) {
   .portrait { order: 2; flex-direction: column; align-items: stretch; gap: 0; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); box-shadow: var(--shadow-sm); overflow: hidden; }
   .portrait img { width: 100%; height: auto; aspect-ratio: 1; border: 0; border-radius: 0; }
   .portrait figcaption { gap: 6px; padding: 16px 18px 18px; border-top: 1px solid var(--border); font-size: 15px; }
@@ -464,12 +464,13 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 .site-footer a { display: inline-flex; align-items: center; min-height: 44px; }
 
 /* A phone in landscape: a wide screen but a short one, so the sizes that follow the width would make the hero a
-   wall of title. Tighten the header, the hero and the sections' spacing to the height instead. */
-@media (orientation: landscape) and (max-height: 500px) {
+   wall of title. Tighten the hero and the sections' spacing to the height instead. A touch screen only (pointer:
+   coarse): a short desktop window, a laptop with its devtools docked below, keeps the desktop's layout. */
+@media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
   .hero { padding-block: 24px 40px; }
   .hero-grid { gap: 20px; }
   .hero h1 { margin-top: 12px; font-size: clamp(32px, 10vh, 44px); }
-  .lead { margin-top: 16px; font-size: 17px; }
+  .lead { margin-top: 16px; }
   .actions { margin-top: 20px; }
   .hero-meta { margin-top: 20px; }
   .stats { margin-top: 40px; }
@@ -482,7 +483,7 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
   .shots { max-width: 360px; }
 }
 /* Wide enough, the portrait is the card beside the words, short enough to fit on the screen with its caption. */
-@media (orientation: landscape) and (max-height: 500px) and (min-width: 740px) {
+@media (max-height: 500px) and (min-width: 740px) and (pointer: coarse) {
   .hero-grid { grid-template-columns: minmax(0, 1fr) 240px; gap: 40px; align-items: start; }
   .portrait img { aspect-ratio: 4 / 3; object-position: 50% 30%; }
   .portrait figcaption { gap: 4px; padding: 12px 14px 14px; font-size: 14px; }
@@ -491,7 +492,7 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 /* The navigation rail: on a phone in landscape the header leaves the top, where it would take a fifth of the screen's
    height, for a column down the left side: the mark, the sections with their icons, and the language and theme. The
    page moves over by the rail's width; the résumé stays a button in the hero. */
-@media (orientation: landscape) and (max-height: 500px) {
+@media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
   /* No header across the top: anchors and menus need no room for one. */
   :root { --rail: calc(80px + env(safe-area-inset-left, 0px)); --header-h: 0px; }
   body { padding-left: var(--rail); }
@@ -525,7 +526,7 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
   .menu-pop { top: auto; bottom: 0; left: calc(100% + 12px); right: auto; inset-inline-end: auto; }
 }
 /* Shorter still, the sections keep their icons and show no words, which stay for screen readers, so all five fit. */
-@media (orientation: landscape) and (max-height: 379px) {
+@media (orientation: landscape) and (max-height: 379px) and (pointer: coarse) {
   .nav a > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
   .nav a { padding-block: 4px; }
 }
