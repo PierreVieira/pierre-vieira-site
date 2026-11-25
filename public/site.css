@@ -178,6 +178,8 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 }
 .menu[open] > .menu-pop { animation: pop 0.16s var(--ease); }
 @keyframes pop { from { opacity: 0; transform: translateY(-4px) scale(0.98); } }
+/* The same, for a panel that grows upward from its button (the navigation rail's). */
+@keyframes pop-up { from { opacity: 0; transform: translateY(4px) scale(0.98); } }
 @media (prefers-reduced-motion: reduce) { .menu[open] > .menu-pop { animation: none; } }
 .menu-pop button, .menu-pop a {
   display: flex; align-items: center; gap: 10px; width: 100%; min-height: 40px; padding: 8px 10px;
@@ -464,9 +466,10 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 .site-footer a { display: inline-flex; align-items: center; min-height: 44px; }
 
 /* A phone in landscape: a wide screen but a short one, so the sizes that follow the width would make the hero a
-   wall of title. Tighten the hero and the sections' spacing to the height instead. A touch screen only (pointer:
-   coarse): a short desktop window, a laptop with its devtools docked below, keeps the desktop's layout. */
+   wall of title, and a header across the top would take a fifth of the height. A touch screen only (pointer: coarse):
+   a short desktop window, a laptop with its devtools docked below, keeps the desktop's layout. */
 @media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
+  /* The hero and the sections' spacing follow the height instead. */
   .hero { padding-block: 24px 40px; }
   .hero-grid { gap: 20px; }
   .hero h1 { margin-top: 12px; font-size: clamp(32px, 10vh, 44px); }
@@ -481,20 +484,11 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
   .contact h2 { font-size: clamp(32px, 10vh, 44px); }
   /* Two phone screenshots, narrow enough to be seen whole on a screen this short. */
   .shots { max-width: 360px; }
-}
-/* Wide enough, the portrait is the card beside the words, short enough to fit on the screen with its caption. */
-@media (max-height: 500px) and (min-width: 740px) and (pointer: coarse) {
-  .hero-grid { grid-template-columns: minmax(0, 1fr) 240px; gap: 40px; align-items: start; }
-  .portrait img { aspect-ratio: 4 / 3; object-position: 50% 30%; }
-  .portrait figcaption { gap: 4px; padding: 12px 14px 14px; font-size: 14px; }
-}
 
-/* The navigation rail: on a phone in landscape the header leaves the top, where it would take a fifth of the screen's
-   height, for a column down the left side: the mark, the sections with their icons, and the language and theme. The
-   page moves over by the rail's width; the résumé stays a button in the hero. */
-@media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
-  /* No header across the top: anchors and menus need no room for one. */
-  :root { --rail: calc(80px + env(safe-area-inset-left, 0px)); --header-h: 0px; }
+  /* The navigation rail: the header leaves the top for a column down the left side, with the mark, the sections with
+     their icons, and the language and theme menus side by side at its foot. The page moves over by the rail's width;
+     the résumé stays a button in the hero. With no header across the top, anchors and menus need no room for one. */
+  :root { --rail: calc(96px + env(safe-area-inset-left, 0px)); --header-h: 0px; }
   body { padding-left: var(--rail); }
   .wrap { padding-left: var(--gutter); }
   .site-header {
@@ -507,28 +501,40 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
   }
   .brand { justify-content: center; width: 44px; min-height: 40px; flex: none; }
   .brand-name { display: none; }
-  /* The sections take the room between, centered, and scroll on their own where the screen is shorter still. */
-  .nav { display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto; min-height: 0; width: 100%; margin: 0; overflow-y: auto; scrollbar-width: none; }
+  /* The sections take the room between, centered, and scroll on their own should a screen be shorter still. */
+  .nav { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; width: 100%; margin: 0; overflow-y: auto; }
   .nav a:first-child { margin-top: auto; }
   .nav a:last-child { margin-bottom: auto; }
-  .nav a {
+  /* No hover look: on a touch screen it would stay on the last link tapped. */
+  .nav a, .nav a:hover {
     display: grid; justify-items: center; gap: 2px; flex: none; padding: 2px 0 3px; border-radius: 12px;
     font-size: 11px; font-weight: 500; line-height: 1.2; text-align: center; background: none;
   }
-  .nav a:hover { background: none; }
   .nav .icon { display: block; width: 56px; height: 26px; padding: 3px 0; border-radius: 999px; transition: background-color 0.2s var(--ease), color 0.2s var(--ease); }
-  .nav a:hover .icon { background: var(--muted); }
   .nav a[aria-current="true"] { color: var(--fg); }
   .nav a[aria-current="true"] .icon { background: var(--accent-soft); color: var(--on-accent-soft); }
-  .header-end { flex-direction: column; gap: 0; flex: none; margin-inline-start: 0; }
-  .nav-menu, .header-cv { display: none; }
-  /* The language and theme menus open beside the rail, from their buttons' feet upward. */
-  .menu-pop { top: auto; bottom: 0; left: calc(100% + 12px); right: auto; inset-inline-end: auto; }
+  .header-end { gap: 0; flex: none; margin-inline-start: 0; }
+  .nav-menu, .header-cv, .lang-code { display: none; }
+  /* The menus open beside the rail, at its foot, growing upward: placed against the rail (the menus are static, so the
+     fixed header holds their panels), so both open at the same place. */
+  .header-end .menu { position: static; }
+  .menu-pop {
+    top: auto; bottom: max(8px, env(safe-area-inset-bottom)); left: calc(100% + 8px); right: auto;
+    max-height: calc(100dvh - 2 * max(8px, env(safe-area-inset-bottom)) - 16px); transform-origin: bottom left;
+  }
+  .menu[open] > .menu-pop { animation-name: pop-up; }
 }
-/* Shorter still, the sections keep their icons and show no words, which stay for screen readers, so all five fit. */
-@media (orientation: landscape) and (max-height: 379px) and (pointer: coarse) {
-  .nav a > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
-  .nav a { padding-block: 4px; }
+/* Wide enough, the portrait is the card beside the words, short enough to fit on the screen with its caption. */
+@media (max-height: 500px) and (min-width: 740px) and (pointer: coarse) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr) 240px; gap: 40px; align-items: start; }
+  .portrait img { aspect-ratio: 4 / 3; object-position: 50% 30%; }
+  .portrait figcaption { gap: 4px; padding: 12px 14px 14px; font-size: 14px; }
+}
+/* Shorter still, where the rail's five named links would not fit, they keep their icons and lose their names from
+   sight (a box of no height: screen readers still read them), each still a 44px target. */
+@media (orientation: landscape) and (max-height: 359px) and (pointer: coarse) {
+  .nav a, .nav a:hover { gap: 0; padding-block: 9px; }
+  .nav a > span { height: 0; overflow: hidden; }
 }
 
 /* Language: boot.js hides the page while the chosen language's words load, so the English never flashes first. */
