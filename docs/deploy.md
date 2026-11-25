@@ -44,5 +44,6 @@ The same PDF goes to Pierre's OneDrive on every push to `main` that changes it (
 npm run deploy
 ```
 
-Runs the same `scripts/deploy.sh`, and needs `npx wrangler login` first, on the Cloudflare account that has the
+Runs the same `scripts/deploy.sh`, which on a terminal leaves Wrangler as it is (its prompts, and no new tries), and
+needs `npx wrangler login` first, on the Cloudflare account that has the
 pierrevieira.com zone.
