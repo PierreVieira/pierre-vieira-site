@@ -84,7 +84,7 @@ window.SITE_STRINGS.pt = {
   super1: "Engenheiro responsável pela tela inicial do Superbet Sports no Android, feita com Jetpack Compose em uma arquitetura de server-driven UI (SDUI).",
   super2: "A estrutura e o conteúdo das telas são definidos pelo backend, com Protocol Buffers como contrato entre backend e cliente.",
   super3: "O Kotlin Multiplatform compartilha a lógica de negócio com o iOS, o que permite à arquitetura escalar entre plataformas.",
-  super4: "Também contribui para o Superbet Games e o Superbet Social, que compartilham uma base comum com o Superbet Sports, então componentes feitos para um app podem ser reaproveitados nos outros.",
+  super4: "Também contribui para o Superbet Games e o Superbet Social, que compartilham uma base comum com ele, então componentes feitos para um app podem ser reaproveitados nos outros.",
   toyotaPeriod: "mai 2025 – fev 2026",
   toyotaVia: "contratado pela <a class=\"link\" href=\"https://verygood.ventures/\" target=\"_blank\" rel=\"noopener\">Very Good Ventures</a>",
   toyota1: "Desenvolvi funcionalidades nativas Android para o app de veículos conectados da Toyota, voltado a carros elétricos, com Kotlin e Jetpack Compose.",
