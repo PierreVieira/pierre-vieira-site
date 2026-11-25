@@ -3,8 +3,7 @@
 Pierre Vieira's portfolio at pierrevieira.com: one page (`public/index.html`), plain HTML, CSS and JavaScript with no
 build and no dependencies, but for the résumé PDF, which the deploy compiles from `cv/pierre-vieira-cv.tex`. Each file
 opens with a comment on what it holds; `docs/` has the deploy ([`docs/deploy.md`](docs/deploy.md)), the analytics
-([`docs/analytics.md`](docs/analytics.md)), the pull request checks ([`docs/checks.md`](docs/checks.md)) and the copy of
-the résumé in Pierre's OneDrive ([`docs/onedrive.md`](docs/onedrive.md)).
+([`docs/analytics.md`](docs/analytics.md)) and the pull request checks ([`docs/checks.md`](docs/checks.md)).
 
 ## Conventions
 
@@ -31,6 +30,9 @@ the résumé in Pierre's OneDrive ([`docs/onedrive.md`](docs/onedrive.md)).
 - Analytics goes through `window.track()` (`public/analytics.js`, Firebase project `pierrevieira-site`). A new event
   gets its row in `docs/analytics.md` in the same change.
 - The README's image is the real page: run `npm run readme-hero` after a change to the hero.
+- The card a link to the site unfolds into (`public/img/link-card.png`, the page's `og:image`) is drawn from the hero's
+  own words, mark and portrait: run `npm run link-card` after a change to any of them, or to the teams' names. It also
+  writes the image's version (`?v=`) in the `og:image`, so commit `public/index.html` with the image.
 - Don't copy code between files: extract it. `./scripts/cpd.sh` runs the copied-code check CI runs
   ([`docs/checks.md`](docs/checks.md)).
 - Check a visual change at 375, 768, 1024 and 1440 pixels wide, in light and dark, with `npm run dev` running.

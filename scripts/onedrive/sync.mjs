@@ -11,7 +11,8 @@ if (args.length && !upload) fail('usage: node scripts/onedrive/sync.mjs [--uploa
 
 const stored = required('ONEDRIVE_RCLONE_TOKEN')
 const { rclone, remote, currentToken } = rcloneWith(stored, required('ONEDRIVE_DRIVE_ID'))
-// Why: the stored access token is always over an hour old, so either command makes rclone refresh it.
+// Why: an access token lasts an hour, so either command makes rclone refresh it unless the last run or the setup was
+// under an hour ago; then nothing is renewed, nor saved below, which is fine.
 const result = upload
   ? rclone('copyto', upload, remote(`${REMOTE_FOLDER}/${REMOTE_FILE}`))
   : rclone('lsf', remote(REMOTE_FOLDER))

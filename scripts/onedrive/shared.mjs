@@ -42,10 +42,9 @@ export function run(command, args, input) {
   return result
 }
 
-/** Runs the GitHub CLI on the repository in GH_REPO (or the current checkout's), or stops when it fails. */
+/** Runs the GitHub CLI on the repository in GH_REPO (gh reads it) or the checkout's, or stops when it fails. */
 export function gh(args, input) {
-  const repo = process.env.GH_REPO ? ['--repo', process.env.GH_REPO] : []
-  if (run('gh', [...args, ...repo], input).status !== 0) fail(`gh ${args.slice(0, 3).join(' ')} failed`)
+  if (run('gh', args, input).status !== 0) fail(`gh ${args.slice(0, 3).join(' ')} failed`)
 }
 
 /** Stores rclone's token in the repository's secret and the time of it in its variable. */
@@ -71,6 +70,10 @@ export function rcloneWith(token, driveId) {
   return {
     rclone,
     remote: (path) => `${REMOTE}:${path}`,
-    currentToken: () => JSON.parse(rclone('config', 'dump').stdout)[REMOTE].token,
+    currentToken: () => {
+      const dump = rclone('config', 'dump')
+      if (dump.status !== 0) fail('rclone could not read its config back')
+      return JSON.parse(dump.stdout)[REMOTE].token
+    },
   }
 }
