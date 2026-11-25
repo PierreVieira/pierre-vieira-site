@@ -9,8 +9,8 @@ as the site's résumé, with no machine of his involved. It builds the PDF with 
 | Event | What it does |
 | --- | --- |
 | A push to `main` that touches `cv/**` or `scripts/build-cv.sh` | Builds and uploads the PDF |
-| A manual run (Actions › onedrive-cv › Run workflow) | Builds and uploads the PDF |
-| Every day at 09:17 UTC | Renews the token if it was last renewed 45 days ago or more; else ends in seconds |
+| A manual run (Actions › onedrive-cv › Run workflow), from `main` only | Builds and uploads the PDF |
+| Every day at 09:17 UTC | Uploads again, which renews the token, if it was last renewed 45 days ago or more; else ends in seconds |
 
 Pull requests never upload: their change reaches OneDrive when they merge. The folder (`REMOTE_FOLDER`) is in
 `scripts/onedrive/shared.mjs`.
@@ -23,14 +23,14 @@ rclone's project. It asks only for `Files.ReadWrite offline_access`: Microsoft h
 token can read and write all of Pierre's own files (not files shared with him, nor SharePoint). Revoke it any time at
 account.microsoft.com › Privacy › Apps and services, by removing rclone.
 
-Microsoft drops a refresh token after 90 days unused, so every run saves the token rclone renewed into the
-`ONEDRIVE_RCLONE_TOKEN` secret and the time into the `ONEDRIVE_TOKEN_REFRESHED_AT` variable; the daily check renews it
-at 45 days. GitHub turns off a public repository's scheduled workflows after 60 days without commits, so the check
-re-enables its own workflow every day.
+Microsoft drops a refresh token after 90 days unused, so every upload saves the token rclone renewed into the
+`ONEDRIVE_RCLONE_TOKEN` secret and the time into the `ONEDRIVE_TOKEN_REFRESHED_AT` variable; the daily check uploads
+again at 45 days to renew it. GitHub turns off a public repository's scheduled workflows after 60 days without
+commits, so the check re-enables its own workflow every day.
 
 | In the repository's settings (Secrets and variables › Actions) | |
 | --- | --- |
-| `ONEDRIVE_RCLONE_TOKEN` (secret) | rclone's token (JSON with the refresh token), rotated by every run |
+| `ONEDRIVE_RCLONE_TOKEN` (secret) | rclone's token (JSON with the refresh token), rotated by every upload |
 | `ONEDRIVE_DRIVE_ID` (variable) | The OneDrive's ID |
 | `ONEDRIVE_TOKEN_REFRESHED_AT` (variable) | When the token was last rotated |
 | `ONEDRIVE_GITHUB_TOKEN` (secret) | A GitHub token that may write this repository's secrets and variables |
