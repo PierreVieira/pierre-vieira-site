@@ -3,7 +3,8 @@
 Pierre Vieira's portfolio at pierrevieira.com: one page (`public/index.html`), plain HTML, CSS and JavaScript with no
 build and no dependencies, but for the résumé PDF, which the deploy compiles from `cv/pierre-vieira-cv.tex`. Each file
 opens with a comment on what it holds; `docs/` has the deploy ([`docs/deploy.md`](docs/deploy.md)), the analytics
-([`docs/analytics.md`](docs/analytics.md)) and the pull request checks ([`docs/checks.md`](docs/checks.md)).
+([`docs/analytics.md`](docs/analytics.md)), the pull request checks ([`docs/checks.md`](docs/checks.md)) and the copy of
+the résumé in Pierre's OneDrive ([`docs/onedrive.md`](docs/onedrive.md)).
 
 ## Conventions
 

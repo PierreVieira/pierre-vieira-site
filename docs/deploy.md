@@ -32,6 +32,8 @@ force a pdfTeX driver (as `\usepackage[pdftex]{hyperref}` would).
 To change the résumé, edit the .tex and push. `npm run build:cv` builds the PDF locally to look at it, and
 `npm run dev` builds it when the .tex is newer than the PDF.
 
+The same PDF goes to Pierre's OneDrive on every push to `main` that changes it ([`onedrive.md`](onedrive.md)).
+
 ## From your machine
 
 ```bash
