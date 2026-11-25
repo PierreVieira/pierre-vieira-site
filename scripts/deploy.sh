@@ -7,7 +7,12 @@ set -uo pipefail
 
 cd "$(dirname "$0")/.." || exit 1
 
-read -r -a WAITS <<< "${DEPLOY_RETRY_WAITS:-30 60}"
+WAITS_SPEC="${DEPLOY_RETRY_WAITS:-30 60}"
+if [[ ! "$WAITS_SPEC" =~ ^[0-9[:space:]]*$ ]]; then
+  echo "deploy: DEPLOY_RETRY_WAITS must be whole seconds separated by spaces, not '$WAITS_SPEC'" >&2
+  exit 1
+fi
+read -r -a WAITS <<< "$WAITS_SPEC"
 RATE_LIMITED='code: 971|throttling your request|Retry-After|Too Many Requests'
 
 LOG="$(mktemp)"
