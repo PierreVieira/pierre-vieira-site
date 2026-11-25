@@ -86,6 +86,11 @@ button { font: inherit; color: inherit; }
 ::selection { background: var(--accent); color: #fff; }
 
 .wrap { width: 100%; max-width: calc(var(--max) + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
+/* With viewport-fit=cover a phone held sideways puts its notch and rounded corners over the page's sides: keep the
+   content clear of them. */
+@supports (padding: max(0px)) {
+  .wrap { padding-left: max(var(--gutter), env(safe-area-inset-left)); padding-right: max(var(--gutter), env(safe-area-inset-right)); }
+}
 .icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .skip {
@@ -166,6 +171,7 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 .menu-pop {
   position: absolute; inset-inline-end: 0; top: calc(100% + 8px); z-index: 60;
   display: grid; gap: 2px; min-width: 216px; padding: 6px;
+  max-height: calc(100dvh - 88px); overflow-y: auto; overscroll-behavior: contain;
   background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-lg);
 }
 .menu[open] > .menu-pop { animation: pop 0.16s var(--ease); }
@@ -263,6 +269,9 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 
 @media (min-width: 900px) {
   .hero-grid { grid-template-columns: minmax(0, 1fr) 300px; gap: 64px; align-items: center; }
+}
+/* The portrait as a card beside the words: on a desktop, and on a phone in landscape (narrower, below). */
+@media (min-width: 900px), (orientation: landscape) and (max-height: 500px) and (min-width: 640px) {
   .portrait { order: 2; flex-direction: column; align-items: stretch; gap: 0; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); box-shadow: var(--shadow-sm); overflow: hidden; }
   .portrait img { width: 100%; height: auto; aspect-ratio: 1; border: 0; border-radius: 0; }
   .portrait figcaption { gap: 6px; padding: 16px 18px 18px; border-top: 1px solid var(--border); font-size: 15px; }
@@ -451,6 +460,33 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 .site-footer { border-top: 1px solid var(--border); padding-block: 28px 40px; color: var(--muted-fg); font-size: 14px; }
 .site-footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
 .site-footer a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* A phone in landscape: a wide screen but a short one, so the sizes that follow the width would make the hero a
+   wall of title. Tighten the header, the hero and the sections' spacing to the height instead. */
+@media (orientation: landscape) and (max-height: 500px) {
+  html { scroll-padding-top: 72px; }
+  .site-header .wrap { height: 52px; }
+  .hero { padding-block: 24px 40px; }
+  .hero-grid { gap: 20px; }
+  .hero h1 { margin-top: 12px; font-size: clamp(32px, 10vh, 44px); }
+  .lead { margin-top: 16px; font-size: 17px; }
+  .actions { margin-top: 20px; }
+  .hero-meta { margin-top: 20px; }
+  .stats { margin-top: 40px; }
+  .stats strong { font-size: clamp(28px, 8vh, 36px); }
+  .section { padding-block: 56px; }
+  .section-head { margin-bottom: 32px; }
+  .section-head h2 { font-size: clamp(28px, 9vh, 38px); }
+  .contact h2 { font-size: clamp(32px, 10vh, 44px); }
+  /* Two phone screenshots, narrow enough to be seen whole on a screen this short. */
+  .shots { max-width: 360px; }
+}
+/* Wide enough, the portrait is the card beside the words, short enough to fit on the screen with its caption. */
+@media (orientation: landscape) and (max-height: 500px) and (min-width: 640px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr) 240px; gap: 40px; align-items: start; }
+  .portrait img { aspect-ratio: 4 / 3; object-position: 50% 30%; }
+  .portrait figcaption { gap: 4px; padding: 12px 14px 14px; font-size: 14px; }
+}
 
 /* Language: boot.js hides the page while the chosen language's words load, so the English never flashes first. */
 :root.i18n-wait body { visibility: hidden; }
