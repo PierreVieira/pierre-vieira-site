@@ -6,6 +6,7 @@
     "build:cv": "bash scripts/build-cv.sh --force",
     "deploy": "bash scripts/deploy.sh",
     "check:translations": "node scripts/check-translations.mjs",
+    "check:team-logos": "node scripts/check-team-logos.mjs",
     "readme-hero": "node scripts/readme-hero/generate.mjs",
     "link-card": "node scripts/link-card/generate.mjs"
   }

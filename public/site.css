@@ -275,15 +275,14 @@ a:hover > .ext .icon, .ext:hover .icon { transform: translate(2px, -2px); color:
 @media (min-width: 768px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 32px; } }
 
 .teams { display: grid; gap: 16px; margin-top: clamp(32px, 5vw, 56px); }
-.teams ul { display: flex; flex-wrap: wrap; gap: 0 28px; }
-.teams ul { align-items: center; }
-.teams a {
-  display: inline-flex; align-items: center; min-height: 44px;
-  color: var(--fg-soft); font-size: clamp(17px, 2vw, 21px); font-weight: 600; letter-spacing: -0.02em; text-decoration: none;
-  transition: color 0.2s var(--ease);
-}
-.teams a:hover { color: var(--accent); }
-@media (min-width: 900px) { .teams { grid-template-columns: 200px minmax(0, 1fr); align-items: baseline; } }
+.teams ul { display: flex; flex-wrap: wrap; align-items: center; gap: 0 clamp(24px, 3.4vw, 40px); }
+/* A team is its logo, quiet until the pointer is on it: the name is in the link's .sr-only. */
+.teams a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted-fg); transition: color 0.2s var(--ease); }
+.teams a:hover { color: var(--fg); }
+/* Every logo of img/team-logos.svg is drawn on a canvas of one height, so one height here sizes them all. */
+.team-logo { display: block; width: auto; height: clamp(24px, 2.6vw, 28px); fill: currentColor; }
+/* Beside its label only where the eight logos fit on one line there; under it they have the whole width. */
+@media (min-width: 1240px) { .teams { grid-template-columns: 200px minmax(0, 1fr); column-gap: 32px; align-items: center; } }
 
 /* Apps */
 .apps { display: grid; gap: 24px; }

@@ -9,9 +9,12 @@ opens with a comment on what it holds; `docs/` has the deploy ([`docs/deploy.md`
 
 - Write code, comments, docs and commit messages in English.
 - The markup is in English. Every string the page shows has a `data-i18n` key (`data-i18n-html` when it holds markup,
-  `-label`, `-alt` and `-content` for attributes) with its Portuguese in `public/strings/pt.js` and its Spanish in
-  `public/strings/es.js`. Add all of them in the same change and run `npm run check:translations`.
-- An image that shows words has each other language's version in `data-src-pt` and `data-src-es`.
+  `-label`, `-alt`, `-title` and `-content` for attributes) with its Portuguese in `public/strings/pt.js` and its
+  Spanish in `public/strings/es.js`. Add all of them in the same change and run `npm run check:translations`.
+- An image that shows words has each other language's version in `data-src-pt` and `data-src-es`. A logo of the teams' row
+  that does has them in `data-href-pt` and `data-href-es`, on its `<use>`.
+- The teams' logos are symbols of `public/img/team-logos.svg`, and the `<svg>` that uses one repeats its viewBox: run
+  `npm run check:team-logos` after a change to either.
 - `public/site.css` holds the tokens (light and dark) and every component: use the tokens, never raw colors.
 - `public/boot.js` runs in `<head>` and decides the theme, the language and `.motion` before the first paint. Every
   entrance animation hangs on `:root.motion`, so with reduced motion (or a pinned `?theme=`) the page is still and

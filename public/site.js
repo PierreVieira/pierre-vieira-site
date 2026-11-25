@@ -15,15 +15,19 @@
   }
 
   // Language. Each translated place says where its words go: data-i18n (text), data-i18n-html (markup of our own, from
-  // strings/), data-i18n-label (aria-label), data-i18n-alt (alt), data-i18n-content (a <meta>'s content) and
-  // data-src-<language> (an image that shows words). The English originals are kept the first time, to switch back to.
+  // strings/), data-i18n-label (aria-label), data-i18n-alt (alt), data-i18n-title (title), data-i18n-content (a
+  // <meta>'s content) and data-src-<language> (an image that shows words; data-href-<language> on the <use> of a logo
+  // that does). The English originals are kept the first time, to switch back to.
   const TARGETS = [
     ["data-i18n", (el) => el.textContent, (el, value) => { el.textContent = value; }],
     ["data-i18n-html", (el) => el.innerHTML, (el, value) => { el.innerHTML = value; }],
     ["data-i18n-label", (el) => el.getAttribute("aria-label"), (el, value) => el.setAttribute("aria-label", value)],
     ["data-i18n-alt", (el) => el.getAttribute("alt"), (el, value) => el.setAttribute("alt", value)],
+    ["data-i18n-title", (el) => el.getAttribute("title"), (el, value) => el.setAttribute("title", value)],
     ["data-i18n-content", (el) => el.getAttribute("content"), (el, value) => el.setAttribute("content", value)],
   ];
+  // What shows words as a drawing, and the attribute that says which drawing.
+  const WORDED = [["img", "src"], ["use", "href"]];
   const english = new Map();
 
   // Years of experience: the whole years since the first job, in September 2020, so no figure on the page goes stale.
@@ -62,10 +66,13 @@
         if (read(el) !== value) write(el, value);
       });
     });
-    document.querySelectorAll("img[data-src-pt]").forEach((img) => {
-      if (!img.dataset.srcEn) img.dataset.srcEn = img.getAttribute("src");
-      const src = img.getAttribute(`data-src-${lang}`) || img.dataset.srcEn;
-      if (img.getAttribute("src") !== src) img.setAttribute("src", src);
+    WORDED.forEach(([tag, attribute]) => {
+      document.querySelectorAll(`${tag}[data-${attribute}-pt]`).forEach((el) => {
+        const kept = `${attribute}En`;
+        if (!el.dataset[kept]) el.dataset[kept] = el.getAttribute(attribute);
+        const value = el.getAttribute(`data-${attribute}-${lang}`) || el.dataset[kept];
+        if (el.getAttribute(attribute) !== value) el.setAttribute(attribute, value);
+      });
     });
     // Last: a translated sentence brings its own [data-years] element.
     fillYears(lang);
