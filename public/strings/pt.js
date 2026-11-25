@@ -70,7 +70,7 @@ window.SITE_STRINGS.pt = {
   bibleShot1: "Bible Planner: a leitura de hoje e o progresso do plano",
   bibleShot2: "Bible Planner: o estudo diário de uma passagem",
 
-  experienceTitle: "<span data-years=\"word\">Seis</span> anos entregando apps, <span class=\"dim\">em apostas esportivas, carros elétricos, casa inteligente, pagamentos, delivery e música.</span>",
+  experienceTitle: "<span data-years=\"word\">Seis</span> anos entregando apps, <span class=\"dim\">em apostas esportivas, carros elétricos, câmeras, pagamentos, delivery e música.</span>",
   now: "Atual",
   roleSenior: "Engenheiro de Software Android Sênior",
   roleMid: "Engenheiro de Software Android Pleno",
