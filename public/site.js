@@ -156,6 +156,23 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  // The section in view marks its link in the header's sections (aria-current), which the rail shows as its indicator:
+  // the one crossing a line 40% down the screen.
+  const navLinks = [...document.querySelectorAll(".nav a[href^='#']")];
+  const navSections = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+  if (navSections.length && "IntersectionObserver" in window) {
+    // A section leaving the line unmarks its link (back up in the hero, none is marked); one reaching it marks its own.
+    const linkTo = (section) => navLinks.find((link) => link.getAttribute("href") === `#${section.id}`);
+    const spy = new IntersectionObserver((entries) => {
+      entries.filter((entry) => !entry.isIntersecting).forEach((entry) => linkTo(entry.target).removeAttribute("aria-current"));
+      entries.filter((entry) => entry.isIntersecting).forEach((entry) => {
+        navLinks.forEach((link) => link.removeAttribute("aria-current"));
+        linkTo(entry.target).setAttribute("aria-current", "true");
+      });
+    }, { rootMargin: "-40% 0px -59% 0px" });
+    navSections.forEach((section) => spy.observe(section));
+  }
+
   // The floating button to the top appears once the hero has scrolled out of view, and steps aside when the footer,
   // with its own link to the top, comes in (where the button would sit on that link).
   const topButton = document.querySelector(".fab-top");
