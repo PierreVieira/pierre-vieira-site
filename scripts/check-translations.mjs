@@ -13,9 +13,9 @@ for (const file of readdirSync(folder).filter((name) => name.endsWith(".js"))) {
 const languages = sandbox.window.SITE_STRINGS;
 
 const keysOf = (pattern) => new Set([...html.matchAll(pattern)].map((match) => match[1]));
-const used = keysOf(/data-i18n(?:-html|-label|-alt|-content)?="([^"]+)"/g);
+const used = keysOf(/data-i18n(?:-html|-label|-alt|-title|-content)?="([^"]+)"/g);
 // A key read by anything but data-i18n-html is written as text: markup in it would show as written.
-const plain = keysOf(/data-i18n(?:-label|-alt|-content)?="([^"]+)"/g);
+const plain = keysOf(/data-i18n(?:-label|-alt|-title|-content)?="([^"]+)"/g);
 // An image that shows words has one file per language, and so has a logo that does (the <use> of its symbol).
 // Each tag with the attribute site.js swaps on it: an <img>'s src, a <use>'s href.
 const images = [...html.matchAll(/<(?:img[^>]*data-(src)|use[^>]*data-(href))-[a-z]+=[^>]*>/g)]

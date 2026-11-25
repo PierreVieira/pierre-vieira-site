@@ -15,14 +15,15 @@
   }
 
   // Language. Each translated place says where its words go: data-i18n (text), data-i18n-html (markup of our own, from
-  // strings/), data-i18n-label (aria-label), data-i18n-alt (alt), data-i18n-content (a <meta>'s content) and
-  // data-src-<language> (an image that shows words; data-href-<language> on the <use> of a logo that does). The English
-  // originals are kept the first time, to switch back to.
+  // strings/), data-i18n-label (aria-label), data-i18n-alt (alt), data-i18n-title (title), data-i18n-content (a
+  // <meta>'s content) and data-src-<language> (an image that shows words; data-href-<language> on the <use> of a logo
+  // that does). The English originals are kept the first time, to switch back to.
   const TARGETS = [
     ["data-i18n", (el) => el.textContent, (el, value) => { el.textContent = value; }],
     ["data-i18n-html", (el) => el.innerHTML, (el, value) => { el.innerHTML = value; }],
     ["data-i18n-label", (el) => el.getAttribute("aria-label"), (el, value) => el.setAttribute("aria-label", value)],
     ["data-i18n-alt", (el) => el.getAttribute("alt"), (el, value) => el.setAttribute("alt", value)],
+    ["data-i18n-title", (el) => el.getAttribute("title"), (el, value) => el.setAttribute("title", value)],
     ["data-i18n-content", (el) => el.getAttribute("content"), (el, value) => el.setAttribute("content", value)],
   ];
   // What shows words as a drawing, and the attribute that says which drawing.

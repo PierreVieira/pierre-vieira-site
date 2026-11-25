@@ -9,8 +9,8 @@ opens with a comment on what it holds; `docs/` has the deploy ([`docs/deploy.md`
 
 - Write code, comments, docs and commit messages in English.
 - The markup is in English. Every string the page shows has a `data-i18n` key (`data-i18n-html` when it holds markup,
-  `-label`, `-alt` and `-content` for attributes) with its Portuguese in `public/strings/pt.js` and its Spanish in
-  `public/strings/es.js`. Add all of them in the same change and run `npm run check:translations`.
+  `-label`, `-alt`, `-title` and `-content` for attributes) with its Portuguese in `public/strings/pt.js` and its
+  Spanish in `public/strings/es.js`. Add all of them in the same change and run `npm run check:translations`.
 - An image that shows words has each other language's version in `data-src-pt` and `data-src-es`. A logo of the teams' row
   that does has them in `data-href-pt` and `data-href-es`, on its `<use>`.
 - The teams' logos are symbols of `public/img/team-logos.svg`, and the `<svg>` that uses one repeats its viewBox: run
