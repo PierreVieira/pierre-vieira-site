@@ -13,7 +13,7 @@ The portfolio is one page, available in English, Portuguese (`?lang=pt`) and Spa
 
 ## Experience
 
-- [Super](https://super.xyz/): Senior Android Software Engineer, Mar 2026 – present. Home screen of the sports app in Jetpack Compose with server-driven UI, Protocol Buffers and Kotlin Multiplatform.
+- [Super](https://super.xyz/): Senior Android Software Engineer, Mar 2026 – present. Home screen of Superbet Sports (sports betting) in Jetpack Compose with server-driven UI, Protocol Buffers and Kotlin Multiplatform; also contributes to Superbet Games and Superbet Social, which share a common base with it.
 - [Toyota](https://www.toyota.com/): Senior Android Software Engineer, May 2025 – Feb 2026, contractor through Very Good Ventures. The connected vehicle app for electric cars.
 - [Arlo](https://www.arlo.com/): Senior Android Software Engineer, Dec 2024 – May 2025, contractor through Side. Home security devices and AI audio event detection.
 - [Mercado Libre](https://www.mercadolivre.com.br/): Senior Android Software Engineer at Mercado Pago, Jun 2022 – Dec 2024. Payments and a server-driven navigation engine.
